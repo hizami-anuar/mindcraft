@@ -1,1 +1,12 @@
 /* Fill me in :) */
+
+/* fade in animation */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
