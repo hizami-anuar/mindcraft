@@ -33,9 +33,9 @@ const socket = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "FILL ME IN";
+const mongoConnectionURL = "mongodb+srv://MindCraft:1cuRPHmtCg3ZfsX6@mindcraft-y6b4z.mongodb.net/test?retryWrites=true&w=majority";
 // TODO change database name to the name you chose
-const databaseName = "FILL ME IN";
+const databaseName = "MindCraft";
 
 // connect to mongodb
 mongoose
