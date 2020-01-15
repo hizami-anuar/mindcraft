@@ -14,8 +14,8 @@
 * much after initial creation.
 */
 
-/* TODO: REPLACE WITH YOUR OWN FONT! */
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+/* TODO: Font: Titillium, 50 pt */
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web&display=swap");
 
 :root {
   --primary: #396dff;
