@@ -23,6 +23,7 @@ class Skeleton extends Component {
   render() {
     return (
       <>
+        <h1>Own your memory.</h1>
         <h1>Good luck on your project :)</h1>
         <h2> What we provide in this skeleton</h2>
         <ul>
