@@ -23,6 +23,9 @@ class NavBar extends Component {
           <Link to="/" className="NavBar-link">
             Home
           </Link>
+          <Link to="/create" className="NavBar-link">
+            Create
+          </Link>
           <Link to="/NotFound" className="NavBar-link">
             Not Found
           </Link>
