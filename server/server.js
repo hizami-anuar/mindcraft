@@ -37,7 +37,7 @@ const socket = require("./server-socket");
 const mongoConnectionURL = process.env.ATLAS_SRV;
 // TODO change database name to the name you chose
 const databaseName = "MindCraft";
-
+console.log(mongoConnectionURL)
 // connect to mongodb
 mongoose
   .connect(mongoConnectionURL, {
