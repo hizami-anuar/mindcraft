@@ -17,6 +17,7 @@
 // this is a tool provided by staff, so you don't need to worry about it
 const validator = require("./validator");
 validator.checkSetup();
+require("dotenv").config();
 
 //import libraries needed for the webserver to work!
 const http = require("http");
@@ -33,7 +34,7 @@ const socket = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "mongodb+srv://MindCraft:1cuRPHmtCg3ZfsX6@mindcraft-y6b4z.mongodb.net/test?retryWrites=true&w=majority";
+const mongoConnectionURL = process.execArgv.ATLAS_SRC;
 // TODO change database name to the name you chose
 const databaseName = "MindCraft";
 
