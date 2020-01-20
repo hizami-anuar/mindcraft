@@ -1,6 +1,34 @@
 /* Fill me in :) */
 
-/* fade in animation */
+h1 {
+  font-size: 60px;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+.banner h1 {
+  margin: 0;
+  text-shadow: 2px 2px 6px #000;
+}
+
+/* Implement banner class to insert image as background */
+.banner {
+  display: flex;
+  color: white;
+  background: url('https://assets.atlasobscura.com/article_images/800x/13862/image.jpg') top left/cover no-repeat;
+  height: 500px;
+  justify-content: left;
+  align-items: center;
+}
+
+.transition_block {
+  display: flex
+}
+
+.banner-text {
+  padding-top: 60px;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
