@@ -22,8 +22,20 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        <h1>Own your memory.</h1>
-        <h1>Good luck on your project :)</h1>
+        <div class='banner'>
+          <div class='banner-text'>
+            <h1>
+              Own your memory. 
+            </h1>
+          </div>
+        </div>
+
+        <div class='banner'>
+          <div class='banner-text'>
+            <h1>Good luck on your project :)</h1>
+          </div>
+        </div>
+
         <h2> What we provide in this skeleton</h2>
         <ul>
           <li>Google Auth (Skeleton.js & auth.js)</li>
