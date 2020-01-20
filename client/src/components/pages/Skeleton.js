@@ -12,6 +12,7 @@ class Skeleton extends Component {
     super(props);
     // Initialize Default State
     this.state = {
+      userId: this.props.userId,
     };
   }
 
