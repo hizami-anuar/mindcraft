@@ -34,7 +34,7 @@ const socket = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = process.env.ATLAS_SRC;
+const mongoConnectionURL = process.execArgv.ATLAS_SRC;
 // TODO change database name to the name you chose
 const databaseName = "MindCraft";
 
