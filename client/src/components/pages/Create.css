@@ -1,7 +1,7 @@
 .Create-container {
   background-color: yellow;
-  width: 500px;
-  height: 500px;
+  width: auto;
+  height: auto;
   margin: 5%;
 }
 
@@ -10,10 +10,9 @@
   color: white;
   font-size: 20px;
   font-family: sans-serif;
-  /* border-radius: 8px;
-  padding: 20px; */
+  border-radius: 8px;
+  padding: 20px;
   touch-action: none;
-  position: absolute;
 
   height: 200px;
   width: 200px;
