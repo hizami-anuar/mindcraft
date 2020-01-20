@@ -22,6 +22,23 @@ class Skeleton extends Component {
   render() {
     return (
       <>
+        {this.props.userId ? (
+          <GoogleLogout
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={this.props.handleLogout}
+            onFailure={(err) => console.log(err)}
+            className="NavBar-link NavBar-login"
+          />
+        ) : (
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={this.props.handleLogin}
+            onFailure={(err) => console.log(err)}
+            className="NavBar-link NavBar-login"
+          />
+        )}
         <h1>Own your memory.</h1>
         <h1>Good luck on your project :)</h1>
         <h2> What we provide in this skeleton</h2>
