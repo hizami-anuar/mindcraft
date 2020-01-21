@@ -7,6 +7,7 @@ import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
 import "./Create.css";
 import { redirectTo } from "@reach/router";
+import { get } from "mongoose";
 
 /**
 class Create extends Component {
@@ -74,7 +75,11 @@ class Create extends Component {
 
   componentDidMount() {
     importMovement();
-    // remember -- api calls go here!
+    get("/api/room", {creator_Id: this.props.userId}).then((data) => {
+      this.setState({
+        objects: data.numbers
+      });
+    });
   }
 
   handleInputChange = event => {
