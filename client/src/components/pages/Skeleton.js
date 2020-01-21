@@ -22,17 +22,22 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        <div class='banner'>
-          <div class='banner-text'>
-            <h1>
-            Own your memory
+        <div class='banner type-effect'>
+            <h1 class='banner-text'>
+            Own your memory.
             </h1>
-          </div>
         </div>
 
-        <div class='banner'>
+        <section>
+          <div class='wave'></div>
+        </section>
+        
+        <div class='sub-banner type-effect-sub'>
           <div class='banner-text'>
-            <h1>Good luck on your project :)</h1>
+            <h1>Why Build a Memory Palace?</h1>
+          </div>
+          <div>
+          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
           </div>
         </div>
 
