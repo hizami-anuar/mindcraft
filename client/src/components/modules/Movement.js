@@ -41,6 +41,16 @@ function importMovement () {
       // call this function on every dragend event
       onend: function (event) {
         console.log('onend');
+        let rect = event.target.getBoundingClientRect();
+        let parent = document.getElementById("canvas");
+        let rect0 = parent.getBoundingClientRect();
+        let x = rect.left, y=rect.top;
+        let x0 = rect0.left, y0=rect0.top;
+        // console.log([[x0, x], [y0, y]]);
+        //console.log(this.state.objects);
+        console.log("x position is: " + (x-x0).toString());
+        console.log("y position is: " + (y-y0).toString());
+        // dragEnd();
                 // var textEl = event.target.querySelector('p');
 
                 // textEl && (textEl.textContent =

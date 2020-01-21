@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
-import importMovement from "../modules/Movement.js";
 
+import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
 import "./Create.css";
 import { redirectTo } from "@reach/router";
@@ -22,18 +22,113 @@ class Create extends Component {
   }
 
   componentDidMount() {
-    importMovement();
-    if(this.props.userId != undefined) {
-    get("/api/room", {creator_id: this.props.userId}).then((data) => {
-      console.log("DATA");
-      console.log(data);
-      if (data.numbers != undefined) {
-        this.setState({
-          objects: data.numbers
-        });
-      };
-    });
-    };
+    function dragMoveListener (event) {
+      // console.log('dragMoveListener');
+      var target = event.target,
+          // keep the dragged position in the data-x/data-y attributes
+          x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+          y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+  
+      // translate the element
+      target.style.webkitTransform =
+          target.style.transform =
+              'translate(' + x + 'px, ' + y + 'px)';
+  
+      // update the position attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
+    }
+  
+    window.dragMoveListener = dragMoveListener
+    
+    interact('.draggable')
+      .draggable({
+        inertia: false,
+        // keep the element within the area of it's parent
+        restrict: {
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        // enable autoScroll
+        autoScroll: true,
+  
+        onstart: function (event) {
+          //console.log('onstart');
+        },
+        // call this function on every dragmove event
+        onmove: dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+          //console.log('onend');
+          let rect = event.target.getBoundingClientRect();
+          let parent = document.getElementById("canvas");
+          let rect0 = parent.getBoundingClientRect();
+          let x = rect.left, y=rect.top;
+          let x0 = rect0.left, y0=rect0.top;
+          let dx = x-x0, dy=y-y0;
+          //console.log(event.target.id.slice(4,));
+          //console.log("x position is: " + (x-x0).toString());
+          //console.log("y position is: " + (y-y0).toString());
+          // dragEnd();
+                  // var textEl = event.target.querySelector('p');
+  
+                  // textEl && (textEl.textContent =
+                  //    'moved a distance of '
+                  //    + (Math.sqrt(event.dx * event.dx +
+                  //        event.dy * event.dy)|0) + 'px');
+        }
+      });
+  
+      interact('.resize-drag')
+      .resizable({
+        // resize from all edges and corners
+        edges: { left: true, right: true, bottom: true, top: true },
+    
+        modifiers: [
+          // keep the edges inside the parent
+          interact.modifiers.restrictEdges({
+            outer: 'parent'
+          }),
+    
+          // minimum size
+          interact.modifiers.restrictSize({
+            min: { width: 50, height: 50 }
+          })
+        ],
+    
+        inertia: false
+      })
+      .draggable({
+        onmove: window.dragMoveListener,
+        inertia: false,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+          })
+        ]
+      })
+      .on('resizemove', function (event) {
+        var target = event.target
+        var x = (parseFloat(target.getAttribute('data-x')) || 0)
+        var y = (parseFloat(target.getAttribute('data-y')) || 0)
+    
+        // update the element's style
+        target.style.width = event.rect.width + 'px'
+        target.style.height = event.rect.height + 'px'
+    
+        // translate when resizing from top or left edges
+        x += event.deltaRect.left
+        y += event.deltaRect.top
+    
+        target.style.webkitTransform = target.style.transform =
+            'translate(' + x + 'px,' + y + 'px)'
+    
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
+        // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+      })
   }
 
   handleInputChange = event => {
@@ -44,7 +139,8 @@ class Create extends Component {
   };
 
   createObject = () => {
-    const { objects, inputText } = this.state;
+    const objects = this.state.objects;
+    const inputText = this.state.inputText;
     const newObjects = objects.concat([{ image: inputText, key: this.keyCounter }]);
     this.keyCounter++;
 
@@ -52,7 +148,59 @@ class Create extends Component {
       objects: newObjects,
       inputText: ""
     });
+
+    console.log(this.state);
   };
+
+  saveRoom = () => {
+    const body = {
+      name: "name",
+      objects: this.state.objects,
+      url: "https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1498042211.jpg",
+    }
+    post("/api/room", body).then((res) => {
+      console.log("Save successful!");
+    });
+  };
+
+  save = () => {
+    //console.log(this.state.objects);
+    for(let i = 0; i < this.state.objects.length; i++) {
+      let object = this.state.objects[i];
+      //console.log(object);
+      // const image = object.imagedocument.getElementById(`image-${object.key}`);
+      //const canvas = document.getElementById(`canvas`);
+      let child = document.getElementById(`num-${object.key}`);
+      let rect = child.getBoundingClientRect();
+      let parent = document.getElementById("canvas");
+      let rect0 = parent.getBoundingClientRect();
+      let x = rect.left, y=rect.top;
+      let x0 = rect0.left, y0=rect0.top;
+      let dx = x-x0, dy=y-y0;
+      object['x'] = dx;
+      object['y'] = dy;
+    }
+    //console.log(this.state.objects);
+    this.saveRoom();
+  }
+
+  load = () => {
+    console.log("loading");
+    console.log(this.props.userId);
+    if(this.props.userId != undefined) {
+      console.log("retrieving");
+      get("/api/room", {creator_id: this.props.userId}).then((data) => {
+        console.log("DATA");
+        console.log(data.slice(-1)[0]);
+        if (data.numbers != undefined) {
+          this.setState({
+            objects: data.numbers
+          });
+        console.log(data);
+        };
+      });
+    };
+  }
 
   deleteTodo = key => {
     const { objects } = this.state;
@@ -63,10 +211,11 @@ class Create extends Component {
   render() {
     return (
       <>
-      <div className="Create-container">
+      <div id="canvas" className="Create-container">
         {this.state.objects.map(item => (
           <Object 
-            key = {`listItem-${item.key}`}
+            key = {`image-${item.key}`}
+            objectId = {`num-${item.key}`}
             imageURL = {item.image}
             //deleteTodo={() => this.deleteTodo(item.key)}
           />
@@ -79,6 +228,8 @@ class Create extends Component {
           onChange={this.handleInputChange}
         />
         <button onClick={this.createObject}>Upload</button>
+        <button onClick={this.save}>Save</button>
+        <button onClick={this.load}>Load</button>
       </div>
       </>
     );

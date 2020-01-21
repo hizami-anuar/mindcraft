@@ -64,6 +64,7 @@ class App extends Component {
           />
           <Create 
             path="/create"
+            userId={this.state.userId}
           />
           <Construction
             path="/construction"
