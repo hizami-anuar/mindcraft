@@ -18,7 +18,7 @@ class NavBar extends Component {
       <nav className="NavBar-container">
         <div className="NavBar-linkContainer u-inlineBlock">
           <Link to="/" className="NavBar-link">
-          <h2>MindCraft</h2>
+            <h2>MindCraft</h2>
           </Link>
 
           <Link to="/create" className="NavBar-link">
@@ -26,20 +26,21 @@ class NavBar extends Component {
           </Link>
 
           <Link to="/create" className="NavBar-link">
-          <h2>Explore</h2>
+            <h2>Explore</h2>
           </Link>
           
           <Link to="/create" className="NavBar-link">
-          <h2>Share</h2>
+            <h2>Share</h2>
           </Link>
 
           <Link to="/create" className="NavBar-link">
-          <h2>About</h2>
+            <h2>About</h2>
           </Link>
 
           <Link to="/NotFound" className="NavBar-link">
             <h2>Not Found</h2>
           </Link>
+          
           {this.props.userId ? (
             <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
