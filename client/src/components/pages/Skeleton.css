@@ -21,18 +21,65 @@ h1 {
   align-items: center;
 }
 
-.sub-banner {
-  padding-left: 20px;
-  display: flex;
-  color: black;
-  height: 500px;
-  align-items:center
-}
-
 .banner-text {
   display: flex;
   justify-content: left;
   padding-top: 60px;
+}
+
+.sub-banner {
+  display: flex;
+  color: black;
+  height: 200px;
+  margin-top: 150px;
+}
+
+.in-banner-text {
+  display: flex;
+  color: black;
+  height: 200px;
+}
+
+.sub-banner-left-title {
+  padding-left: 30px;
+  padding-top: 60px;
+  display: flex;
+  justify-content: left;
+}
+
+.sub-banner-right-title {
+  display: flex;
+  justify-content: right;
+  padding-left: 720px;
+  padding-top: 60px;
+}
+
+.sub-banner-left-text {
+  font-size: 30px;
+  display: flex;
+  justify-content: left;
+  padding-left: 30px;
+}
+
+.sub-banner-right-text {
+  font-size: 30px;
+  text-align: right;
+  padding-right: 30px;
+}
+
+.body-image {
+  padding-left: 30px;
+  padding-top: 50px;
+  height: 300px;
+  display: inline;
+  justify-content: space-around;
+  border-radius: 250px;
+}
+
+.body-image2 {
+  padding-right: 1000px;
+  height: 300px;
+  border-radius: 250px;
 }
 
 .type-effect h1{
@@ -43,7 +90,7 @@ h1 {
   letter-spacing: .15em; 
   animation: 
     typing 3.5s steps(20, end),
-    blink-caret .60s step-end;
+    blink-caret 0.6s step-end;
 }
 
 .type-effect-sub h1{
@@ -54,13 +101,23 @@ h1 {
   letter-spacing: .15em; 
   animation: 
     typing-sub 3.5s steps(20, end),
-    blink-caret .60s step-end;
+    blink-caret 0.6s step-end;
+}
+
+section .wave {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  left: 0;
+  background: url('https://cdn.pixabay.com/photo/2019/10/12/14/21/postit-4543989_960_720.png');
+  background-size: 20%;
+  animation: wave 50s linear infinite;
 }
 
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 45%}
+  to { width: 50%}
 }
 
 @keyframes typing-sub {
@@ -74,16 +131,6 @@ h1 {
   50% { border-color: black; }
 }
 
-section .wave {
-  position: absolute;
-  width: 100%;
-  height: 200px;
-  left: 0;
-  background: url('https://cdn.pixabay.com/photo/2019/10/12/14/21/postit-4543989_960_720.png');
-  background-size: 20%;
-  animation: wave 50s linear infinite;
-}
-
 /* The wavy effect */
 @keyframes wave {
   0% {
@@ -91,5 +138,14 @@ section .wave {
   }
   100% {
     background-position: 500px;
+  }
+}
+
+@keyframes square {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-800px) rotate(630deg);
   }
 }
