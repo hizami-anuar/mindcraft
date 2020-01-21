@@ -5,7 +5,7 @@
   margin: 5%;
 }
 
-.resize-drag {
+.resize-drag, .draggable {
   background-color: #29e;
   color: white;
   font-size: 20px;
