@@ -40,7 +40,7 @@ class Skeleton extends Component {
 
         <div className="sub-banner-text">
           Creating a memory palace, or an imaginary location in your mind, 
-          helps your better store mnemonic images. 
+          helps you better store and access daily information.
           Map out a journey through a place you know well, 
           like a building or town. Then, along that journey, specify locations that you always visit in the same order.
         </div> 

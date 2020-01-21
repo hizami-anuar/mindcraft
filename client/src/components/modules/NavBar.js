@@ -26,15 +26,15 @@ class NavBar extends Component {
             <h2>Build</h2>
           </Link>
 
-          <Link to="/create" className="NavBar-link">
+          <Link to="/construction" className="NavBar-link">
             <h2>Explore</h2>
           </Link>
           
-          <Link to="/create" className="NavBar-link">
+          <Link to="/construction" className="NavBar-link">
             <h2>Share</h2>
           </Link>
 
-          <Link to="/create" className="NavBar-link">
+          <Link to="/construction" className="NavBar-link">
             <h2>About</h2>
           </Link>
 

@@ -10,6 +10,7 @@ import "../utilities.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
+import Construction from "./pages/Construction.js";
 
 /**
  * Define the "App" component as a class.
@@ -63,6 +64,9 @@ class App extends Component {
           />
           <Create 
             path="/create"
+          />
+          <Construction
+            path="/construction"
           />
           <NotFound default />
         </Router>
