@@ -107,7 +107,15 @@ class Create extends Component {
             restriction: 'parent',
             endOnly: true
           })
-        ]
+        ],
+        onend: function(event) {
+        let rect = event.target.getBoundingClientRect();
+        let parent = document.getElementById("canvas");
+        let rect0 = parent.getBoundingClientRect();
+        let x = rect.left, y=rect.top;
+        let x0 = rect0.left, y0=rect0.top;
+        let dx = x-x0, dy=y-y0;
+        }
       })
       .on('resizemove', function (event) {
         var target = event.target
@@ -141,7 +149,7 @@ class Create extends Component {
   createObject = () => {
     const objects = this.state.objects;
     const inputText = this.state.inputText;
-    const newObjects = objects.concat([{ image: inputText, key: this.keyCounter }]);
+    const newObjects = objects.concat([{ image: inputText, key: this.keyCounter, x: 200, y: 200 }]);
     this.keyCounter++;
 
     this.setState({
@@ -165,6 +173,7 @@ class Create extends Component {
 
   save = () => {
     //console.log(this.state.objects);
+    if(this.props.userId != undefined) {
     for(let i = 0; i < this.state.objects.length; i++) {
       let object = this.state.objects[i];
       //console.log(object);
@@ -182,21 +191,22 @@ class Create extends Component {
     }
     //console.log(this.state.objects);
     this.saveRoom();
+    }
   }
 
   load = () => {
     console.log("loading");
     console.log(this.props.userId);
     if(this.props.userId != undefined) {
-      console.log("retrieving");
+      //console.log("retrieving");
       get("/api/room", {creator_id: this.props.userId}).then((data) => {
-        console.log("DATA");
-        console.log(data.slice(-1)[0]);
-        if (data.numbers != undefined) {
+        //console.log("DATA");
+        let loadedData = data.slice(-1)[0];
+        if (loadedData.numbers != undefined) {
           this.setState({
-            objects: data.numbers
+            objects: loadedData.numbers
           });
-        console.log(data);
+        console.log(loadedData);
         };
       });
     };
@@ -217,19 +227,21 @@ class Create extends Component {
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
             imageURL = {item.image}
+            x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
+            y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
             //deleteTodo={() => this.deleteTodo(item.key)}
           />
         ))}
       </div>
-      <div>
+      <div className="uploadBar">
         <input
           type="text"
           value={this.state.inputText}
           onChange={this.handleInputChange}
         />
-        <button onClick={this.createObject}>Upload</button>
-        <button onClick={this.save}>Save</button>
-        <button onClick={this.load}>Load</button>
+        <button onClick={this.createObject}>Upload Image URL</button>
+        <button onClick={this.save}>Save Layout</button>
+        <button onClick={this.load}>Load Layout</button>
       </div>
       </>
     );
