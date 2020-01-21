@@ -7,66 +7,15 @@ import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
 import "./Create.css";
 import { redirectTo } from "@reach/router";
-
-/**
-class Create extends Component {
-  constructor(props) {
-    super(props);
-    // Initialize Default State
-    this.state = {
-      objects: [
-        {id: 1, image: 'https://images-na.ssl-images-amazon.com/images/I/319J7YpfyNL.jpg'},
-        {id: 2, image: 'https://images-na.ssl-images-amazon.com/images/I/21DejQuoT2L.jpg'},
-        {id: 3, image: 'https://images-na.ssl-images-amazon.com/images/I/71ogcdh7YjL._AC_SY450_.jpg'},
-      ],
-      value: 4,
-    };
-  }
-
-  componentDidMount() {
-    importMovement();
-    // remember -- api calls go here!
-  }
-
-  createObject = () => {
-    const inputImage = 'https://images-na.ssl-images-amazon.com/images/I/319J7YpfyNL.jpg';
-    const objectsList = this.state.objects;
-    const newObjects = objectsList.concat([{id: this.state.value, image: inputImage}]);
-    console.log('success');
-    this.setState({objects: newObjects});
-    const newValue = this.state.value + 1;
-    this.setState({ value: newValue }).then(console.log);
-    console.log(this.state.value);
-    console.log(this.state.objects);
-  };
-
-  
-
-  render() {
-    return (
-      <>
-        <div className="Create-container">
-          {this.state.objects.map(item => (
-            <Object 
-              imageURL = {item.image}
-            />
-          ))}
-        </div>
-        <div className="Create-add" onClick={this.createObject}>Test</div>
-      </>
-    );
-  }
-}
-
-export default Create;
-*/
+import { get } from "../../utilities";
+import { post } from "../../utilities";
 
 class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
       objects: [],
-      inputText: ""
+      inputText: "",
     };
 
     this.keyCounter = 0;
@@ -74,7 +23,17 @@ class Create extends Component {
 
   componentDidMount() {
     importMovement();
-    // remember -- api calls go here!
+    if(this.props.userId != undefined) {
+    get("/api/room", {creator_id: this.props.userId}).then((data) => {
+      console.log("DATA");
+      console.log(data);
+      if (data.numbers != undefined) {
+        this.setState({
+          objects: data.numbers
+        });
+      };
+    });
+    };
   }
 
   handleInputChange = event => {
