@@ -28,24 +28,43 @@ h1 {
 }
 
 .sub-banner {
-  padding-left: 30px;
   display: flex;
   color: black;
   height: 200px;
   margin-top: 150px;
 }
 
-.sub-banner-title {
+.in-banner-text {
+  display: flex;
+  color: black;
+  height: 200px;
+}
+
+.sub-banner-left-title {
+  padding-left: 30px;
+  padding-top: 60px;
   display: flex;
   justify-content: left;
+}
+
+.sub-banner-right-title {
+  display: flex;
+  justify-content: right;
+  padding-left: 720px;
   padding-top: 60px;
 }
 
-.sub-banner-text {
+.sub-banner-left-text {
   font-size: 30px;
   display: flex;
   justify-content: left;
   padding-left: 30px;
+}
+
+.sub-banner-right-text {
+  font-size: 30px;
+  text-align: right;
+  padding-right: 30px;
 }
 
 .body-image {
@@ -54,6 +73,12 @@ h1 {
   height: 300px;
   display: inline;
   justify-content: space-around;
+  border-radius: 250px;
+}
+
+.body-image2 {
+  padding-right: 1000px;
+  height: 300px;
   border-radius: 250px;
 }
 
@@ -92,7 +117,7 @@ section .wave {
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 45%}
+  to { width: 50%}
 }
 
 @keyframes typing-sub {
@@ -113,5 +138,14 @@ section .wave {
   }
   100% {
     background-position: 500px;
+  }
+}
+
+@keyframes square {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-800px) rotate(630deg);
   }
 }
