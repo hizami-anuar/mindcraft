@@ -9,11 +9,9 @@ class Object extends Component {
   }
 
   render() {
-    console.log(this.props.imageURL);
-    // document.getElementById('objectImage').src=this.props.imageURL;
     return (
       <>
-        <img id='objectImage' className='resize-drag' src={this.props.imageURL}></img>
+        <img id={this.props.objectId} className='draggable' src={this.props.imageURL}></img>
       </>
     );
   }

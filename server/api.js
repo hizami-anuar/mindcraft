@@ -53,10 +53,18 @@ router.get("/room", (req, res) => {
 
 //I don't really understand how req.body.content works
 router.post("/room", (req, res) => {
+  /**
+  const newNum = new Num({
+    name: req.body.name,
+    locationX: req.body.x,
+    locationY: req.body.y,
+  });
+  */
+
   const newRoom = new Room({
-    name: req.body.content.room_name,
-    numbers: req.body.content.nums,
-    background: req.body.content.url,
+    name: req.body.name,
+    numbers: req.body.objects,
+    background: req.body.url,
     creator_id: req.user.google_id,
   });
 
