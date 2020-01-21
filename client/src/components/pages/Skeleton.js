@@ -22,25 +22,37 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        <div class='banner type-effect'>
-            <h1 class='banner-text'>
+        <div className='banner type-effect'>
+            <h1 className='banner-text'>
             Own your memory.
             </h1>
         </div>
 
         <section>
-          <div class='wave'></div>
+          <div className='wave'></div>
         </section>
         
-        <div class='sub-banner type-effect-sub'>
-          <div class='banner-text'>
-            <h1>Why Build a Memory Palace?</h1>
-          </div>
-          <div>
-          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+        <div className='sub-banner type-effect-sub'>
+          <div className='sub-banner-title'>
+            <h1>Why Build a Memory Palace?</h1> 
           </div>
         </div>
 
+        <div className="sub-banner-text">
+          Creating a memory palace, or an imaginary location in your mind, 
+          helps your better store mnemonic images. 
+          Map out a journey through a place you know well, 
+          like a building or town. Then, along that journey, specify locations that you always visit in the same order.
+        </div> 
+        
+        <div>
+          <div class="u-inline-block">
+            <img src="https://artofmemory.com/w/images/9/98/Ioulia-kea-photo.jpg" className="body-image"></img>
+            <img src="https://www.wikihow.com/images/thumb/9/9f/Build-a-Memory-Palace-Step-5-Version-6.jpg/aid47287-v4-728px-Build-a-Memory-Palace-Step-5-Version-6.jpg" className="body-image"></img>
+            <img src="https://www.readandspell.com/sites/default/files/blog/DevelopingSpellingSkills.jpg" className="body-image"></img>
+          </div>
+        </div>
+      
         {this.props.userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}

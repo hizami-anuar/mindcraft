@@ -15,7 +15,7 @@
 */
 
 /* Font: Titillium, 50 pt */
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400&display=swap');
 
 :root {
   --primary: #396dff;
