@@ -17,7 +17,8 @@ class NavBar extends Component {
     return (
       <nav className="NavBar-container">
         <div className="NavBar-linkContainer u-inlineBlock">
-          <Link to="/" className="NavBar-link">
+          <Link to="/" className="NavBar-link"> 
+            <img className="NavBar-logo" src="https://vignette.wikia.nocookie.net/pixel-gun-3d/images/d/d0/Onekey.png/revision/latest?cb=20170606115023"></img>
             <h2>MindCraft</h2>
           </Link>
 

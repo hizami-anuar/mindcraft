@@ -21,18 +21,40 @@ h1 {
   align-items: center;
 }
 
-.sub-banner {
-  padding-left: 20px;
-  display: flex;
-  color: black;
-  height: 500px;
-  align-items:center
-}
-
 .banner-text {
   display: flex;
   justify-content: left;
   padding-top: 60px;
+}
+
+.sub-banner {
+  padding-left: 30px;
+  display: flex;
+  color: black;
+  height: 200px;
+  margin-top: 150px;
+}
+
+.sub-banner-title {
+  display: flex;
+  justify-content: left;
+  padding-top: 60px;
+}
+
+.sub-banner-text {
+  font-size: 30px;
+  display: flex;
+  justify-content: left;
+  padding-left: 30px;
+}
+
+.body-image {
+  padding-left: 30px;
+  padding-top: 50px;
+  height: 300px;
+  display: inline;
+  justify-content: space-around;
+  border-radius: 250px;
 }
 
 .type-effect h1{
@@ -43,7 +65,7 @@ h1 {
   letter-spacing: .15em; 
   animation: 
     typing 3.5s steps(20, end),
-    blink-caret .60s step-end;
+    blink-caret 0.6s step-end;
 }
 
 .type-effect-sub h1{
@@ -54,7 +76,17 @@ h1 {
   letter-spacing: .15em; 
   animation: 
     typing-sub 3.5s steps(20, end),
-    blink-caret .60s step-end;
+    blink-caret 0.6s step-end;
+}
+
+section .wave {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  left: 0;
+  background: url('https://cdn.pixabay.com/photo/2019/10/12/14/21/postit-4543989_960_720.png');
+  background-size: 20%;
+  animation: wave 50s linear infinite;
 }
 
 /* The typing effect */
@@ -72,16 +104,6 @@ h1 {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: black; }
-}
-
-section .wave {
-  position: absolute;
-  width: 100%;
-  height: 200px;
-  left: 0;
-  background: url('https://cdn.pixabay.com/photo/2019/10/12/14/21/postit-4543989_960_720.png');
-  background-size: 20%;
-  animation: wave 50s linear infinite;
 }
 
 /* The wavy effect */
