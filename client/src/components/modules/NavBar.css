@@ -1,12 +1,16 @@
-.nav {
-  display: flex;
-}
-
 .NavBar-container {  margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 50px;
   background-color: black;
+}
+
+.NavBar-logo-image{
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -6px;
 }
 
 .NavBar-title {
@@ -23,6 +27,7 @@
 
 .NavBar-link {
   color: white;
+  text-decoration: none;
 }
 
 .NavBar-link + .NavBar-link {

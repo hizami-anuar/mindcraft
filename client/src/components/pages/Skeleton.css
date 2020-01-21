@@ -1,40 +1,95 @@
 /* Fill me in :) */
 
 h1 {
-  font-size: 60px;
-  font-weight: normal;
+  font-size: 70px;
+  font-weight: bold;
   letter-spacing: 2px;
 }
 
 .banner h1 {
   margin: 0;
-  text-shadow: 2px 2px 6px #000;
 }
 
 /* Implement banner class to insert image as background */
 .banner {
   display: flex;
-  color: white;
-  background: url('https://assets.atlasobscura.com/article_images/800x/13862/image.jpg') top left/cover no-repeat;
-  height: 500px;
-  justify-content: left;
+  color: black;
+  background: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v246-bb-22-creativity_2.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=8857d50442419fa1f2c3909fa859d781') top left/cover no-repeat;
+  background-position: right;
+  background-size: 30%;
+  height: 600px;
   align-items: center;
 }
 
-.transition_block {
-  display: flex
+.sub-banner {
+  padding-left: 20px;
+  display: flex;
+  color: black;
+  height: 500px;
+  align-items:center
 }
 
 .banner-text {
+  display: flex;
+  justify-content: left;
   padding-top: 60px;
 }
 
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+.type-effect h1{
+  overflow: hidden; /* Hide contents before animation finishes */
+  border-right: .15em solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; 
+  animation: 
+    typing 3.5s steps(20, end),
+    blink-caret .60s step-end;
+}
 
-  to {
-    opacity: 1;
+.type-effect-sub h1{
+  overflow: hidden; /* Hide contents before animation finishes */
+  border-right: .15em solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; 
+  animation: 
+    typing-sub 3.5s steps(20, end),
+    blink-caret .60s step-end;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 45%}
+}
+
+@keyframes typing-sub {
+  from {width: 0}
+  to {width: 100%}
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
+section .wave {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  left: 0;
+  background: url('https://cdn.pixabay.com/photo/2019/10/12/14/21/postit-4543989_960_720.png');
+  background-size: 20%;
+  animation: wave 50s linear infinite;
+}
+
+/* The wavy effect */
+@keyframes wave {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 500px;
   }
 }

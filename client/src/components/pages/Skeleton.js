@@ -22,36 +22,25 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        <div class='banner'>
-          <div class='banner-text'>
-            <h1>
-            Own your memory
+        <div class='banner type-effect'>
+            <h1 class='banner-text'>
+            Own your memory.
             </h1>
-          </div>
         </div>
 
-        <div class='banner'>
+        <section>
+          <div class='wave'></div>
+        </section>
+        
+        <div class='sub-banner type-effect-sub'>
           <div class='banner-text'>
-            <h1>Good luck on your project :)</h1>
+            <h1>Why Build a Memory Palace?</h1>
+          </div>
+          <div>
+          Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
           </div>
         </div>
 
-        <h2> What we provide in this skeleton</h2>
-        <ul>
-          <li>Google Auth (Skeleton.js & auth.js)</li>
-          <li>Socket Infrastructure (client-socket.js & server-socket.js)</li>
-          <li>User Model (auth.js & user.js)</li>
-        </ul>
-        <h2> What you need to change</h2>
-        <ul>
-          <li>Change the font in utilities.css</li>
-          <li>Change the Frontend CLIENT_ID for Google Auth (Skeleton.js)</li>
-          <li>Change the Server CLIENT_ID for Google Auth (auth.js)</li>
-          <li>Change the Database SRV for Atlas (server.js)</li>
-          <li>Change the Database Name for MongoDB (server.js)</li>
-          <li>Add a favicon to your website at the path client/dist/favicon.ico</li>
-          <li>Update website title in client/dist/index.html</li>
-        </ul>
         {this.props.userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
