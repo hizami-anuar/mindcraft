@@ -22,18 +22,18 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        <div class='banner type-effect'>
-            <h1 class='banner-text'>
+        <div className='banner type-effect'>
+            <h1 className='banner-text'>
             Own your memory.
             </h1>
         </div>
 
         <section>
-          <div class='wave'></div>
+          <div className='wave'></div>
         </section>
         
-        <div class='sub-banner type-effect-sub'>
-          <div class='banner-text'>
+        <div className='sub-banner type-effect-sub'>
+          <div className='banner-text'>
             <h1>Why Build a Memory Palace?</h1>
           </div>
           <div>

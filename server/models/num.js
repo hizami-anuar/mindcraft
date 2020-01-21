@@ -6,4 +6,4 @@ const NumSchema = new mongoose.Schema({
     locationY: Number,
 });
 
-module.exports = mongoose.model("num", NumberSchema);
+module.exports = mongoose.model("num", NumSchema);
