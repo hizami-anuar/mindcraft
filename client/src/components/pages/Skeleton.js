@@ -25,7 +25,7 @@ class Skeleton extends Component {
         <div class='banner'>
           <div class='banner-text'>
             <h1>
-              Own your memory. 
+            Own your memory
             </h1>
           </div>
         </div>
@@ -35,6 +35,7 @@ class Skeleton extends Component {
             <h1>Good luck on your project :)</h1>
           </div>
         </div>
+
         <h2> What we provide in this skeleton</h2>
         <ul>
           <li>Google Auth (Skeleton.js & auth.js)</li>
@@ -68,8 +69,6 @@ class Skeleton extends Component {
             className="NavBar-link NavBar-login"
           />
         )}
-        <h1>Own your memory.</h1>
-        <h1>Good luck on your project :)</h1>
       </>
     );
   }

@@ -7,9 +7,7 @@ import "./NavBar.css";
 // This identifies your web application to Google's authentication service
 const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
 
-/**
- * The navigation bar at the top of all pages. Takes no props.
- */
+/* Navigation bar, takes no props */
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -20,13 +18,27 @@ class NavBar extends Component {
       <nav className="NavBar-container">
         <div className="NavBar-linkContainer u-inlineBlock">
           <Link to="/" className="NavBar-link">
-            Home
+          <h2>MindCraft</h2>
           </Link>
+
           <Link to="/create" className="NavBar-link">
-            Create
+            <h2>Build</h2>
           </Link>
+
+          <Link to="/create" className="NavBar-link">
+          <h2>Explore</h2>
+          </Link>
+          
+          <Link to="/create" className="NavBar-link">
+          <h2>Share</h2>
+          </Link>
+
+          <Link to="/create" className="NavBar-link">
+          <h2>About</h2>
+          </Link>
+
           <Link to="/NotFound" className="NavBar-link">
-            Not Found
+            <h2>Not Found</h2>
           </Link>
           {this.props.userId ? (
             <GoogleLogout
@@ -45,7 +57,6 @@ class NavBar extends Component {
               className="NavBar-link NavBar-login"
             />
           )}
-            
         </div>
       </nav>
     );

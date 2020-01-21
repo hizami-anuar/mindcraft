@@ -1,14 +1,23 @@
-.NavBar-container {
-  padding: 8px;
-  background-color: blue;
+.nav {
+  display: flex;
+}
+
+.NavBar-container {  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 50px;
+  background-color: black;
 }
 
 .NavBar-title {
+  display: flex;
   color: white;
-  font-size: 20px; 
+  font-size: 30px; 
 }
 
 .NavBar-linkContainer {
+  display: flex;
+  justify-content: space-evenly;
   margin-left: var(--l);
 }
 
