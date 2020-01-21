@@ -33,12 +33,12 @@ class Skeleton extends Component {
         </section>
         
         <div className='sub-banner type-effect-sub'>
-          <div className='sub-banner-title'>
-            <h1>Why Build a Memory Palace?</h1> 
+          <div className='sub-banner-left-title'>
+            <h1>Build a Memory Palace.</h1> 
           </div>
         </div>
 
-        <div className="sub-banner-text">
+        <div className="sub-banner-left-text">
           Creating a memory palace, or an imaginary location in your mind, 
           helps you better store and access daily information.
           Map out a journey through a place you know well, 
@@ -46,30 +46,34 @@ class Skeleton extends Component {
         </div> 
         
         <div>
-          <div class="u-inline-block">
+          <div className="u-inline-block">
             <img src="https://artofmemory.com/w/images/9/98/Ioulia-kea-photo.jpg" className="body-image"></img>
             <img src="https://www.wikihow.com/images/thumb/9/9f/Build-a-Memory-Palace-Step-5-Version-6.jpg/aid47287-v4-728px-Build-a-Memory-Palace-Step-5-Version-6.jpg" className="body-image"></img>
             <img src="https://www.readandspell.com/sites/default/files/blog/DevelopingSpellingSkills.jpg" className="body-image"></img>
           </div>
         </div>
       
-        {this.props.userId ? (
-          <GoogleLogout
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={this.props.handleLogout}
-            onFailure={(err) => console.log(err)}
-            className="NavBar-link NavBar-login"
-          />
-        ) : (
-          <GoogleLogin
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={this.props.handleLogin}
-            onFailure={(err) => console.log(err)}
-            className="NavBar-link NavBar-login"
-          />
-        )}
+        <div className='in-banner-text type-effect-sub'>
+          <div className='sub-banner-right-title'>
+            <h1>Why MindCraft?</h1> 
+          </div>
+        </div>
+
+        <div className="sub-banner-right-text">
+            <ul>
+              Navigate around your own digital memory palace visual-spacially <br>
+              </br>
+              Customize architecture style, room backgrounds, and objects freely
+              <br>
+              </br>
+              Discover and share public memory palaces via the Town Hall feature
+            </ul> 
+        </div> 
+
+        <br></br> <br></br>
+        <section>
+          <div className='wave'></div>
+        </section>
       </>
     );
   }
