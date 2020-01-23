@@ -12,11 +12,22 @@ class Skeleton extends Component {
     super(props);
     // Initialize Default State
     this.state = {
+      scrolled1: false,
+      scrolled2:false
     };
   }
 
   componentDidMount() {
     // remember -- api calls go here!
+    window.addEventListener('scroll', () => {
+      console.log(window.scrollY);
+      if (window.scrollY < 500) {
+        this.setState({scrolled1: true})
+      }
+      if (window.scrollY > 1000) {
+        this.setState({scrolled2: true})
+      }
+    })
   }
 
   render() {
@@ -31,8 +42,8 @@ class Skeleton extends Component {
         <section>
           <div className='wave'></div>
         </section>
-        
-        <div className='sub-banner type-effect-sub'>
+        {/* type-effect-sub */}
+        <div className={`sub-banner ${this.state.scrolled1 ? 'type-effect-sub' : ''}`}>
           <div className='sub-banner-left-title'>
             <h1>Build a Memory Palace.</h1> 
           </div>
@@ -53,7 +64,7 @@ class Skeleton extends Component {
           </div>
         </div>
       
-        <div className='in-banner-text type-effect-sub'>
+        <div className={`sub-banner ${this.state.scrolled2 ? 'type-effect-sub' : ''}`}>
           <div className='sub-banner-right-title'>
             <h1>Why MindCraft?</h1> 
           </div>
