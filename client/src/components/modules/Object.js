@@ -17,6 +17,7 @@ class Object extends Component {
           src={this.props.imageURL}
           style={{backgroundColor: 'black', left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
         ></img>
+        <button onClick={this.props.deleteObject}>X</button>
       </>
     );
   }

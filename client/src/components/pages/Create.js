@@ -22,122 +22,8 @@ class Create extends Component {
   }
 
   componentDidMount() {
-    function dragMoveListener (event) {
-      // console.log('dragMoveListener');
-      var target = event.target,
-          // keep the dragged position in the data-x/data-y attributes
-          x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-          y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-  
-      // translate the element
-      target.style.webkitTransform =
-          target.style.transform =
-              'translate(' + x + 'px, ' + y + 'px)';
-  
-      // update the position attributes
-      target.setAttribute('data-x', x);
-      target.setAttribute('data-y', y);
-    }
-  
-    window.dragMoveListener = dragMoveListener
     
-    interact('.draggable')
-      .draggable({
-        inertia: false,
-        // keep the element within the area of it's parent
-        restrict: {
-          restriction: "parent",
-          endOnly: true,
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-        },
-        // enable autoScroll
-        autoScroll: true,
-  
-        onstart: function (event) {
-          //console.log('onstart');
-        },
-        // call this function on every dragmove event
-        onmove: dragMoveListener,
-        // call this function on every dragend event
-        onend: function (event) {
-          //console.log('onend');
-          let rect = event.target.getBoundingClientRect();
-          let parent = document.getElementById("canvas");
-          let rect0 = parent.getBoundingClientRect();
-          let x = rect.left, y=rect.top;
-          let x0 = rect0.left, y0=rect0.top;
-          let dx = x-x0, dy=y-y0;
-          //console.log(event.target.id.slice(4,));
-          //console.log("x position is: " + (x-x0).toString());
-          //console.log("y position is: " + (y-y0).toString());
-          // dragEnd();
-                  // var textEl = event.target.querySelector('p');
-  
-                  // textEl && (textEl.textContent =
-                  //    'moved a distance of '
-                  //    + (Math.sqrt(event.dx * event.dx +
-                  //        event.dy * event.dy)|0) + 'px');
-        }
-      });
-  
-      interact('.resize-drag')
-      .resizable({
-        // resize from all edges and corners
-        edges: { left: true, right: true, bottom: true, top: true },
-    
-        modifiers: [
-          // keep the edges inside the parent
-          interact.modifiers.restrictEdges({
-            outer: 'parent'
-          }),
-    
-          // minimum size
-          interact.modifiers.restrictSize({
-            min: { width: 50, height: 50 }
-          })
-        ],
-    
-        inertia: false
-      })
-      .draggable({
-        onmove: window.dragMoveListener,
-        inertia: false,
-        modifiers: [
-          interact.modifiers.restrictRect({
-            restriction: 'parent',
-            endOnly: true
-          })
-        ],
-        onend: function(event) {
-        let rect = event.target.getBoundingClientRect();
-        let parent = document.getElementById("canvas");
-        let rect0 = parent.getBoundingClientRect();
-        let x = rect.left, y=rect.top;
-        let x0 = rect0.left, y0=rect0.top;
-        let dx = x-x0, dy=y-y0;
-        }
-      })
-      .on('resizemove', function (event) {
-        var target = event.target
-        var x = (parseFloat(target.getAttribute('data-x')) || 0)
-        var y = (parseFloat(target.getAttribute('data-y')) || 0)
-    
-        // update the element's style
-        target.style.width = event.rect.width + 'px'
-        target.style.height = event.rect.height + 'px'
-    
-        // translate when resizing from top or left edges
-        x += event.deltaRect.left
-        y += event.deltaRect.top
-    
-        target.style.webkitTransform = target.style.transform =
-            'translate(' + x + 'px,' + y + 'px)'
-    
-        target.setAttribute('data-x', x)
-        target.setAttribute('data-y', y)
-        // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
-      })
-  }
+  };
 
   handleInputChange = event => {
     const value = event.target.value;
@@ -196,6 +82,9 @@ class Create extends Component {
 
   load = () => {
     console.log("loading");
+    this.setState({
+      objects: []
+    });
     console.log(this.props.userId);
     if(this.props.userId != undefined) {
       //console.log("retrieving");
@@ -212,7 +101,7 @@ class Create extends Component {
     };
   }
 
-  deleteTodo = key => {
+  deleteObject = (key) => {
     const { objects } = this.state;
     const newObjects = objects.filter(item => item.key !== key);
     this.setState({ objects: newObjects });
@@ -229,7 +118,7 @@ class Create extends Component {
             imageURL = {item.image}
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
-            //deleteTodo={() => this.deleteTodo(item.key)}
+            deleteObject={() => this.deleteObject(item.key)}
           />
         ))}
       </div>
