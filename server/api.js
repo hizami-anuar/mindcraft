@@ -46,7 +46,7 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 router.get("/room", (req, res) => {
-  Room.find({creator_id: req.user.googleId}).then((data) => {
+  Room.find({creator_id: req.user.googleid}).then((data) => {
     res.send(data);
   });
 });
@@ -65,7 +65,7 @@ router.post("/room", (req, res) => {
     name: req.body.name,
     numbers: req.body.objects,
     background: req.body.url,
-    creator_id: req.user.google_id,
+    creator_id: req.user.googleid,
   });
 
   newRoom.save().then((room) => res.send(room));
