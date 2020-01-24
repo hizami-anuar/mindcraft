@@ -17,7 +17,7 @@ class Create extends Component {
     this.state = {
       objects: [],
       inputText: "",
-      currentObject: {},
+      currentObject: undefined,
     };
 
     this.keyCounter = 0;
@@ -122,18 +122,6 @@ class Create extends Component {
     });
   };
 
-  createObject = () => {
-    const objects = this.state.objects;
-    const inputText = this.state.inputText;
-    const newObjects = objects.concat([{ image: inputText, key: this.keyCounter, x: 200, y: 200 }]);
-    this.keyCounter++;
-
-    this.setState({
-      objects: newObjects,
-      inputText: ""
-    });
-  };
-
   saveRoom = () => {
     const body = {
       name: "name",
@@ -198,6 +186,18 @@ class Create extends Component {
     }
   }
 
+  createObject = () => {
+    const objects = this.state.objects;
+    const inputText = this.state.inputText;
+    const newObjects = objects.concat([{ image: inputText, key: this.keyCounter, notes: "", x: 200, y: 200}]);
+    this.keyCounter++;
+
+    this.setState({
+      objects: newObjects,
+      inputText: ""
+    });
+  };
+
   deleteObject = (key) => {
     const { objects } = this.state;
     const newObjects = objects.filter(item => item.key !== key);
@@ -206,15 +206,18 @@ class Create extends Component {
   };
 
   setCurrentObject = (key) => {
-    const object = this.state.objects[this.findKey(key)];
+    const index = this.findKey(key);
+    const object = this.state.objects[index];
     this.setState({ currentObject: object });
     console.log("new object set");
     console.log(this.state.currentObject);
   }
 
-  editObject = () => {
-    const { objects } = this.state;
-    const newObjects = objects.filter(item => item.key !== key);
+  editObject = (key, newNotes) => {
+    const index = this.findKey(key);
+    const object = this.state.objects[index];
+    let newObjects = this.state.objects;
+    newObjects[index].notes = newNotes;
     this.setState({ objects: newObjects });
   }
 
@@ -245,10 +248,13 @@ class Create extends Component {
         <button onClick={this.load}>Load Layout</button>
         <button onClick={this.findKey}>Debug</button>
       </div>
+      {this.state.currentObject ? (
       <ObjectWindow
         currentObject = {this.state.currentObject}
         deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
+        editObject = {(notes) => this.editObject(this.state.currentObject.key, notes)}
       />
+      ) : ( null )}
       </>
     );
   }
