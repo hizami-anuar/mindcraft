@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
+import ObjectWindow from "../modules/ObjectWindow.js";
 
 import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
@@ -16,13 +17,102 @@ class Create extends Component {
     this.state = {
       objects: [],
       inputText: "",
+      currentObject: {},
     };
 
     this.keyCounter = 0;
   }
 
   componentDidMount() {
+    window.dragMoveListener = this.props.dragMoveListener
+
+    interact('.draggable')
+      .draggable({
+        inertia: false,
+        // keep the element within the area of it's parent
+        restrict: {
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        // enable autoScroll
+        autoScroll: true,
+  
+        onstart: function (event) {
+          //console.log('onstart');
+        },
+        // call this function on every dragmove event
+        onmove: window.dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+          //console.log('onend');
+          let rect = event.target.getBoundingClientRect();
+          let parent = document.getElementById("canvas");
+          let rect0 = parent.getBoundingClientRect();
+          let x = rect.left, y=rect.top;
+          let x0 = rect0.left, y0=rect0.top;
+          let dx = x-x0, dy=y-y0;
+          console.log(event.target.id);
+        }
+      });
+  
+      interact('.resize-drag')
+      .resizable({
+        // resize from all edges and corners
+        edges: { left: true, right: true, bottom: true, top: true },
     
+        modifiers: [
+          // keep the edges inside the parent
+          interact.modifiers.restrictEdges({
+            outer: 'parent'
+          }),
+    
+          // minimum size
+          interact.modifiers.restrictSize({
+            min: { width: 50, height: 50 }
+          })
+        ],
+    
+        inertia: false
+      })
+      .draggable({
+        onmove: window.dragMoveListener,
+        inertia: false,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+          })
+        ],
+        onend: function(event) {
+        let rect = event.target.getBoundingClientRect();
+        let parent = document.getElementById("canvas");
+        let rect0 = parent.getBoundingClientRect();
+        let x = rect.left, y=rect.top;
+        let x0 = rect0.left, y0=rect0.top;
+        let dx = x-x0, dy=y-y0;
+        }
+      })
+      .on('resizemove', function (event) {
+        var target = event.target
+        var x = (parseFloat(target.getAttribute('data-x')) || 0)
+        var y = (parseFloat(target.getAttribute('data-y')) || 0)
+    
+        // update the element's style
+        target.style.width = event.rect.width + 'px'
+        target.style.height = event.rect.height + 'px'
+    
+        // translate when resizing from top or left edges
+        x += event.deltaRect.left
+        y += event.deltaRect.top
+    
+        target.style.webkitTransform = target.style.transform =
+            'translate(' + x + 'px,' + y + 'px)'
+    
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
+        // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+      })
   };
 
   handleInputChange = event => {
@@ -42,8 +132,6 @@ class Create extends Component {
       objects: newObjects,
       inputText: ""
     });
-
-    console.log(this.state);
   };
 
   saveRoom = () => {
@@ -101,11 +189,34 @@ class Create extends Component {
     };
   }
 
+  findKey = (key) => {
+    for (let i=0; i<this.state.objects.length; i++) {
+      if (this.state.objects[i].key === key) {
+        const object = this.state.objects[i];
+        return i;
+      }
+    }
+  }
+
   deleteObject = (key) => {
     const { objects } = this.state;
     const newObjects = objects.filter(item => item.key !== key);
     this.setState({ objects: newObjects });
+    this.setState({ currentObject: undefined});
   };
+
+  setCurrentObject = (key) => {
+    const object = this.state.objects[this.findKey(key)];
+    this.setState({ currentObject: object });
+    console.log("new object set");
+    console.log(this.state.currentObject);
+  }
+
+  editObject = () => {
+    const { objects } = this.state;
+    const newObjects = objects.filter(item => item.key !== key);
+    this.setState({ objects: newObjects });
+  }
 
   render() {
     return (
@@ -119,6 +230,7 @@ class Create extends Component {
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
             deleteObject={() => this.deleteObject(item.key)}
+            setCurrentObject={() => this.setCurrentObject(item.key)}
           />
         ))}
       </div>
@@ -131,7 +243,12 @@ class Create extends Component {
         <button onClick={this.createObject}>Upload Image URL</button>
         <button onClick={this.save}>Save Layout</button>
         <button onClick={this.load}>Load Layout</button>
+        <button onClick={this.findKey}>Debug</button>
       </div>
+      <ObjectWindow
+        currentObject = {this.state.currentObject}
+        deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
+      />
       </>
     );
   }
