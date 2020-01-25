@@ -12,7 +12,6 @@ import "./NavBar.css";
 // HIZAMI DEBUG VERSION
 const GOOGLE_CLIENT_ID = "1090403895060-c4en7b9gqifbd9t5625ql3pfs6j5vrpj.apps.googleusercontent.com";
 
-
 /* Navigation bar, takes no props */
 class NavBar extends Component {
   constructor(props) {
@@ -21,31 +20,25 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="NavBar-container">
-        <div className="NavBar-linkContainer u-inlineBlock">
-          <Link to="/" className="NavBar-link"> 
-            <img className="NavBar-logo" src="https://vignette.wikia.nocookie.net/pixel-gun-3d/images/d/d0/Onekey.png/revision/latest?cb=20170606115023"></img>
-            <h2>MindCraft</h2>
+      <nav className="NavBar">
+        <div className="NavBar-linkBox u-inlineBlock">
+          {/* Home link */}
+          <Link to="/" className="NavBar-link NavBar-logo"> 
           </Link>
 
+          {/* Build link */}
           <Link to="/create" className="NavBar-link">
             <h2>Build</h2>
           </Link>
 
+          {/* Explore link */}
           <Link to="/construction" className="NavBar-link">
             <h2>Explore</h2>
           </Link>
-          
-          <Link to="/construction" className="NavBar-link">
-            <h2>Share</h2>
-          </Link>
 
+          {/* About link */}
           <Link to="/construction" className="NavBar-link">
             <h2>About</h2>
-          </Link>
-
-          <Link to="/NotFound" className="NavBar-link">
-            <h2>Not Found</h2>
           </Link>
           
           {this.props.userId ? (

@@ -1,21 +1,5 @@
-/**
-* Welcome to your ✨𝔲𝔱𝔦𝔩𝔦𝔱𝔶 𝔰𝔱𝔶𝔩𝔢𝔰✨!
-* This file includes utility classes that are super simple
-* and can be used to add general styles; variable definitions
-* for colors; and styles to html, body, and other high level
-* DOMs.
-* 
-* All utility classes start with a `u-` and all do
-* one basic CSS thing (for example, making the font-weight
-* 600 for bolding) or are super generic.
-* 
-* This is 𝙉𝙊𝙏 the place to define classes for components or
-* do rigorous styling. You shoud not need to change this file
-* much after initial creation.
-*/
-
-/* Font: Titillium, 50 pt */
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400&display=swap');
+/* Font: Montserrat */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,600&display=swap');
 
 :root {
   --primary: #396dff;
@@ -24,6 +8,7 @@
   --medgrey: #e0e0e0;
   --grey: #f7f7f7;
   --white: #fff;
+  --comfort-white: #fcf9f4;
 
   --xs: 4px;
   --s: 8px;
@@ -34,7 +19,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 50;
 }
 

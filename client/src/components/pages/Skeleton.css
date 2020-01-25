@@ -1,108 +1,111 @@
-/* Define font */
-h1 {
-  font-size: 70px;
+body {
+  /* Set default background color: Comfort White */
+  background-color: #fcf9f4;
+  height: 100vh;
+  cursor: url(../../../../images/mouse-cursor.svg), pointer;
+}
+
+/* Define skeleton font style */ 
+.Skeleton-title {
+  font-size: 100px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
-.banner h1 {
-  margin: 0;
+/* Sub-sections of the Home page */
+  .Skeleton-header {
+    /* position */
+    display: flex; justify-content: center;
+    padding-top: 200px;
+    height: 800px;
+    /* style: carrot orange */
+    color: #e99037;
+    background-color: #fcf9f4;
+  }
+
+  .Skeleton-background-info {
+    /* position */
+    display: flex; justify-content: center; text-align: center;
+    padding-top: 400px;
+    height: 600px;
+    /* style: cosmic latte */
+    color: #eb9540;
+    background-color: #fff8e7;
+  }
+
+  .Skeleton-feature {
+    /* position */
+    display: flex; justify-content: center; text-align: center;
+    padding-top: 400px;
+    height: 600px;
+    /* style: comfort white */
+    color: #e99037;
+    background-color: #fcf9f4;
+  }
+
+  .Skeleton-example {
+    /* position */
+    display: flex; justify-content: center; text-align: center;
+    padding-top: 400px;
+    height: 600px;
+    /* Color: light green - triad colors */
+    color: #e99037;
+    background-color: #e5fdf1;
+  }
+
+  .Skeleton-footer {
+    /* position */
+    display: flex; justify-content: center; text-align: center;
+    padding-top: 400px;
+    height: 600px;
+    /* Color: light orange */
+    color: #e99037;
+    background-color: #fdf7e5;
+  }
+
+/* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */
+
+/* Cursor effect */ 
+.Skeleton-cursor {width: 20px; height: 20px; border: 1px solid white;
+  border-radius: 50%;
+  position: absolute;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+  animation: cursorAnim .5s infinite alternate
 }
 
-/* Implement banner class to insert image as background */
-.banner {
-  display: flex;
-  color: black;
-  background: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v246-bb-22-creativity_2.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1400&s=8857d50442419fa1f2c3909fa859d781') top left/cover no-repeat;
-  background-position: right;
-  background-size: 30%;
-  height: 600px;
-  align-items: center;
+.Skeleton-cursor::after {content: ''; width: 20px; height: 20px;
+  position: absolute;
+  border: 8px solid gray;
+  border-radius: 50%;
+  opacity: 0.5s;
+  top: -8px;
+  left: -8px;
 }
 
-.banner-text {
-  display: flex;
-  justify-content: left;
-  padding-top: 60px;
-}
-
-.sub-banner {
-  display: flex;
-  color: black;
-  height: 200px;
-  margin-top: 150px;
-}
-
-.in-banner-text {
-  display: flex;
-  color: black;
-  height: 200px;
-}
-
-.sub-banner-left-title {
-  padding-left: 30px;
-  padding-top: 60px;
-  display: flex;
-  justify-content: left;
-}
-
-.sub-banner-right-title {
-  display: flex;
-  justify-content: right;
-  padding-left: 720px;
-  padding-top: 60px;
-}
-
-.sub-banner-left-text {
-  font-size: 30px;
-  display: flex;
-  justify-content: left;
-  padding-left: 30px;
-}
-
-.sub-banner-right-text {
-  font-size: 30px;
-  text-align: right;
-  padding-right: 30px;
-}
-
-.body-image {
-  padding-left: 30px;
-  padding-top: 50px;
-  height: 300px;
-  display: inline;
-  justify-content: space-around;
-  border-radius: 250px;
-}
-
-.body-image2 {
-  padding-right: 1000px;
-  height: 300px;
-  border-radius: 250px;
-}
-
-.type-effect h1{
+/* Typing effect */
+.type-effect {
   overflow: hidden; /* Hide contents before animation finishes */
   border-right: .15em solid black; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  margin: 0; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; 
   animation: 
     typing 3.5s steps(20, end),
     blink-caret 0.6s step-end;
 }
 
-.type-effect-sub h1{
-  overflow: hidden; /* Hide contents before animation finishes */
-  border-right: .15em solid black; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; 
-  animation: 
-    typing-sub 3.5s steps(20, end),
-    blink-caret 0.6s step-end;
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100%}
 }
 
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
+/* Wave effect */
 section .wave {
   position: absolute;
   width: 100%;
@@ -113,24 +116,6 @@ section .wave {
   animation: wave 50s linear infinite;
 }
 
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 50%}
-}
-
-@keyframes typing-sub {
-  from {width: 0}
-  to {width: 100%}
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: black; }
-}
-
-/* The wavy effect */
 @keyframes wave {
   0% {
     background-position: 0;
@@ -140,11 +125,59 @@ section .wave {
   }
 }
 
-@keyframes square {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-800px) rotate(630deg);
-  }
+/* Fire effect */ 
+.wrapper {height: 800px; display: flex; 
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.red {width: 80px; height: 80px;
+  background: orangered;
+  box-shadow: 0px 0px 10px 5px orangered;
+}
+
+.orange {left: 10px; width: 60px; height: 60px;
+  background: orange;
+  box-shadow: 0px 0px 12px 6px orange;
+}
+
+.gold {left: 18px;  width: 45px; height: 45px;
+  background: gold;
+  box-shadow: 0px 0px 9px 4px gold;
+}
+
+.white {left: 22px; width: 35px; height: 35px;
+  background: lightyellow;
+  box-shadow: 0px 0px 9px 4px lightyellow;
+}
+
+.black {left: 40px; width: 1px; height: 1px; bottom: -10px;
+  background: black;
+  box-shadow: 0px 0px 15px 10px black;
+}
+
+.base {
+  border-radius: 50%;
+  position: absolute;
+}
+
+.flame-wrapper {
+  position: relative;
+  animation: flicker 1s ease-in infinite;
+}
+
+.flame {
+  bottom: 0;
+  position: absolute;
+  border-radius: 50% 0% 50% 0%;
+  transform: rotate(-45deg);
+}
+
+@keyframes flicker {
+  0% {transform: rotate(-1deg);}
+  20% {transform: rotate(2deg), scaleY(1.05);}
+  40% {transform: rotate(-1deg);}
+  60% {transform: rotate(1deg);}
+  80% {transform: rotate(0.5deg), scaleY(0.90);}
 }
