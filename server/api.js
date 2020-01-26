@@ -51,6 +51,12 @@ router.get("/room", (req, res) => {
   });
 });
 
+router.get("/roomname", (req, res) => {
+  Room.find({name: req.body.content}).then((data) => {
+    res.send(data);
+  });
+});
+
 //I don't really understand how req.body.content works
 router.post("/room", (req, res) => {
   /**

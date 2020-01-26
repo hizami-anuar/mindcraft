@@ -16,6 +16,7 @@ class Object extends Component {
           className='draggable'
           src={this.props.imageURL}
           style={{backgroundColor: 'black', left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
+          onClick={this.props.setCurrentObject}
         ></img>
         <button onClick={this.props.deleteObject}>X</button>
       </>
