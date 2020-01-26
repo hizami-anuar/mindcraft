@@ -3,6 +3,7 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
 import ObjectWindow from "../modules/ObjectWindow.js";
+import Sortable from 'sortablejs';
 
 import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
@@ -213,13 +214,45 @@ class Create extends Component {
     console.log(this.state.currentObject);
   }
 
-  editObject = (key, newNotes) => {
+  editObjectValue = (key, property, value) => {
     const index = this.findKey(key);
     const object = this.state.objects[index];
     let newObjects = this.state.objects;
-    newObjects[index].notes = newNotes;
+    if (property === "name") { newObjects[index].name = value; }
+    if (property === "image") { newObjects[index].image = value; }
+    if (property === "notes") { newObjects[index].notes = value; }
     this.setState({ objects: newObjects });
   }
+
+  sortable = () => {
+  var el = document.getElementById('items');
+  // var sortable = Sortable.create(el);
+  var sortable = new Sortable(el, {
+    onEnd: function (event) {
+      console.log(event.item);
+      console.log(event.oldIndex);
+      console.log(event.newIndex);
+      console.log(this.state.objects);
+    }
+  });
+  }
+
+  array_move(arr, old_index, new_index) {
+    while (old_index < 0) {
+        old_index += arr.length;
+    }
+    while (new_index < 0) {
+        new_index += arr.length;
+    }
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing purposes
+};
 
   render() {
     return (
@@ -252,9 +285,15 @@ class Create extends Component {
       <ObjectWindow
         currentObject = {this.state.currentObject}
         deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
-        editObject = {(notes) => this.editObject(this.state.currentObject.key, notes)}
+        editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
       />
       ) : ( null )}
+      <ul id="items">
+          {[1, 2, 3, 4, 5, 6, 7].map(
+          item => (<li key={`list-${item}`}>List Item {item}</li>
+          ) )}
+      </ul>
+      <button id="button" onClick={this.sortable}>Sortable</button>
       </>
     );
   }
