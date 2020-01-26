@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
+import ObjectWindow from "../modules/ObjectWindow.js";
 
 import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
@@ -10,39 +11,50 @@ import { redirectTo } from "@reach/router";
 import { get } from "../../utilities";
 import { post } from "../../utilities";
 
-class Share extends Component {
+class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        objects = [],
-        inputText: "",
+      objects: [],
+      inputText: "",
+      currentObject: {},
     };
+
+    this.keyCounter = 0;
   }
 
-  componentDidMount(){
-
-  }
-
-  handleInputChange = event => {
-    const value = event.target.value;
-    this.setState({
-      inputText: value
-    });
+  componentDidMount() {
+    
   };
 
   load = () => {
     console.log("loading");
-    get("/api/roomname", {name: this.state.inputText}).then((data) => {
+    this.setState({
+      objects: []
+    });
+    console.log(this.props.userId);
+    if(this.props.userId != undefined) {
+      //console.log("retrieving");
+      get("/api/room", {creator_id: this.props.userId}).then((data) => {
+        //console.log("DATA");
         let loadedData = data.slice(-1)[0];
         if (loadedData.numbers != undefined) {
-            this.setState({
-                objects: loadedData.numbers
-            });
-            var newImg = new Image;
-            newImg.onload = function()
+          this.setState({
+            objects: loadedData.numbers
+          });
+        console.log(loadedData);
         };
-        
-    });
+      });
+    };
+  }
+
+  findKey = (key) => {
+    for (let i=0; i<this.state.objects.length; i++) {
+      if (this.state.objects[i].key === key) {
+        const object = this.state.objects[i];
+        return i;
+      }
+    }
   }
 
   render() {
@@ -56,20 +68,18 @@ class Share extends Component {
             imageURL = {item.image}
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
+            deleteObject={() => this.deleteObject(item.key)}
+            setCurrentObject={() => this.setCurrentObject(item.key)}
           />
         ))}
       </div>
-      <div className="searchBar">
-        <input
-          type="text"
-          value={this.state.inputText}
-          onChange={this.handleInputChange}
-        />
-        <button onClick={this.createObject}>Search</button>
-      </div>
+      <ObjectWindow
+        currentObject = {this.state.currentObject}
+        deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
+      />
       </>
     );
   }
-
-
 }
+
+export default Create;

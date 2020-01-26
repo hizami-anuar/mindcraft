@@ -3,7 +3,7 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
 import ObjectWindow from "../modules/ObjectWindow.js";
-import Sortable from 'sortablejs';
+import Sortable from 'sortable.js';
 
 import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
