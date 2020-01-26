@@ -1,0 +1,17 @@
+.ObjectWindow-container {
+  background-color: red;
+  height: 500px;
+  width: 500px;
+
+  margin: 10%;
+  position: relative;
+}
+
+.ObjectWindow-image {
+  height: 100px;
+  width: 100px;
+}
+
+#ObjectWindow-notesEditBar {
+  visibility: hidden;
+}
