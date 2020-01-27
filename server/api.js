@@ -70,6 +70,7 @@ router.post("/room", (req, res) => {
   const newRoom = new Room({
     name: req.body.name,
     numbers: req.body.objects,
+    keyCounter: req.body.keyCounter,
     background: req.body.url,
     creator_id: req.user.googleid,
   });

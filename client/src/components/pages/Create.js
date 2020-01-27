@@ -130,6 +130,7 @@ class Create extends Component {
     const body = {
       name: "name",
       objects: this.state.objects,
+      keyCounter: this.state.keyCounter,
       url: "https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1498042211.jpg",
     }
     post("/api/room", body).then((res) => {
@@ -138,13 +139,9 @@ class Create extends Component {
   };
 
   save = () => {
-    //console.log(this.state.objects);
     if(this.props.userId != undefined) {
     for(let i = 0; i < this.state.objects.length; i++) {
       let object = this.state.objects[i];
-      //console.log(object);
-      // const image = object.imagedocument.getElementById(`image-${object.key}`);
-      //const canvas = document.getElementById(`canvas`);
       let child = document.getElementById(`num-${object.key}`);
       let rect = child.getBoundingClientRect();
       let parent = document.getElementById("canvas");
@@ -155,7 +152,6 @@ class Create extends Component {
       object['x'] = dx;
       object['y'] = dy;
     }
-    //console.log(this.state.objects);
     this.saveRoom();
     }
   }
@@ -251,7 +247,12 @@ class Create extends Component {
           />
         ))}
       </div>
-      <div className='Create-log'></div>
+      <div className='Create-log'>
+        <SortableComponent
+          objects = {this.state.objects}
+          reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
+        />
+      </div>
       <div className="uploadBar">
         <input
           type="text"
@@ -263,10 +264,6 @@ class Create extends Component {
         <button onClick={this.load}>Load Layout</button>
         <button onClick={this.findKey}>Debug</button>
       </div>
-      <SortableComponent
-        objects = {this.state.objects}
-        reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
-      />
       {this.state.currentObject ? (
       <ObjectWindow
         currentObject = {this.state.currentObject}
