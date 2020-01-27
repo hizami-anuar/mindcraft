@@ -4,15 +4,15 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import "../../utilities.css";
 import "./Skeleton.css";
 
-import path1 from "./icons/path1.png";
-import path2 from "./icons/path2.png";
-
 import step1 from "./icons/stepa.png";
 import step2 from "./icons/stepb.png";
 import step3 from "./icons/stepc.png";
 import step4 from "./icons/stepd.png";
 import step5 from "./icons/stepe.png";
 
+import pink from "./icons/pink.png";
+import green from "./icons/green.png";
+import blue from "./icons/blue.png";
 
 // Client ID
 const GOOGLE_CLIENT_ID = "739758725997-d8he26ce328pmd91fvg7f7cck6ernk72.apps.googleusercontent.com";
@@ -32,10 +32,7 @@ class Skeleton extends Component {
     window.addEventListener('scroll', () => {
       console.log(window.scrollY);
       if (window.scrollY < 500) {
-        this.setState({scrolled1: true})
-      }
-      if (window.scrollY > 1000) {
-        this.setState({scrolled2: true})
+        this.setState({scrolled: true})
       }
     })
     
@@ -90,21 +87,21 @@ class Skeleton extends Component {
         {/* Background-info */}
         <section className='Skeleton-background-info'>
           {/* top row */}
-          <div class="Skeleton-basket">
-            <div class="Skeleton-image"><img src={step1}/></div>
-            <div class="Skeleton-image"><img src={step2}/></div>
-            <div class="Skeleton-image"><img src={step3}/></div>
+          <div className={`Skeleton-basket ${this.state.scrolled ? 'fade-in' : ''}`}>
+            <div className="Skeleton-image"><img src={step1}/></div>
+            <div className="Skeleton-image"><img src={step2}/></div>
+            <div className="Skeleton-image"><img src={step3}/></div>
           </div>
           {/* mid row */}
-          <div class="Skeleton-banner">
-            <div class="Skeleton-box"></div>
+          <div className="Skeleton-banner">
+            <div className="Skeleton-box"></div>
             <div className='Skeleton-title u-textCenter'>Build your <br></br> digital palace.</div>
-            <div class="Skeleton-box"></div>
+            <div className="Skeleton-box"></div>
           </div>
           {/* end row */}
-          <div class="Skeleton-basket">
-            <div class="Skeleton-image"><img src={step4}/></div>
-            <div class="Skeleton-image"><img src={step5}/></div>
+          <div className={`Skeleton-basket ${this.state.scrolled ? 'fade-in' : ''}`}>
+            <div className="Skeleton-image"><img src={step4}/></div>
+            <div className="Skeleton-image"><img src={step5}/></div>
           </div>
         </section>
 
@@ -118,10 +115,34 @@ class Skeleton extends Component {
               <div className='flame red'></div>
               <div className='flame orange'></div>
               <div className='flame gold'></div>
-              <div className='flame white'></div>
-              <div className='base black'></div>
+              <div className="base blue"></div>
             </div>
           </div>
+  
+            <div className="Skeleton-sticky">
+              <div className="Skeleton-img"><img src={pink}/></div>
+              <div className='Skeleton-text-block'>
+                <i>Interact with > 30 objects to see the associated memory</i>
+                <img className='Skeleton-image-block' src='https://cdn3.iconfinder.com/data/icons/wedding-and-anniversary-flat-1/60/house__home__apartment__building_-512.png'/>
+              </div>
+            </div>
+
+            <div className="Skeleton-sticky">
+              <div className="Skeleton-img"><img src={green}/></div>
+              <div className='Skeleton-text-block'>
+                <i>Customize your own palace with various architecture styles & room backgrounds</i>
+                <img className='Skeleton-image-block' src='https://cdn3.iconfinder.com/data/icons/wedding-and-anniversary-flat-1/60/house__home__apartment__building_-512.png'/>
+              </div>
+            </div>
+
+            <div className="Skeleton-sticky">
+            <div className="Skeleton-img"><img src={blue}/></div>
+              <div className='Skeleton-text-block'>
+                <i>Discover public edifices @ Town Hall</i>
+                <img className='Skeleton-image-block' src='https://cdn3.iconfinder.com/data/icons/wedding-and-anniversary-flat-1/60/house__home__apartment__building_-512.png'/>
+              </div>
+            </div>
+
         </section>
 
         {/* Example section */}
@@ -129,13 +150,15 @@ class Skeleton extends Component {
           <div className='Skeleton-title'>
             Try it.
           </div>
+
         </section>
 
         {/* Footer */}
         <section id='footer' className='Skeleton-footer'>
-          <div className='Skeleton-title'>
-            About us
+          <div className='Skeleton-footer-title'>
+            Questions?
           </div>
+          <div className='Skeleton-text'> ianl@mit.edu <sup> . </sup> hizami@mit.edu <sup> . </sup>  umangba@mit.edu </div>
         </section>
 
       </>
