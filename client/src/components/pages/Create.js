@@ -233,7 +233,7 @@ class Create extends Component {
   render() {
     return (
       <>
-      <div id="canvas" className="Create-container" style={{background-image: 'https://artofmemory.com/blog/files/2011/03/Emma-Willard-1846-temple.jpg'}}>
+      <div id="canvas" className="Create-container">
         {this.state.objects.map((item, index) => (
           <Object 
             index = {index}
