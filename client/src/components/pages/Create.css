@@ -1,19 +1,39 @@
 /* place memory room here */ 
 .Create-container {
-  display: inline-block;
-  width: 72%;
-  margin-left: 3.5%;
-  margin-top: 5%;
   height: 550px;
+  margin-top: 2.5%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  border: 1px solid green;
+
+  position: relative;
+}
+
+.Create-canvas {
+  display: inline-block;
+  width: 75%;
+  top: 0;
+  bottom: 0;
+  left: 0;
   border: 1px solid blue;
+  position: absolute;
 }
 
 /* place side bar to track items placed here */ 
 .Create-log {
   display: inline-block;
-  width: 22%;
-  height: 550px;
+  width: 25%;
+  top: 0;
+  bottom: 0;
+  right: 0;
   border: 1px solid red;
+  position: absolute;
+
+  overflow-y: auto;
+}
+
+.Create-logHeader {
+  height: 20px;
 }
 
 .uploadBar {
@@ -39,8 +59,8 @@
   font-family: sans-serif;
   text-align: center;
 
-  height: 200px;
-  width: 200px;
+  height: 50px;
+  width: 50px;
 }
 
 .draggableImage {
@@ -51,8 +71,8 @@
   font-size: 20px;
   font-family: sans-serif;
 
-  height: 200px;
-  width: 200px;
+  height: 50px;
+  width: 50px;
 }
 
 #drag-1, #drag-2 {
@@ -70,8 +90,6 @@
 }
 
 #items {
-  margin: 10px;
-  top: 100px;
   position: relative;
 }
 
