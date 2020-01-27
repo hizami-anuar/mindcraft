@@ -1,17 +1,18 @@
 /* place memory room here */ 
 .Create-container {
-  float: left;
-  width: 70%;
-  margin: 4%;
-  height: 500px;
-  border: 1px solid blue; 
+  display: inline-block;
+  width: 72%;
+  margin-left: 3.5%;
+  margin-top: 5%;
+  height: 550px;
+  border: 1px solid blue;
 }
 
 /* place side bar to track items placed here */ 
 .Create-log {
-  float: left;
-  width: 1200px;
-  height: 100px;
+  display: inline-block;
+  width: 22%;
+  height: 550px;
   border: 1px solid red;
 }
 

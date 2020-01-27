@@ -2,7 +2,7 @@ body {
   /* Set default background color: Comfort White */
   background-color: #fcf9f4;
   height: 100vh;
-  cursor: url(../../../../images/mouse-cursor.svg), pointer;
+  cursor: url(../../../src/../../images/mouse-cursor.svg), pointer;
 }
 
 img {
@@ -15,6 +15,22 @@ img {
   font-size: 110px;
   font-weight: bold;
   letter-spacing: 1.5px; 
+}
+
+.Skeleton-footer-title {
+  float: left;
+  font-size: 40px;
+  font-weight: bold;
+  padding-right: 300px;
+  padding-top: 20px;
+  letter-spacing: 0.15px; 
+}
+
+.Skeleton-text {
+  float: right;
+  font-size: 20px;
+  padding-top: 30px;
+  padding-left: 150px;
 }
 
 /* Keys image - Header */
@@ -54,7 +70,7 @@ img {
     position:relative; margin: 0 auto; padding: 20px; text-align:center;
   }
 
-  /* Background-info: contains images */
+  /* Background-info: mind palace images */
   .Skeleton-image {
     position:relative; display:inline-block; width:30%; margin: 0 auto; padding: 0px 10px 0px 10px;
   }
@@ -78,31 +94,79 @@ img {
 /* 3 */
 .Skeleton-feature {
   /* position */
-  display: flex; justify-content: center; text-align: center;
-  padding-top: 400px;
+  text-align: center;
+  padding-top: 300px;
   height: 600px;
   /* style: comfort white */
   color: #e99037;
   background-color: #fcf9f4;
 }
+  /* Feature: container, holds image */
+  .Skeleton-sticky {
+    display: inline-block;
+    width: 25%;
+    position: relative;
+  }
+
+  .Skeleton-text-block {
+    letter-spacing: .05em;
+    position: absolute;
+    bottom: 120px;
+    left: 76px;
+    width: 200px;
+    color: black;
+    font-size: 17px;
+  }
+
+  .Skeleton-image-block {
+    position: absolute;
+    left: 65px;
+    padding-top: 25px;
+    height: 70px;
+  }
 
 /* 4 */
 .Skeleton-example {
   /* position */
-  display: flex; justify-content: center; text-align: center;
-  padding-top: 400px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
   height: 600px;
   /* Color: light green - triad colors */
   color: #e99037;
   background-color: #e5fdf1;
 }
 
+p {
+  background:	#fad6a5; 
+  border-radius: 10px;
+  width:250px; 
+  height:120px;
+  margin-left: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: top;
+}
+
+.break{
+  flex-basis: 100%;
+  width: 0px; 
+  height: 0px; 
+  overflow: hidden;
+}
+
+  #pointer{
+    border:solid 10px transparent;
+    border-right-color:#fad6a5;
+    position:absolute;
+    margin:-85px 0 0 -20px;
+  }
 /* 5 */
 .Skeleton-footer {
   /* position */
   display: flex; justify-content: center; text-align: center;
-  padding-top: 400px;
-  height: 600px;
+  height: 100px;
   /* Color: light orange */
   color: #e99037;
   background-color: #fdf7e5;
@@ -110,22 +174,17 @@ img {
 
 /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */
 
-/* Cursor */ 
-.Skeleton-cursor {width: 20px; height: 20px; border: 1px solid white;
-  border-radius: 50%;
-  position: absolute;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
-  animation: cursorAnim .5s infinite alternate
-}
+/* Fade in */
+.fade-in {
+  animation: fadeIn ease 4s;
 
-.Skeleton-cursor::after {content: ''; width: 20px; height: 20px;
-  position: absolute;
-  border: 8px solid gray;
-  border-radius: 50%;
-  opacity: 0.5s;
-  top: -8px;
-  left: -8px;
+}@keyframes fadeIn {
+  0% {
+    opacity:0.1;
+  }
+  100% {
+    opacity:1;
+  }
 }
 
 /* Wave */
@@ -136,7 +195,7 @@ section .wave {
   left: 0;
   background: url('https://cdn.pixabay.com/photo/2019/10/12/14/21/postit-4543989_960_720.png');
   background-size: 20%;
-  animation: wave 50s linear infinite;
+  animation: wave 10s linear infinite;
 }
 
 @keyframes wave {
@@ -149,58 +208,66 @@ section .wave {
 }
 
 /* Fire */ 
-.wrapper {height: 800px; display: flex; 
-  align-items: center;
-  justify-content: center;
-  font-size: 21px;
+.flame-wrapper {
+  position: relative;
+  animation: flicker 4s ease-in infinite;
 }
-
-.red {width: 80px; height: 80px;
+.wrapper {padding-left: 1050px;
+  height: 80px;
+  position: relative;
+  display: block;
+}
+.red {
+  width: 80px;
+  height: 80px;
   background: orangered;
   box-shadow: 0px 0px 10px 5px orangered;
 }
-
-.orange {left: 10px; width: 60px; height: 60px;
+.orange {
+  left:10px;
+  width: 60px;
+  height: 60px;
   background: orange;
   box-shadow: 0px 0px 12px 6px orange;
 }
-
-.gold {left: 18px;  width: 45px; height: 45px;
+.gold {
+  left:18px;
+  width: 45px;
+  height: 45px;
   background: gold;
   box-shadow: 0px 0px 9px 4px gold;
 }
-
-.white {left: 22px; width: 35px; height: 35px;
+.white {
+  left:22px;
+  width: 35px;
+  height: 35px;
   background: lightyellow;
   box-shadow: 0px 0px 9px 4px lightyellow;
 }
-
-.black {left: 40px; width: 1px; height: 1px; bottom: -10px;
-  background: black;
-  box-shadow: 0px 0px 15px 10px black;
+.blue {
+  left:37px;
+  width: 5px;
+  height: 10px;
+  opacity: 0.1;
+  bottom: 5px;
+  background: darkblue;
+  box-shadow: 0px 0px 15px 15px darkblue;
 }
-
 .base {
   border-radius: 50%;
   position: absolute;
 }
-
-.flame-wrapper {
-  position: relative;
-  animation: flicker 1s ease-in infinite;
-}
-
 .flame {
   bottom: 0;
   position: absolute;
-  border-radius: 50% 10% 50% 50%;
+  border-radius: 50% 0% 50% 50%;
   transform: rotate(-45deg);
 }
-
 @keyframes flicker {
   0% {transform: rotate(-1deg);}
-  20% {transform: rotate(2deg), scaleY(1.05);}
+  20% {transform: rotate(2deg) scaleY(1);}
   40% {transform: rotate(-1deg);}
   60% {transform: rotate(1deg);}
-  80% {transform: rotate(0.5deg), scaleY(0.90);}
+  80% {transform: rotate(-1deg) scaleY(0.90);}
+  100% {transform: rotate(1deg);}
 }
