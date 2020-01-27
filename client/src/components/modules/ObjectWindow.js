@@ -13,21 +13,17 @@ class ObjectWindow extends Component {
 
   enableEdit = () => {
     this.setState({ notesEdit: true })
-    // document.getElementById("ObjectWindow-notes").readOnly=false;
   }
 
-  saveChanges = (type) => {
-    this.setState({ notesEdit: false });
-    const newValue = document.getElementById(`ObjectWindow-${type}`).value;
+  saveChanges = () => {
+    const newValue = document.getElementById("ObjectWindow-notes").value;
     console.log("New Notes");
-    console.log(newNotes);
-    this.props.editObjectValue(type, newValue);
-    // document.getElementById("ObjectWindow-notes").readOnly=true;
+    this.props.editObjectValue('notes', newValue);
+    this.setState({ notesEdit: false });
   }
 
   enableImageEdit = () => {
     this.setState({ imageEdit: true })
-    // document.getElementById("ObjectWindow-notes").readOnly=false;
   }
 
   saveImageChanges = () => {
@@ -36,13 +32,8 @@ class ObjectWindow extends Component {
     console.log("New Image");
     console.log(Image);
     this.props.editObjectValue("image", newImage);
-    // document.getElementById("ObjectWindow-notes").readOnly=true;
   }
-
-  textChange = () => {
-    console.log("TEXT CHANGED");
-  }
-
+  
   componentDidMount() {
   }
 
@@ -62,8 +53,6 @@ class ObjectWindow extends Component {
             <button onClick={this.enableImageEdit}>Edit</button>
           </div>
         )}
-        
-
 
         {this.state.notesEdit ? (
           <div>

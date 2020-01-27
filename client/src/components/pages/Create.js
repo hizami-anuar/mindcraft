@@ -3,7 +3,9 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
 import ObjectWindow from "../modules/ObjectWindow.js";
+import SortableComponent from "../modules/SortableComponent.js";
 import Sortable from 'sortablejs';
+import arrayMove from 'array-move';
 
 import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
@@ -19,6 +21,7 @@ class Create extends Component {
       objects: [],
       inputText: "",
       currentObject: undefined,
+      mode: 'image',
     };
 
     this.keyCounter = 0;
@@ -127,6 +130,7 @@ class Create extends Component {
     const body = {
       name: "name",
       objects: this.state.objects,
+      keyCounter: this.state.keyCounter,
       url: "https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1498042211.jpg",
     }
     post("/api/room", body).then((res) => {
@@ -135,13 +139,9 @@ class Create extends Component {
   };
 
   save = () => {
-    //console.log(this.state.objects);
     if(this.props.userId != undefined) {
     for(let i = 0; i < this.state.objects.length; i++) {
       let object = this.state.objects[i];
-      //console.log(object);
-      // const image = object.imagedocument.getElementById(`image-${object.key}`);
-      //const canvas = document.getElementById(`canvas`);
       let child = document.getElementById(`num-${object.key}`);
       let rect = child.getBoundingClientRect();
       let parent = document.getElementById("canvas");
@@ -152,7 +152,6 @@ class Create extends Component {
       object['x'] = dx;
       object['y'] = dy;
     }
-    //console.log(this.state.objects);
     this.saveRoom();
     }
   }
@@ -224,42 +223,20 @@ class Create extends Component {
     this.setState({ objects: newObjects });
   }
 
-  sortable = () => {
-  var el = document.getElementById('items');
-  // var sortable = Sortable.create(el);
-  var sortable = new Sortable(el, {
-    onEnd: function (event) {
-      console.log(event.item);
-      console.log(event.oldIndex);
-      console.log(event.newIndex);
-      console.log(this.state.objects);
-    }
-  });
+  reorderObjects = (oldIndex, newIndex) => {
+    this.setState({
+      objects: arrayMove(this.state.objects, oldIndex, newIndex),
+    });
+    console.log(this.state.objects);
   }
-
-  array_move(arr, old_index, new_index) {
-    while (old_index < 0) {
-        old_index += arr.length;
-    }
-    while (new_index < 0) {
-        new_index += arr.length;
-    }
-    if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing purposes
-};
 
   render() {
     return (
       <>
       <div id="canvas" className="Create-container">
-        {this.state.objects.map(item => (
+        {this.state.objects.map((item, index) => (
           <Object 
+            index = {index}
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
             imageURL = {item.image}
@@ -270,7 +247,12 @@ class Create extends Component {
           />
         ))}
       </div>
-      <div className='Create-log'></div>
+      <div className='Create-log'>
+        <SortableComponent
+          objects = {this.state.objects}
+          reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
+        />
+      </div>
       <div className="uploadBar">
         <input
           type="text"
