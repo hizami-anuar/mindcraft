@@ -21,7 +21,7 @@ class Create extends Component {
       objects: [],
       inputText: "",
       currentObject: undefined,
-      mode: 'image',
+      mode: 'number',
     };
 
     this.keyCounter = 0;
@@ -240,6 +240,7 @@ class Create extends Component {
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
             imageURL = {item.image}
+            mode = {this.state.mode}
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
             deleteObject={() => this.deleteObject(item.key)}
