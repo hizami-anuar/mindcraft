@@ -150,7 +150,10 @@ class Skeleton extends Component {
           <div className='Skeleton-title'>
             Try it.
           </div>
-
+          <p></p>
+          <div id='pointer'></div>
+          <p></p>
+          <div id='pointer'></div>
         </section>
 
         {/* Footer */}

@@ -289,12 +289,6 @@ class Create extends Component {
         editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
       />
       ) : ( null )}
-      <ul id="items">
-          {[1, 2, 3, 4, 5, 6, 7].map(
-          item => (<li key={`list-${item}`}>List Item {item}</li>
-          ) )}
-      </ul>
-      <button id="button" onClick={this.sortable}>Sortable</button>
       </>
     );
   }
