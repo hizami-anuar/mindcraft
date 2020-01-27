@@ -33,7 +33,7 @@ class Create extends Component {
     interact('.draggable')
       .draggable({
         inertia: false,
-        // keep the element within the area of it's parent
+        // keep the element within the area of its parent
         restrict: {
           restriction: "parent",
           endOnly: true,
@@ -251,6 +251,7 @@ class Create extends Component {
           />
         ))}
       </div>
+      <div className='Create-log'></div>
       <div className="uploadBar">
         <input
           type="text"

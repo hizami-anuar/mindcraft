@@ -5,67 +5,112 @@ body {
   cursor: url(../../../../images/mouse-cursor.svg), pointer;
 }
 
+img {
+  width: auto;
+  height: 300px;
+}
+
 /* Define skeleton font style */ 
-.Skeleton-title {
-  font-size: 100px;
+.Skeleton-title { 
+  font-size: 110px;
   font-weight: bold;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.5px; 
+}
+
+/* Keys image - Header */
+.Skeleton-keys {
+  float: left;
+  position: relative;
+  top: -70px;
+  padding-left: 200px;
+  margin-right: -250px;
+  content: url(../../../../images/keys.png);
+  height: 380px;
 }
 
 /* Sub-sections of the Home page */
-  .Skeleton-header {
-    /* position */
-    display: flex; justify-content: center;
-    padding-top: 200px;
-    height: 800px;
-    /* style: carrot orange */
-    color: #e99037;
-    background-color: #fcf9f4;
+/* 1 */
+.Skeleton-header {
+  /* position */
+  text-align:center;
+  padding-top: 200px;
+  height: 500px;
+  /* style: carrot orange */
+  color: #e99037;
+  background-color: #fcf9f4;
+}
+
+/* 2 */
+.Skeleton-background-info {
+  /* position */
+  padding-top: 100px;
+  height: 1000px;
+  /* style: cosmic latte */
+  color: #eb9540;
+  background-color: #fff8e7;
+}
+  /* Background-info: row-boxes */
+  .Skeleton-basket {
+    position:relative; margin: 0 auto; padding: 20px; text-align:center;
   }
 
-  .Skeleton-background-info {
-    /* position */
-    display: flex; justify-content: center; text-align: center;
-    padding-top: 400px;
-    height: 600px;
-    /* style: cosmic latte */
-    color: #eb9540;
-    background-color: #fff8e7;
+  /* Background-info: contains images */
+  .Skeleton-image {
+    position:relative; display:inline-block; width:30%; margin: 0 auto; padding: 0px 10px 0px 10px;
   }
 
-  .Skeleton-feature {
-    /* position */
-    display: flex; justify-content: center; text-align: center;
-    padding-top: 400px;
-    height: 600px;
-    /* style: comfort white */
-    color: #e99037;
-    background-color: #fcf9f4;
+  /* Background-info: shows title of section */
+  .Skeleton-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .Skeleton-example {
-    /* position */
-    display: flex; justify-content: center; text-align: center;
-    padding-top: 400px;
-    height: 600px;
-    /* Color: light green - triad colors */
-    color: #e99037;
-    background-color: #e5fdf1;
+  /* Background-info: shows decoration side boxes */
+  .Skeleton-box {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background: skyblue;
+    opacity: 0.9;
   }
 
-  .Skeleton-footer {
-    /* position */
-    display: flex; justify-content: center; text-align: center;
-    padding-top: 400px;
-    height: 600px;
-    /* Color: light orange */
-    color: #e99037;
-    background-color: #fdf7e5;
-  }
+/* 3 */
+.Skeleton-feature {
+  /* position */
+  display: flex; justify-content: center; text-align: center;
+  padding-top: 400px;
+  height: 600px;
+  /* style: comfort white */
+  color: #e99037;
+  background-color: #fcf9f4;
+}
+
+/* 4 */
+.Skeleton-example {
+  /* position */
+  display: flex; justify-content: center; text-align: center;
+  padding-top: 400px;
+  height: 600px;
+  /* Color: light green - triad colors */
+  color: #e99037;
+  background-color: #e5fdf1;
+}
+
+/* 5 */
+.Skeleton-footer {
+  /* position */
+  display: flex; justify-content: center; text-align: center;
+  padding-top: 400px;
+  height: 600px;
+  /* Color: light orange */
+  color: #e99037;
+  background-color: #fdf7e5;
+}
 
 /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */
 
-/* Cursor effect */ 
+/* Cursor */ 
 .Skeleton-cursor {width: 20px; height: 20px; border: 1px solid white;
   border-radius: 50%;
   position: absolute;
@@ -83,29 +128,7 @@ body {
   left: -8px;
 }
 
-/* Typing effect */
-.type-effect {
-  overflow: hidden; /* Hide contents before animation finishes */
-  border-right: .15em solid black; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; 
-  animation: 
-    typing 3.5s steps(20, end),
-    blink-caret 0.6s step-end;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100%}
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: black; }
-}
-
-/* Wave effect */
+/* Wave */
 section .wave {
   position: absolute;
   width: 100%;
@@ -125,7 +148,7 @@ section .wave {
   }
 }
 
-/* Fire effect */ 
+/* Fire */ 
 .wrapper {height: 800px; display: flex; 
   align-items: center;
   justify-content: center;
@@ -170,7 +193,7 @@ section .wave {
 .flame {
   bottom: 0;
   position: absolute;
-  border-radius: 50% 0% 50% 0%;
+  border-radius: 50% 10% 50% 50%;
   transform: rotate(-45deg);
 }
 
