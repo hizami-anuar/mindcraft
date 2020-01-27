@@ -16,12 +16,11 @@ class ObjectWindow extends Component {
     // document.getElementById("ObjectWindow-notes").readOnly=false;
   }
 
-  saveChanges = (type) => {
-    this.setState({ notesEdit: false });
-    const newValue = document.getElementById(`ObjectWindow-${type}`).value;
+  saveChanges = () => {
+    const newValue = document.getElementById("ObjectWindow-notes").value;
     console.log("New Notes");
-    console.log(newNotes);
-    this.props.editObjectValue(type, newValue);
+    this.props.editObjectValue('notes', newValue);
+    this.setState({ notesEdit: false });
     // document.getElementById("ObjectWindow-notes").readOnly=true;
   }
 

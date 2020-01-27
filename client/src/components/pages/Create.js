@@ -3,7 +3,9 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
 import Object from "../modules/Object.js";
 import ObjectWindow from "../modules/ObjectWindow.js";
+import SortableComponent from "../modules/SortableComponent.js";
 import Sortable from 'sortablejs';
+import arrayMove from 'array-move';
 
 import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
@@ -19,6 +21,7 @@ class Create extends Component {
       objects: [],
       inputText: "",
       currentObject: undefined,
+      mode: 'image',
     };
 
     this.keyCounter = 0;
@@ -224,42 +227,20 @@ class Create extends Component {
     this.setState({ objects: newObjects });
   }
 
-  sortable = () => {
-  var el = document.getElementById('items');
-  // var sortable = Sortable.create(el);
-  var sortable = new Sortable(el, {
-    onEnd: function (event) {
-      console.log(event.item);
-      console.log(event.oldIndex);
-      console.log(event.newIndex);
-      console.log(this.state.objects);
-    }
-  });
+  reorderObjects = (oldIndex, newIndex) => {
+    this.setState({
+      objects: arrayMove(this.state.objects, oldIndex, newIndex),
+    });
+    console.log(this.state.objects);
   }
-
-  array_move(arr, old_index, new_index) {
-    while (old_index < 0) {
-        old_index += arr.length;
-    }
-    while (new_index < 0) {
-        new_index += arr.length;
-    }
-    if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing purposes
-};
 
   render() {
     return (
       <>
       <div id="canvas" className="Create-container">
-        {this.state.objects.map(item => (
+        {this.state.objects.map((item, index) => (
           <Object 
+            index = {index}
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
             imageURL = {item.image}
@@ -281,6 +262,10 @@ class Create extends Component {
         <button onClick={this.load}>Load Layout</button>
         <button onClick={this.findKey}>Debug</button>
       </div>
+      <SortableComponent
+        objects = {this.state.objects}
+        reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
+      />
       {this.state.currentObject ? (
       <ObjectWindow
         currentObject = {this.state.currentObject}
@@ -288,12 +273,6 @@ class Create extends Component {
         editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
       />
       ) : ( null )}
-      <ul id="items">
-          {[1, 2, 3, 4, 5, 6, 7].map(
-          item => (<li key={`list-${item}`}>List Item {item}</li>
-          ) )}
-      </ul>
-      <button id="button" onClick={this.sortable}>Sortable</button>
       </>
     );
   }

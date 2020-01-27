@@ -11,14 +11,25 @@ class Object extends Component {
   render() {
     return (
       <>
+        {this.props.mode ==='number' ? (
+        <div
+          id={this.props.objectId}
+          className='draggable draggableNumber'
+          src={this.props.imageURL}
+          style={{left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
+          onClick={this.props.setCurrentObject}
+        >
+          {this.props.index}
+        </div>
+        ) : (
         <img
           id={this.props.objectId}
-          className='draggable'
+          className='draggable draggableImage'
           src={this.props.imageURL}
-          style={{backgroundColor: 'black', left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
+          style={{left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
           onClick={this.props.setCurrentObject}
-        ></img>
-        <button onClick={this.props.deleteObject}>X</button>
+        />
+        )}
       </>
     );
   }
