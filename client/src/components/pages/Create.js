@@ -21,7 +21,7 @@ class Create extends Component {
       objects: [],
       inputText: "",
       currentObject: undefined,
-      mode: 'number',
+      mode: 'image',
     };
 
     this.keyCounter = 0;
@@ -138,21 +138,6 @@ class Create extends Component {
     });
   };
 
-  savePositions = () => {
-    for(let i = 0; i < this.state.objects.length; i++) {
-      let object = this.state.objects[i];
-      let child = document.getElementById(`num-${object.key}`);
-      let rect = child.getBoundingClientRect();
-      let parent = document.getElementById("canvas");
-      let rect0 = parent.getBoundingClientRect();
-      let x = rect.left, y=rect.top;
-      let x0 = rect0.left, y0=rect0.top;
-      let dx = x-x0, dy=y-y0;
-      object['x'] = dx-1;
-      object['y'] = dy-1;
-    }
-  }
-
   save = () => {
     if(this.props.userId != undefined) {
     for(let i = 0; i < this.state.objects.length; i++) {
@@ -164,8 +149,8 @@ class Create extends Component {
       let x = rect.left, y=rect.top;
       let x0 = rect0.left, y0=rect0.top;
       let dx = x-x0, dy=y-y0;
-      object['x'] = dx-1;
-      object['y'] = dy-1;
+      object['x'] = dx;
+      object['y'] = dy;
     }
     this.saveRoom();
     }
@@ -245,31 +230,16 @@ class Create extends Component {
     console.log(this.state.objects);
   }
 
-  setModeNumber = () => {
-    this.savePositions();
-    console.log(this.state.objects);
-    this.setState({mode: 'number'});
-  }
-
-  setModeImage = () => {
-    this.savePositions();
-    console.log(this.state.objects);
-    this.setState({mode: 'image'});
-  }
-
-
   render() {
     return (
       <>
-      <div className="Create-container">
-      <div id="canvas" className="Create-canvas">
+      <div id="canvas" className="Create-container">
         {this.state.objects.map((item, index) => (
           <Object 
             index = {index}
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
             imageURL = {item.image}
-            mode = {this.state.mode}
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
             deleteObject={() => this.deleteObject(item.key)}
@@ -278,14 +248,10 @@ class Create extends Component {
         ))}
       </div>
       <div className='Create-log'>
-        <div className='Create-logHeader'>
-          Log
-        </div>
         <SortableComponent
           objects = {this.state.objects}
           reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
         />
-      </div>
       </div>
       <div className="uploadBar">
         <input
@@ -296,8 +262,7 @@ class Create extends Component {
         <button onClick={this.createObject}>Upload Image URL</button>
         <button onClick={this.save}>Save Layout</button>
         <button onClick={this.load}>Load Layout</button>
-        <button onClick={this.setModeImage}>Images</button>
-        <button onClick={this.setModeNumber}>Numbers</button>
+        <button onClick={this.findKey}>Debug</button>
       </div>
       {this.state.currentObject ? (
       <ObjectWindow
