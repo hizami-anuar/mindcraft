@@ -1,4 +1,6 @@
 .SortableComponent-listItem {
   height: 100px;
   width: 100px;
+
+  position: relative;
 }
