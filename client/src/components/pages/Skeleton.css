@@ -1,7 +1,7 @@
 body {
   /* Set default background color: Comfort White */
   background-color: #fcf9f4;
-  height: 100vh;
+  overflow-x:hidden;
   cursor: url(../../../src/../../images/mouse-cursor.svg), auto;
 }
 
@@ -137,6 +137,36 @@ img {
     padding-left: 50px;
     letter-spacing: 1.5px; 
   }
+    .Skeleton-chat {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .Skeleton-chatbox {
+      margin-top: 10px;
+      margin-left: 400px;
+      width: 300px;
+      border-radius: 15px;
+      background: #147efb;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+  
+    .Skeleton-sb1:before {
+      content: "";
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      border-left: 15px solid #147efb;
+      border-right: 15px solid transparent;
+      border-top: 15px solid #147efb;
+      border-bottom: 15px solid transparent;
+      right: -16px;
+      top: 0px;
+    }
 
 p {
   background:	#fad6a5; 
@@ -150,19 +180,6 @@ p {
   align-items: top;
 }
 
-.break{
-  flex-basis: 100%;
-  width: 0px; 
-  height: 0px; 
-  overflow: hidden;
-}
-
-  #pointer{
-    border:solid 10px transparent;
-    border-right-color:#fad6a5;
-    position:absolute;
-    margin:-85px 0 0 -20px;
-  }
 /* 5 */
 .Skeleton-footer {
   /* position */
