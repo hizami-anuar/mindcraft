@@ -2,7 +2,7 @@ body {
   /* Set default background color: Comfort White */
   background-color: #fcf9f4;
   height: 100vh;
-  cursor: url(../../../src/../../images/mouse-cursor.svg), pointer;
+  cursor: url(../../../src/../../images/mouse-cursor.svg), auto;
 }
 
 img {

@@ -296,8 +296,8 @@ class Create extends Component {
         <button onClick={this.createObject}>Upload Image URL</button>
         <button onClick={this.save}>Save Layout</button>
         <button onClick={this.load}>Load Layout</button>
-        <button onClick={this.setModeImage}>Images</button>
-        <button onClick={this.setModeNumber}>Numbers</button>
+        <button onClick={this.setModeImage}>Image mode</button>
+        <button onClick={this.setModeNumber}>Number mode</button>
       </div>
       {this.state.currentObject ? (
       <ObjectWindow
