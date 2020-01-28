@@ -1,15 +1,33 @@
 .ObjectWindow-container {
-  background-color: red;
-  height: 500px;
-  width: 500px;
+  background-color: yellow;
+  min-height: 100%;
+  width: 100%;
 
-  margin: 10%;
+  /* overflow-y: auto; **/
   position: relative;
 }
 
-.ObjectWindow-image {
+.ObjectWindow-imageDisplay {
   height: 100px;
   width: 100px;
+}
+
+.ObjectWindow-notesInput {
+  width: 100%;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  resize: none;
+
+  height: 100px;
+  width: 100%;
+}
+
+.ObjectWindow-notesDisplay {
+  word-wrap: break-word;
+
+  white-space: pre;
+  height: auto;
+  width: 100%;
 }
 
 #ObjectWindow-notesEditBar {
