@@ -123,7 +123,7 @@ class Skeleton extends Component {
               <div className="Skeleton-img"><img src={pink}/></div>
               <div className='Skeleton-text-block'>
                 <i>Interact with > 30 objects to see the associated memory</i>
-                <img className='Skeleton-image-block' src='https://cdn3.iconfinder.com/data/icons/wedding-and-anniversary-flat-1/60/house__home__apartment__building_-512.png'/>
+                <img className='Skeleton-image-block  Skeleton-transform' src='https://freesvg.org/img/Simple-Banana.png'/>
               </div>
             </div>
 
@@ -139,7 +139,7 @@ class Skeleton extends Component {
             <div className="Skeleton-img"><img src={blue}/></div>
               <div className='Skeleton-text-block'>
                 <i>Discover public edifices @ Town Hall</i>
-                <img className='Skeleton-image-block' src='https://cdn3.iconfinder.com/data/icons/wedding-and-anniversary-flat-1/60/house__home__apartment__building_-512.png'/>
+                <img className='Skeleton-image-block' src='https://www.svgrepo.com/show/88690/building.svg'/>
               </div>
             </div>
 
@@ -147,19 +147,16 @@ class Skeleton extends Component {
 
         {/* Example section */}
         <section className='Skeleton-example'>
-          <div className='Skeleton-title'>
+          <div className='Skeleton-example-title'>
             Try it.
           </div>
-          <p></p>
-          <div id='pointer'></div>
-          <p></p>
-          <div id='pointer'></div>
+          <div className='Skeleton-rotate'></div>
         </section>
 
         {/* Footer */}
         <section id='footer' className='Skeleton-footer'>
           <div className='Skeleton-footer-title'>
-            Questions?
+            QUESTIONS?
           </div>
           <div className='Skeleton-text'> ianl@mit.edu <sup> . </sup> hizami@mit.edu <sup> . </sup>  umangba@mit.edu </div>
         </section>

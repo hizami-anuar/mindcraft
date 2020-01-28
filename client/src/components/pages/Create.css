@@ -1,18 +1,18 @@
-/* place memory room here */ 
+/* place memory room here - debug */ 
 .Create-container {
   height: 550px;
   margin-top: 2.5%;
   margin-left: 3.5%;
   margin-right: 3.5%;
-  border: 1px solid green;
-
   position: relative;
 }
 
 .Create-canvas {
+  background: url(../../../dist/default_backgrounds/kitchen4.png) no-repeat;
+  background-size: cover;
   display: inline-block;
   width: 75%;
-  top: 0;
+  top: 50px;
   bottom: 0;
   left: 0;
   border: 1px solid blue;
@@ -55,10 +55,12 @@
   color: white;
   border-radius: 50%;
 
+  /* size of number */ 
   font-size: 20px;
-  font-family: sans-serif;
   text-align: center;
+  line-height: 50px;
 
+  /* size of number node */
   height: 50px;
   width: 50px;
 }
@@ -93,8 +95,31 @@
   position: relative;
 }
 
-#button {
-  margin: 10px;
-  top: 100px;
+button {
+  /* positioning of button */
+  background-color: orange;
   position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  /* shape of button */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px #999;
+
+  /*  text inside button */
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {background-color: darkorange};
+button:active {
+  background-color: darkorange;
+  box-shadow: 0 5px #999;
+  transform: translateY(4px);
 }
