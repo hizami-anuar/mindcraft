@@ -7,7 +7,8 @@ import SortableComponent from "../modules/SortableComponent.js";
 import Sortable from 'sortablejs';
 import arrayMove from 'array-move';
 
-import importMovement from "../modules/Movement.js";
+import BackgroundItem from '../modules/BackgroundItem.js'
+
 import "../../utilities.css";
 import "./Create.css";
 import { redirectTo } from "@reach/router";
@@ -205,7 +206,14 @@ class Create extends Component {
   createObject = () => {
     const objects = this.state.objects;
     const inputText = this.state.inputText;
-    const newObjects = objects.concat([{ image: inputText, key: this.keyCounter, notes: "", x: 200, y: 200}]);
+    const object = { 
+      image: inputText, 
+      key: this.keyCounter, 
+      name: "Edit this name",
+      notes: "Edit these notes", 
+      x: 200, 
+      y: 200}
+    const newObjects = objects.concat([object]);
     this.keyCounter++;
 
     this.setState({
@@ -325,6 +333,16 @@ class Create extends Component {
         <button onClick={this.setModeNumber}>Number mode</button>
         <button onClick={this.setModeLog}>Log</button>
         <button onClick={this.setModeObject}>ObjectWindow</button>
+      </div>
+      <div className="BackgroundSelect-container">
+        Select a background.
+        <div className="BackgroundSelect-gallery">
+          {[0, 1, 2, 3, 4, 5, 6].map((index) => (
+            <BackgroundItem
+              image = {`./backgrounds/background${index}.jpeg`}
+            />
+          ))}
+        </div>
       </div>
       </>
     );
