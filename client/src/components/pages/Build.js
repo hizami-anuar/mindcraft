@@ -31,7 +31,9 @@ class Build extends Component {
         {
         this.state.panel === 'create' ? (
         <Create
+          userId={this.props.userId}
           background = {this.state.background}
+          dragMoveListener={this.props.dragMoveListener}
         />
         ) : (
         <BackgroundSelect
