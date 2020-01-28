@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
+import Build from "./pages/Build.js";
 import Create from "./pages/Create.js";
 import interact from "interactjs";
 
@@ -82,7 +83,7 @@ class App extends Component {
             handleLogout={this.handleLogout}
             userId={this.state.userId}
           />
-          <Create 
+          <Build
             path="/create"
             userId={this.state.userId}
             dragMoveListener={this.dragMoveListener}

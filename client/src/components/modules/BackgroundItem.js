@@ -6,14 +6,18 @@ class BackgroundItem extends Component {
   constructor(props){
     super(props);
     this.state = {
-      image: 'https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+
     }
+  }
+
+  setBackground = () => {
+    this.props.setBackground(this.props.image);
   }
 
   render() {
     return(
       <>
-        <div className='BackgroundItem-holder'>
+        <div className='BackgroundItem-holder' onClick={this.setBackground}>
           <img className='BackgroundItem-image' src={this.props.image} />
         </div>
       </>
