@@ -14,7 +14,7 @@ class Share extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        objects = [],
+        listObjects = [[]],
         inputText: "",
     };
   }
@@ -36,13 +36,35 @@ class Share extends Component {
         let loadedData = data.slice(-1)[0];
         if (loadedData.numbers != undefined) {
             this.setState({
-                objects: loadedData.numbers
+                listObjects: loadedData.numbers
             });
             var newImg = new Image;
             newImg.onload = function()
         };
         
     });
+  }
+                                                            
+  loadUserContent = () => {
+    console.log("loading");
+    if (this.props.userId != undefined) {
+      get("/api/room", {creator_id: this.props.userId}).then((data) => {
+        let loadedData = [];
+        if (data.length >= 3){
+          loadedData = data.slice(-3)[0];
+        } else {
+          loadedData = data;
+        };
+        for (i = 0, i < loadedData.length, i++){
+          if (loadedData[i].numbers != undefined){
+            this.setState({
+              listObjects: listObjects.concat(loadedData[i].numbers)
+            });
+            console.log(loadedData[i])
+          };
+        };
+      });
+    };
   }
 
   render() {
