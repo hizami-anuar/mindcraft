@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
+import arrayMove from 'array-move';
+
 import Object from "../modules/Object.js";
 import ObjectWindow from "../modules/ObjectWindow.js";
 import SortableComponent from "../modules/SortableComponent.js";
-import Sortable from 'sortablejs';
-import arrayMove from 'array-move';
+import BackgroundSelect from '../modules/BackgroundSelect.js'
 
-import importMovement from "../modules/Movement.js";
 import "../../utilities.css";
 import "./Create.css";
 import { redirectTo } from "@reach/router";
@@ -29,6 +29,8 @@ class Create extends Component {
   }
 
   componentDidMount() {
+    this.setBackground();
+
     window.dragMoveListener = this.props.dragMoveListener
 
     interact('.draggable')
@@ -205,7 +207,14 @@ class Create extends Component {
   createObject = () => {
     const objects = this.state.objects;
     const inputText = this.state.inputText;
-    const newObjects = objects.concat([{ image: inputText, key: this.keyCounter, notes: "", x: 200, y: 200}]);
+    const object = { 
+      image: inputText, 
+      key: this.keyCounter, 
+      name: "Edit this name",
+      notes: "Edit these notes", 
+      x: 200, 
+      y: 200}
+    const newObjects = objects.concat([object]);
     this.keyCounter++;
 
     this.setState({
@@ -270,6 +279,9 @@ class Create extends Component {
     this.setState({logMode: 'log'});
   }
 
+  setBackground = () => {
+    document.getElementById('canvas').style.backgroundImage = 'url(' + this.props.background + ')';
+  }
 
   render() {
     return (

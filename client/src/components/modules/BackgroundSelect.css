@@ -1,0 +1,17 @@
+.BackgroundSelect-container {
+  height: 550px;
+  margin-top: 2.5%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  position: relative;
+  border: 1px solid black;
+}
+
+.BackgroundSelect-gallery {
+  height: 100%;
+  width: 100%;
+
+  overflow-y: auto;
+
+  position: relative;
+}

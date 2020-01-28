@@ -8,18 +8,18 @@ class ObjectWindow extends Component {
     this.state = {
       notesEdit: false,
       imageEdit: false,
+      nameEdit: false,
     }
   }
 
-  enableEdit = () => {
-    this.setState({ notesEdit: true })
+  enableNameEdit = () => {
+    this.setState({ nameEdit: true })
   }
 
-  saveChanges = () => {
-    const newValue = document.getElementById("ObjectWindow-notesInput").value;
-    console.log("New Notes");
-    this.props.editObjectValue('notes', newValue);
-    this.setState({ notesEdit: false });
+  saveNameChanges = (value) => {
+    const newValue = document.getElementById('ObjectWindow-nameInput').value;
+    this.props.editObjectValue('name', newValue);
+    this.setState({ nameEdit: false });
   }
 
   enableImageEdit = () => {
@@ -27,11 +27,19 @@ class ObjectWindow extends Component {
   }
 
   saveImageChanges = () => {
-    this.setState({ imageEdit: false });
     const newImage = document.getElementById("ObjectWindow-imageInput").value;
-    console.log("New Image");
-    console.log(Image);
     this.props.editObjectValue("image", newImage);
+    this.setState({ imageEdit: false });
+  }
+
+  enableNotesEdit = () => {
+    this.setState({ notesEdit: true })
+  }
+
+  saveNotesChanges = (value) => {
+    const newValue = document.getElementById('ObjectWindow-notesInput').value;
+    this.props.editObjectValue('notes', newValue);
+    this.setState({ notesEdit: false });
   }
 
   componentDidMount() {
@@ -42,31 +50,46 @@ class ObjectWindow extends Component {
       <>
       {this.props.currentObject ? (
       <div className="ObjectWindow-container">
+        
+        {this.state.nameEdit ? (
+          <div>
+            <textarea id="ObjectWindow-nameInput" defaultValue={this.props.currentObject.name}/>
+            <button onClick={this.saveNameChanges}>Save Changes</button>
+          </div>
+        ) : (
+          <div>
+            <div>
+              <div className="ObjectWindow-nameDisplay">{this.props.currentObject.name}</div>
+              <button onClick={this.enableNameEdit}>Edit Name</button>
+          </div>
+          </div>
+        )}
+        
         {this.state.imageEdit ? (
           <div>
-            <textarea id="ObjectWindow-imageInput" defaultValue={this.props.currentObject.notes}/>
+            <textarea id="ObjectWindow-imageInput" defaultValue={this.props.currentObject.image}/>
             <button onClick={this.saveImageChanges}>Save Changes</button>
           </div>
         ) : (
           <div>
             <img className="ObjectWindow-imageDisplay" src={this.props.currentObject.image}/>
-            <button onClick={this.enableImageEdit}>Edit</button>
+            <button onClick={this.enableImageEdit}>Edit Image</button>
           </div>
         )}
 
         {this.state.notesEdit ? (
           <div>
             <textarea id="ObjectWindow-notesInput" className="ObjectWindow-notesInput" defaultValue={this.props.currentObject.notes}/>
-            <button onClick={this.saveChanges}>Save Changes</button>
+            <button onClick={this.saveNotesChanges}>Save Changes</button>
           </div>
         ) : (
           <div>
             <div className="ObjectWindow-notesDisplay">{this.props.currentObject.notes}</div>
-            <button onClick={this.enableEdit}>Edit</button>
+            <button onClick={this.enableNotesEdit}>Edit Notes</button>
           </div>
         )}
         
-        <button onClick={this.props.deleteObject}>Delete</button>
+        <button onClick={this.props.deleteObject}>Delete Object</button>
       </div>
       ) : ( null )}
       </>
