@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
 import Build from "./pages/Build.js";
 import Create from "./pages/Create.js";
+import Share from "./pages/Share.js";
 import interact from "interactjs";
 
 import "../utilities.css";
@@ -88,8 +89,9 @@ class App extends Component {
             userId={this.state.userId}
             dragMoveListener={this.dragMoveListener}
           />
-          <Construction
-            path="/construction"
+          <Share
+            path="/share"
+            userId={this.state.userId}
           />
           <NotFound default />
         </Router>
