@@ -22,6 +22,7 @@ class Create extends Component {
       inputText: "",
       currentObject: undefined,
       mode: 'number',
+      logMode: 'log',
     };
 
     this.keyCounter = 0;
@@ -257,6 +258,18 @@ class Create extends Component {
     this.setState({mode: 'image'});
   }
 
+  setModeObject = () => {
+    // this.savePositions();
+    console.log(this.state.objects);
+    this.setState({logMode: 'object'});
+  }
+
+  setModeLog = () => {
+    // this.savePositions();
+    console.log(this.state.objects);
+    this.setState({logMode: 'log'});
+  }
+
 
   render() {
     return (
@@ -278,13 +291,25 @@ class Create extends Component {
         ))}
       </div>
       <div className='Create-log'>
-        <div className='Create-logHeader'>
-          Log
-        </div>
-        <SortableComponent
+        {this.state.logMode === 'log' ? (
+          <div>
+          <div className='Create-logHeader'>
+            Log
+          </div>
+          <SortableComponent
           objects = {this.state.objects}
           reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
-        />
+          />
+          </div>
+        ) : (
+          this.state.currentObject ? (
+            <ObjectWindow
+              currentObject = {this.state.currentObject}
+              deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
+              editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
+            />
+          ) : ( <div>No object selected.</div> )
+        )}
       </div>
       </div>
       <div className="uploadBar">
@@ -298,14 +323,9 @@ class Create extends Component {
         <button onClick={this.load}>Load Layout</button>
         <button onClick={this.setModeImage}>Image mode</button>
         <button onClick={this.setModeNumber}>Number mode</button>
+        <button onClick={this.setModeLog}>Log</button>
+        <button onClick={this.setModeObject}>ObjectWindow</button>
       </div>
-      {this.state.currentObject ? (
-      <ObjectWindow
-        currentObject = {this.state.currentObject}
-        deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
-        editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
-      />
-      ) : ( null )}
       </>
     );
   }
