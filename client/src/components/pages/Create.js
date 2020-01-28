@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import interact from 'interactjs'
+import arrayMove from 'array-move';
+
 import Object from "../modules/Object.js";
 import ObjectWindow from "../modules/ObjectWindow.js";
 import SortableComponent from "../modules/SortableComponent.js";
-import Sortable from 'sortablejs';
-import arrayMove from 'array-move';
-
-import BackgroundItem from '../modules/BackgroundItem.js'
+import BackgroundSelect from '../modules/BackgroundSelect.js'
 
 import "../../utilities.css";
 import "./Create.css";
@@ -30,6 +29,8 @@ class Create extends Component {
   }
 
   componentDidMount() {
+    this.setBackground();
+
     window.dragMoveListener = this.props.dragMoveListener
 
     interact('.draggable')
@@ -278,6 +279,9 @@ class Create extends Component {
     this.setState({logMode: 'log'});
   }
 
+  setBackground = () => {
+    document.getElementById('canvas').style.backgroundImage = 'url(' + this.props.background + ')';
+  }
 
   render() {
     return (
@@ -333,16 +337,6 @@ class Create extends Component {
         <button onClick={this.setModeNumber}>Number mode</button>
         <button onClick={this.setModeLog}>Log</button>
         <button onClick={this.setModeObject}>ObjectWindow</button>
-      </div>
-      <div className="BackgroundSelect-container">
-        Select a background.
-        <div className="BackgroundSelect-gallery">
-          {[0, 1, 2, 3, 4, 5, 6].map((index) => (
-            <BackgroundItem
-              image = {`./backgrounds/background${index}.jpeg`}
-            />
-          ))}
-        </div>
       </div>
       </>
     );

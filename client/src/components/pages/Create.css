@@ -9,7 +9,8 @@
 
 .Create-canvas {
   /* background: url(../../../dist/default_backgrounds/kitchen4.png) no-repeat; */
-  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   display: inline-block;
   width: 75%;
   top: 50px;
@@ -40,24 +41,6 @@
   position: absolute;
   top: 120px;
   left: 50px;
-}
-
-.BackgroundSelect-container {
-  height: 550px;
-  margin-top: 2.5%;
-  margin-left: 3.5%;
-  margin-right: 3.5%;
-  position: relative;
-  border: 1px solid black;
-}
-
-.BackgroundSelect-gallery {
-  height: 100%;
-  width: 100%;
-
-  overflow-y: auto;
-
-  position: relative;
 }
 
 .resize-drag, .draggable {
