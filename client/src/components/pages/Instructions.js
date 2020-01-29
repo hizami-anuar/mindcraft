@@ -15,15 +15,9 @@ class Instructions extends Component{
         <h1>Instructions</h1>
         <div className='Instructions-addRoom'>
           <h2>To add a room to your house:</h2>
-          <ol>
-            <li><div>Click on house map</div></li>
-            <li><div>Choose <q>Add new room </q></div></li>
-            <li><div>Click on the new room added </div></li>
-            <li><div>Click on Background Select </div></li>
-            <li><div>Select the type of room you want to create (Bedroom, Kitchen, Office, etc.) </div></li>
-            <li><div>Select an option from the default backgrounds for your room </div></li>
-            <li><div>Click on <q>Create</q> </div></li>
-          </ol>
+          <p>
+             Click on house map. Then, choose <q>Add new room</q>. Next, click on the new room you added. Click on Background Select. Then select the type of room you want to create (Bedroom, Kitchen, Office, etc.). Select an option from the default backgrounds for your room. Then, click on <q>Create</q>.
+          </p>
         </div>
         <div className='Instructions-changeBackground'>
           <h2>To change the background of an existing room:</h2>
