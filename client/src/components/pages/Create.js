@@ -18,6 +18,11 @@ class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      room: {
+        title: '',
+        background: this.props.background,
+        objects: [],
+      },
       objects: [],
       inputText: "",
       currentObject: undefined,
@@ -30,97 +35,8 @@ class Create extends Component {
 
   componentDidMount() {
     this.setBackground();
-
-    window.dragMoveListener = this.props.dragMoveListener
-
-    interact('.draggable')
-      .draggable({
-        inertia: false,
-        // keep the element within the area of its parent
-        restrict: {
-          restriction: "parent",
-          endOnly: true,
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-        },
-        // enable autoScroll
-        autoScroll: true,
-  
-        onstart: function (event) {
-          //console.log('onstart');
-        },
-        // call this function on every dragmove event
-        onmove: window.dragMoveListener,
-        // call this function on every dragend event
-        onend: function (event) {
-          //console.log('onend');
-          let rect = event.target.getBoundingClientRect();
-          let parent = document.getElementById("canvas");
-          let rect0 = parent.getBoundingClientRect();
-          let x = rect.left, y=rect.top;
-          let x0 = rect0.left, y0=rect0.top;
-          let dx = x-x0, dy=y-y0;
-          console.log(event.target.id);
-        }
-      });
-  
-      interact('.resize-drag')
-      .resizable({
-        // resize from all edges and corners
-        edges: { left: true, right: true, bottom: true, top: true },
-    
-        modifiers: [
-          // keep the edges inside the parent
-          interact.modifiers.restrictEdges({
-            outer: 'parent'
-          }),
-    
-          // minimum size
-          interact.modifiers.restrictSize({
-            min: { width: 50, height: 50 }
-          })
-        ],
-    
-        inertia: false
-      })
-      .draggable({
-        onmove: window.dragMoveListener,
-        inertia: false,
-        modifiers: [
-          interact.modifiers.restrictRect({
-            restriction: 'parent',
-            endOnly: true
-          })
-        ],
-        onend: function(event) {
-        let rect = event.target.getBoundingClientRect();
-        let parent = document.getElementById("canvas");
-        let rect0 = parent.getBoundingClientRect();
-        let x = rect.left, y=rect.top;
-        let x0 = rect0.left, y0=rect0.top;
-        let dx = x-x0, dy=y-y0;
-        }
-      })
-      .on('resizemove', function (event) {
-        var target = event.target
-        var x = (parseFloat(target.getAttribute('data-x')) || 0)
-        var y = (parseFloat(target.getAttribute('data-y')) || 0)
-    
-        // update the element's style
-        target.style.width = event.rect.width + 'px'
-        target.style.height = event.rect.height + 'px'
-    
-        // translate when resizing from top or left edges
-        x += event.deltaRect.left
-        y += event.deltaRect.top
-    
-        target.style.webkitTransform = target.style.transform =
-            'translate(' + x + 'px,' + y + 'px)'
-    
-        target.setAttribute('data-x', x)
-        target.setAttribute('data-y', y)
-        // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
-      })
-  };
+    window.dragMoveListener = this.props.dragMoveListener;
+  }
 
   handleInputChange = event => {
     const value = event.target.value;
@@ -132,7 +48,8 @@ class Create extends Component {
   saveRoom = () => {
     const body = {
       name: "name",
-      objects: this.state.objects,
+      room: [this.state.room],
+      objects: this.state.room.objects,
       keyCounter: this.state.keyCounter,
       url: "https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1498042211.jpg",
     }
@@ -142,8 +59,8 @@ class Create extends Component {
   };
 
   savePositions = () => {
-    for(let i = 0; i < this.state.objects.length; i++) {
-      let object = this.state.objects[i];
+    for(let i = 0; i < this.state.room.objects.length; i++) {
+      let object = this.state.room.objects[i];
       let child = document.getElementById(`num-${object.key}`);
       let rect = child.getBoundingClientRect();
       let parent = document.getElementById("canvas");
@@ -158,8 +75,8 @@ class Create extends Component {
 
   save = () => {
     if(this.props.userId != undefined) {
-    for(let i = 0; i < this.state.objects.length; i++) {
-      let object = this.state.objects[i];
+    for(let i = 0; i < this.state.room.objects.length; i++) {
+      let object = this.state.room.objects[i];
       let child = document.getElementById(`num-${object.key}`);
       let rect = child.getBoundingClientRect();
       let parent = document.getElementById("canvas");
@@ -177,7 +94,11 @@ class Create extends Component {
   load = () => {
     console.log("loading");
     this.setState({
-      objects: []
+      room: {
+        title: '',
+        background: this.props.background,
+        objects: [],
+      },
     });
     console.log(this.props.userId);
     if(this.props.userId != undefined) {
@@ -185,27 +106,33 @@ class Create extends Component {
       get("/api/room", {creator_id: this.props.userId}).then((data) => {
         //console.log("DATA");
         let loadedData = data.slice(-1)[0];
-        if (loadedData.numbers != undefined) {
-          this.setState({
-            objects: loadedData.numbers
-          });
-        console.log(loadedData);
+        //if (loadedData.numbers != undefined) {
+        //  this.setState({
+        //    objects: loadedData.numbers
+        //  });
+        //};
+        let loadedRoom = loadedData.room;
+        if (loadedRoom != undefined) {
+          this.setState({room: loadedRoom[0]});
         };
       });
     };
   }
 
   findKey = (key) => {
-    for (let i=0; i<this.state.objects.length; i++) {
-      if (this.state.objects[i].key === key) {
-        const object = this.state.objects[i];
+    for (let i=0; i<this.state.room.objects.length; i++) {
+      if (this.state.room.objects[i].key === key) {
+        const object = this.state.room.objects[i];
         return i;
       }
     }
   }
 
   createObject = () => {
-    const objects = this.state.objects;
+    let room = this.state.room;
+    console.log(room);
+    const objects = room.objects;
+    console.log(objects);
     const inputText = this.state.inputText;
     const object = { 
       image: inputText, 
@@ -215,24 +142,28 @@ class Create extends Component {
       x: 200, 
       y: 200}
     const newObjects = objects.concat([object]);
+    room.objects = newObjects;
     this.keyCounter++;
 
     this.setState({
-      objects: newObjects,
+      room: room,
       inputText: ""
     });
+    console.log(this.state.room);
   };
 
   deleteObject = (key) => {
-    const { objects } = this.state;
+    let room = this.state.room;
+    const objects = room.objects;
     const newObjects = objects.filter(item => item.key !== key);
-    this.setState({ objects: newObjects });
+    room.objects = newObjects;
+    this.setState({ room: room });
     this.setState({ currentObject: undefined});
   };
 
   setCurrentObject = (key) => {
     const index = this.findKey(key);
-    const object = this.state.objects[index];
+    const object = this.state.room.objects[index];
     this.setState({ currentObject: object });
     console.log("new object set");
     console.log(this.state.currentObject);
@@ -240,8 +171,8 @@ class Create extends Component {
 
   editObjectValue = (key, property, value) => {
     const index = this.findKey(key);
-    const object = this.state.objects[index];
-    let newObjects = this.state.objects;
+    const object = this.state.room.objects[index];
+    let newObjects = this.state.room.objects;
     if (property === "name") { newObjects[index].name = value; }
     if (property === "image") { newObjects[index].image = value; }
     if (property === "notes") { newObjects[index].notes = value; }
@@ -250,37 +181,37 @@ class Create extends Component {
 
   reorderObjects = (oldIndex, newIndex) => {
     this.setState({
-      objects: arrayMove(this.state.objects, oldIndex, newIndex),
+      objects: arrayMove(this.state.room.objects, oldIndex, newIndex),
     });
-    console.log(this.state.objects);
+    console.log(this.state.room.objects);
   }
 
   setModeNumber = () => {
     this.savePositions();
-    console.log(this.state.objects);
+    console.log(this.state.room.objects);
     this.setState({mode: 'number'});
   }
 
   setModeImage = () => {
     this.savePositions();
-    console.log(this.state.objects);
+    console.log(this.state.room.objects);
     this.setState({mode: 'image'});
   }
 
   setModeObject = () => {
     // this.savePositions();
-    console.log(this.state.objects);
+    console.log(this.state.room.objects);
     this.setState({logMode: 'object'});
   }
 
   setModeLog = () => {
     // this.savePositions();
-    console.log(this.state.objects);
+    console.log(this.state.room.objects);
     this.setState({logMode: 'log'});
   }
 
   setBackground = () => {
-    document.getElementById('canvas').style.backgroundImage = 'url(' + this.props.background + ')';
+    document.getElementById('canvas').style.backgroundImage = 'url(' + this.state.room.background + ')';
   }
 
   render() {
@@ -288,7 +219,7 @@ class Create extends Component {
       <>
       <div className="Create-container">
       <div id="canvas" className="Create-canvas">
-        {this.state.objects.map((item, index) => (
+        {this.state.room.objects.map((item, index) => (
           <Object 
             index = {index}
             key = {`image-${item.key}`}
@@ -309,7 +240,7 @@ class Create extends Component {
             Log
           </div>
           <SortableComponent
-          objects = {this.state.objects}
+          objects = {this.state.room.objects}
           reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
           />
           </div>

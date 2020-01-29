@@ -7,7 +7,7 @@ class Build extends Component {
   constructor(props){
     super(props);
     this.state = {
-      background: './backgrounds/bathroom/Bathroom1.jpg',
+      background: '',
       panel: 'create',
     }
   }

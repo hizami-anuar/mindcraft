@@ -69,6 +69,7 @@ router.post("/room", (req, res) => {
 
   const newRoom = new Room({
     name: req.body.name,
+    room: req.body.room,
     numbers: req.body.objects,
     keyCounter: req.body.keyCounter,
     background: req.body.url,

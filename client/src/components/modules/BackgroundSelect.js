@@ -8,7 +8,14 @@ class BackgroundSelect extends Component {
   constructor(props){
     super(props);
     this.state = {
-      roomType: 'Bathroom' // Bathroom, Bedroom, Kitchen, LivingRoom, Office
+      roomType: 'bathroom', // Bathroom, Bedroom, Kitchen, LivingRoom, Office
+      roomDict: {
+        'bathroom': 7,
+        'bedroom': 10,
+        'kitchen': 8,
+        'livingroom': 8,
+        'office': 6,
+      },
     }
   }
 
@@ -22,16 +29,16 @@ class BackgroundSelect extends Component {
       <>
         <div className="BackgroundSelect-container">
         Select a background.
-          <button onClick={() => this.setType('Bathroom')}>Bathroom</button>
-          <button onClick={() => this.setType('Bedroom')}>Bedroom</button>
-          <button onClick={() => this.setType('Kitchen')}>Kitchen</button>
-          <button onClick={() => this.setType('LivingRoom')}>Living Room</button>
-          <button onClick={() => this.setType('Office')}>Office</button>
+          <button onClick={() => this.setType('bathroom')}>Bathroom</button>
+          <button onClick={() => this.setType('bedroom')}>Bedroom</button>
+          <button onClick={() => this.setType('kitchen')}>Kitchen</button>
+          <button onClick={() => this.setType('livingroom')}>Living Room</button>
+          <button onClick={() => this.setType('office')}>Office</button>
           <div className="BackgroundSelect-gallery">
-            {[1, 2, 3, 4, 5, 6].map((value, index) => (
+          {[...Array(this.state.roomDict[this.state.roomType]).keys()].map((value, index) => (
               <BackgroundItem
               key = {`backgroundImage-${index}`}  
-              image = {'./backgrounds/' + 'bathroom' + '/' + this.state.roomType + value.toString() + '.jpg'}
+              image = {'./backgrounds/' + this.state.roomType + '/' + index.toString() + '.jpg'}
               setBackground = {(background) => this.props.setBackground(background)}
               />
             ))}
