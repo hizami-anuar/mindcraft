@@ -14,7 +14,13 @@ import pink from "./icons/pink.png";
 import green from "./icons/green.png";
 import blue from "./icons/blue.png";
 
-import example from './icons/example.png'
+import example from './icons/example.png';
+
+import bar0 from './icons/bar0.png';
+import bar1 from './icons/bar1.png';
+import bar2 from './icons/bar2.png';
+import bar3 from './icons/bar3.png';
+
 
 // Client ID
 const GOOGLE_CLIENT_ID = "739758725997-d8he26ce328pmd91fvg7f7cck6ernk72.apps.googleusercontent.com";
@@ -32,10 +38,6 @@ class Skeleton extends Component {
   componentDidMount() {
     // API calls 
     window.addEventListener('scroll', () => {
-<<<<<<< HEAD
-=======
-      // console.log(window.scrollY);
->>>>>>> 599cf455f74baeb7e009ccebcd46d28be82cc6eb
       if (window.scrollY < 500) {
         this.setState({scrolled: true})
       }
@@ -49,7 +51,8 @@ class Skeleton extends Component {
     setTimeout(typeWriter, speed);
 
     function typeWriter() {
-      if (count > 21) {typeWriter.stop();}
+      // stops when total count of characters exceeds 21 
+      if (count > 21) {return;}
       if (pos < data[turn].length) {
         document.getElementById("str").innerHTML += data[turn].charAt(pos); // Show 
         // console.log(data[turn].charAt(pos));
@@ -104,9 +107,12 @@ class Skeleton extends Component {
           <div className='Skeleton-title'>
             Own your 
           </div>
-          <div id='str' className='Skeleton-title' ></div>
+          <div id='str' className='Skeleton-title'></div>
         </section>
 
+        {/* DIVIDER */}
+        <img className='Skeleton-bar' src={bar0}/>
+        
         {/* Background-info */}
         <section className='Skeleton-background-info'>
           {/* top row */}
@@ -128,6 +134,9 @@ class Skeleton extends Component {
           </div>
         </section>
 
+        {/* DIVIDER */}
+        <img className='Skeleton-bar' src={bar1}/>
+
         {/* Feature */}
         <section className='Skeleton-feature'>
           <div className='Skeleton-title'>
@@ -144,7 +153,7 @@ class Skeleton extends Component {
   
             <div className="Skeleton-sticky">
               <div className="Skeleton-img"><img src={pink}/></div>
-              <div className='Skeleton-text-block'>
+              <div className='Skeleton-text-block u-pad-left'>
                 <i>Interact with > 30 objects to see the associated memory</i>
                 <img className='Skeleton-image-block  Skeleton-transform' src='https://freesvg.org/img/Simple-Banana.png'/>
               </div>
@@ -160,13 +169,15 @@ class Skeleton extends Component {
 
             <div className="Skeleton-sticky">
             <div className="Skeleton-img"><img src={blue}/></div>
-              <div className='Skeleton-text-block'>
+              <div className='Skeleton-text-block u-pad-right'>
                 <i>Discover public mind edifices at Town Hall</i>
-                <img className='Skeleton-image-block' src='https://www.svgrepo.com/show/88690/building.svg'/>
+                <img className='Skeleton-image-block u-pad-right' src='https://www.svgrepo.com/show/88690/building.svg'/>
               </div>
             </div>
-
         </section>
+
+        {/* DIVIDER */}
+        <img className='Skeleton-bar' src={bar2}/>
 
         {/* Example */}
         <section className='Skeleton-example'>
@@ -191,10 +202,13 @@ class Skeleton extends Component {
           </div>
         </section>
 
+        {/* DIVIDER */}
+        <img className='Skeleton-bar' src={bar3}/>
+
         {/* Design */}
         <section className='Skeleton-design'>
           <div className='Skeleton-design-title'>
-            Design whatever.
+          Craft memories.
           </div>
 
           <div className='Skeleton-chatbox-left Skeleton-sb2'>

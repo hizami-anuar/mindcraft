@@ -52,6 +52,13 @@ form {
   display: inline-block;
 }
 
+.u-pad-left {
+  padding-right: 10px;
+}
+
+.u-pad-right {
+  padding-left: 10px;
+}
 .u-bold {
   font-weight: 600;
   letter-spacing: .05em;
