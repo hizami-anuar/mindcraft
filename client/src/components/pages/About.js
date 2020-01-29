@@ -10,7 +10,6 @@ class About extends Component {
 render() {
     return (
     <>
-
     <div className='About-title'>Talk to Us</div>
     
  <div className="row">
@@ -30,14 +29,12 @@ render() {
 
   <div className="column">
     <div className="card">
-
       <div className="container u-textCenter">
       <h2 className='u-bold'>Hizami Anuar</h2>
         <p><i>Lead Engineer, Co-founder</i></p>
-        <p>Course 18-C</p>
+        <p>Course 6, 18</p>
         <p>hizami@mit.edu</p>
         <p><button className="button">Your</button></p>
-
       </div>
     </div>
   </div>
@@ -51,7 +48,6 @@ render() {
         <p>Course 6, 15</p>
         <p>umang@mit.edu</p>
         <p><button className="button">Memory</button></p>
-
       </div>
     </div>
   </div>

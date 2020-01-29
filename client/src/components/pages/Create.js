@@ -234,8 +234,8 @@ class Create extends Component {
               </>
             ) : ( null )}
               <>
-                <button className="Create-button" onClick={this.setModeImage}>Image</button>
-                <button className="Create-button" onClick={this.setModeNumber}>Number</button>
+                  <button className="Create-button" onClick={this.setModeImage}>Image</button>
+                  <button className="Create-button" onClick={this.setModeNumber}>Number</button>
               </>
           </div>
           <div id="canvas" className="Create-canvas">

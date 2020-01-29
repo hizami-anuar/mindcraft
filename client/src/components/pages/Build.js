@@ -24,7 +24,7 @@ class Build extends Component {
       },
       background: '',
       keyCounter: 0,
-      panel: 'housemap',
+      panel: 'instructions',
     }
   }
 
