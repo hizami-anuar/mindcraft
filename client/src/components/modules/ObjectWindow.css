@@ -42,7 +42,7 @@
 .ObjectWindow-editButton {
   background-color: #DCDCDC;
   position: relative;
-  right: 10px;
+  text-align: right;
   
   border-with: 2px;
   padding: 7px 10px;
