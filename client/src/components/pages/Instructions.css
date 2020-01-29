@@ -4,6 +4,8 @@
   margin-left: 3.5%;
   margin-right: 3.5%;
   position: relative;
+  
+  white-space: pre-wrap;
 }
 
 h1 {
