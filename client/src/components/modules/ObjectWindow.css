@@ -33,32 +33,47 @@
 #ObjectWindow-notesEditBar {
   visibility: hidden;
 }
+
+.ObjectWindow-objectInfo {
+  position: absolute;
+  top: 50px;
+}
+
 .ObjectWindow-editButton {
-  background-color: #F5F5F5;
+  background-color: #DCDCDC;
   position: relative;
-  margin-left: 10px;
+  text-align: right;
   
   border-width: 2px;
-  padding: 10px 20px;
+  padding: 7px 10px;
   border-radius: 5px;
   
   color: #000000;
-  font-size: 15px;
+  font-size: 10px;
   text-align: center;
   cursor: pointer;
 }
 
 .ObjectWindow-deleteButton{
-  background-color: #F5F5F5;
-  margin-right: 10px;
-  margin-top: 10px;
+  background-color: #DCDCDC;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
   
   border-width: 3px;
-  padding: 10px 20px;
+  padding: 7px 10px;
   border-radius: 2px;
   
   color: #000000;
-  font-size: 15px;
+  font-size: 10px;
   text-align: center;
   cursor: pointer;
+}
+
+h1{
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  text-align: center;
+  width: 100%;
 }
