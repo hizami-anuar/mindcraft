@@ -121,6 +121,7 @@ class Build extends Component {
         (
         <BackgroundSelect
           setBackground = {(background) => this.setBackground(background)}
+          background = {this.state.background}
         />
         ) :
 

@@ -17,9 +17,16 @@ class BackgroundItem extends Component {
   render() {
     return(
       <>
-        <div className='BackgroundItem-holder' onClick={this.setBackground}>
-          <img className='BackgroundItem-image' src={this.props.image} />
-        </div>
+        {this.props.background === this.props.image ? (
+          <div className='BackgroundItem-selectedHolder' onClick={this.setBackground}>
+            <img className='BackgroundItem-image' src={this.props.image} />
+          </div>
+        ) : (
+          <div className='BackgroundItem-holder' onClick={this.setBackground}>
+            <img className='BackgroundItem-image' src={this.props.image} />
+          </div>
+        )
+        }
       </>
     )
   }
