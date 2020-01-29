@@ -1,5 +1,5 @@
 .ObjectWindow-container {
-  background-color: yellow;
+  background-color: FloralWhite;
   min-height: 100%;
   width: 100%;
 
@@ -28,6 +28,8 @@
   white-space: pre;
   height: auto;
   width: 100%;
+  
+  font-family: "Times New Roman', Times, serif;
 }
 
 #ObjectWindow-notesEditBar {
