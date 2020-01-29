@@ -83,6 +83,7 @@ form {
 }
 
 .expand {
+  z-index: 2;
   animation: flow-out .5s forwards;
   border: 1px solid red;
 }
