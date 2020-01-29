@@ -33,6 +33,12 @@
 #ObjectWindow-notesEditBar {
   visibility: hidden;
 }
+
+.ObjectWindow-objectInfo {
+  position: absolute;
+  top: 30px;
+}
+
 .ObjectWindow-editButton {
   background-color: #DCDCDC;
   position: relative;
