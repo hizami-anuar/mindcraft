@@ -25,6 +25,12 @@ class Instructions extends Component{
             Click on house map. Then, choose the room whose background you want to change. Click on <q>Background Select</q>. Then, select the type of room you want to create (Bedroom, Kitchen, Office, etc.). Select an option from the default backgrounds for your room. Finally, click on <q>Create</q>. 
           </p>
         </div>
+        <div className='Instructions-loadRoom'>
+          <h2>To load a room:</h2>
+          <p>
+            Click on house map. Choose the room you want to load. Then, click on <q>Create</q>.
+          </p>
+        </div>
         <div className='Instructions-addObjects'>
           <h2>To add numbers and images to your room:</h2>
           <p>
@@ -37,6 +43,7 @@ class Instructions extends Component{
             Click on the object you want to edit. Select <q>Object</q> in <q>Log</q>. Choose which fields to edit by clicking on their respective Edit buttons.
           </p>
         </div>
+        <h2>Make sure to click <q>Save Layout</q> to save any changes you make!</h2>
       </div>
       </>
     );

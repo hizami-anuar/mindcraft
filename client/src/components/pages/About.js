@@ -10,42 +10,44 @@ class About extends Component {
 render() {
     return (
     <>
-     <div className="row">
+    <div className='About-title'>Talk to Us</div>
+    
+ <div className="row">
+
   <div className="column">
     <div className="card">
 
-      <div className="container">
-        <h2>Jane Doe</h2>
-        <p className="title">CEO &amp; Founder</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button className="button">Contact</button></p>
+      <div className="container u-textCenter">
+        <h2 className='u-bold'>Ian Lee</h2>
+        <p><i>Co-founder, duh</i></p>
+        <p>Course 1, 6</p>
+        <p>ianl@mit.edu</p>
+        <p><button className="button">Own</button></p>
       </div>
     </div>
   </div>
 
   <div className="column">
     <div className="card">
-
-      <div className="container">
-        <h2>Mike Ross</h2>
-        <p className="title">Art Director</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button className="button">Contact</button></p>
+      <div className="container u-textCenter">
+      <h2 className='u-bold'>Hizami Anuar</h2>
+        <p><i>Lead Engineer, Co-founder</i></p>
+        <p>Course 18-C</p>
+        <p>hizami@mit.edu</p>
+        <p><button className="button">Your</button></p>
       </div>
     </div>
   </div>
 
-  <div className="column">
+  <div className="column u-textCenter">
     <div className="card">
 
       <div className="container">
-        <h2>John Doe</h2>
-        <p className="title">Designer</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button className="button">Contact</button></p>
+      <h2 className='u-bold'>Umang Bansal</h2>
+        <p><i>Unpaid Intern, Co-founder</i></p>
+        <p>Course 6, 15</p>
+        <p>umang@mit.edu</p>
+        <p><button className="button">Memory</button></p>
       </div>
     </div>
   </div>

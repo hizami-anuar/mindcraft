@@ -1,10 +1,21 @@
+.About-title {
+    margin-top: 150px;
+    margin-bottom: -200px;
+    text-align: center;
+    color: white;
+    font-size: 150px;
+    background: linear-gradient(to right, rgba(255,0,0,0),orangered);
+}
+
 .column {
     float: left;
-    width: 30%;
-    margin-left: 22px;
-    margin-top: 0px;
+    width: 25%;
+    margin-left: 80px;
+    margin-top: 350px;
     margin-bottom: 16px;
     padding: 0 8px;
+    background-color: #fcd397;
+    border-radius: 15px;
   }
   
   /* Display the columns below each other instead of side by side on small screens */
@@ -23,6 +34,7 @@
   /* Some left and right padding inside the container */
   .container {
     padding: 0 16px;
+    padding-top: 10px;
   }
   
   /* Clear floats */
@@ -32,20 +44,19 @@
     display: table;
   }
   
-  .title {
-    color: grey;
-  }
-  
   .button {
     border: none;
+    border-radius: 15px;
     outline: 0;
+    letter-spacing: 1.5px;
     display: inline-block;
+    font-size: 18px;
     padding: 8px;
     color: white;
-    background-color: #000;
+    background-color: #ee853f;
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
   }
   
   .button:hover {

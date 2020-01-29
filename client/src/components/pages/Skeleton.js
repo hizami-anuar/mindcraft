@@ -189,9 +189,15 @@ class Skeleton extends Component {
           <div className="Skeleton-chatbox-right Skeleton-sb1">
             <div className='u-bold'>Topic: <span className='u-normal u-left-space'>APUSH</span></div>
           </div>
+
+          <div className='Skeleton-iphone-d'>Delivered</div>
+
           <div className="Skeleton-chatbox-right Skeleton-sb1">
             <div className='u-bold'>Goal: <span className='u-normal u-left-space'>Memorize historic events in chronological order</span></div>
           </div>
+
+          <div className='Skeleton-iphone-r'>Read</div>
+
           <div className='Skeleton-chatbox-right Skeleton-sb1 Skeleton-disappear'> <div className='u-bold'>Events:</div>
             <li>1761 - Taxation w/o Representation</li> 
             <li>1763 - French & Indian War ends </li> 
@@ -199,6 +205,9 @@ class Skeleton extends Component {
             <li>1765 - Stamp Act </li> 
             <li>1773 - Boston Tea Party </li> 
           </div>
+
+          <div className='Skeleton-iphone-s'>Sent</div>
+
           </div>
         </section>
 
@@ -225,6 +234,7 @@ class Skeleton extends Component {
               <p>Finally, before leaving, I laid out
               the <i>dress</i> I would for the party tonight.</p>
           </div>
+
         </section>
 
         {/* Footer */}
