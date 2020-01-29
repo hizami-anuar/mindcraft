@@ -70,11 +70,29 @@ class Skeleton extends Component {
           setTimeout(typeWriter, speed);
         }
     }
+
+    /* cursor */
+    const cursor = document.querySelector('.Skeleton-cursor');
+
+      document.querySelector('.Skeleton-cursor');
+
+        document.addEventListener('mousemove', e => {
+            cursor.setAttribute("style", "top: "+(e.pageY)+"px; left: "+(e.pageX)+"px;")
+        })
+
+      document.addEventListener('click', () => {
+        cursor.classList.add("expand");
+
+        setTimeout(() => {
+            cursor.classList.remove("expand");
+        }, 500)
+    })
   }
 
   render() {
     return (
       <>
+        <div className='Skeleton-cursor'></div>
         {/* Main */}
         <section className='Skeleton-header'>
           <div className='Skeleton-keys'></div>
@@ -151,15 +169,17 @@ class Skeleton extends Component {
             Try it.
           </div>
           <div className='Skeleton-rotate'></div>
-          <div className='Skeleton-chat'>
-          <div className="Skeleton-chatbox Skeleton-sb1"><b>Topic: APUSH</b></div>
+          <div className='Skeleton-chatlog'>
+          <div className="Skeleton-chatbox Skeleton-sb1">
+            <div className='u-bold'>Topic: </div>
+          </div>
           <div className="Skeleton-chatbox Skeleton-sb1"><b>Goal: Memorize sequence in chronological order</b></div>
           <div className="Skeleton-chatbox Skeleton-sb1"><b>Events</b>
-            <li>1761 - Taxation w/o Representation</li> <br></br>
-            <li>1754 - French & Indian War </li> <br></br>
-            <li>1763 - Proclamation of 1763 </li> <br></br>
-            <li>1765 - Stamp Act </li> <br></br>
-            <li>1773 - The Boston Tea Party </li> <br></br>
+            <li>1761 - Taxation w/o Representation</li> 
+            <li>1754 - French & Indian War </li> 
+            <li>1763 - Proclamation of 1763 </li>
+            <li>1765 - Stamp Act </li> 
+            <li>1773 - The Boston Tea Party </li> 
           </div>
           <div className="Skeleton-chatbox Skeleton-sb1"><img src={pink}/></div>
           <div className="Skeleton-chatbox Skeleton-sb1">Topic: APUSH</div>
