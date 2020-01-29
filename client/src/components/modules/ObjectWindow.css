@@ -1,5 +1,5 @@
 .ObjectWindow-container {
-  background-color: #FFFAF0;
+  background-color: #FFEFD5;
   min-height: 100%;
   width: 100%;
 
@@ -34,13 +34,13 @@
   visibility: hidden;
 }
 .ObjectWindow-editButton {
-  background-color: #C0C0C0;
+  background-color: #F5F5F5;
   position: relative;
   margin-left: 10px;
   
-  border: 2px;
-  padding: 12px 25px;
-  border-radius: 2px;
+  border-with: 2px;
+  padding: 10px 20px;
+  border-radius: 5px;
   
   color: #000000;
   font-size: 15px;
@@ -49,15 +49,12 @@
 }
 
 .ObjectWindow-deleteButton{
-  background-color: #C0C0C0;
-  position: relative;
-  /*
+  background-color: #F5F5F5;
   margin-right: 10px;
   margin-top: 10px;
-  */
   
-  border: 2px;
-  padding: 12px 25px;
+  border-width: 3px;
+  padding: 10px 20px;
   border-radius: 2px;
   
   color: #000000;
