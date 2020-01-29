@@ -55,3 +55,5 @@ class Instructions extends Component{
   }
   
 }
+
+export default Instructions;
