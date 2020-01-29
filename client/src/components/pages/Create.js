@@ -261,13 +261,13 @@ class Create extends Component {
           value={this.state.inputText}
           onChange={this.handleInputChange}
         />
-        <button onClick={this.createObject}>Upload Image URL</button>
-        <button onClick={this.save}>Save Layout</button>
-        <button onClick={this.load}>Load Layout</button>
-        <button onClick={this.setModeImage}>Image mode</button>
-        <button onClick={this.setModeNumber}>Number mode</button>
-        <button onClick={this.setModeLog}>Log</button>
-        <button onClick={this.setModeObject}>ObjectWindow</button>
+        <button className="Create-button" onClick={this.createObject}>Upload Image URL</button>
+        <button className="Create-button" onClick={this.save}>Save Layout</button>
+        <button className="Create-button" onClick={this.load}>Load Layout</button>
+        <button className="Create-button" onClick={this.setModeImage}>Image mode</button>
+        <button className="Create-button" onClick={this.setModeNumber}>Number mode</button>
+        <button className="Create-button" onClick={this.setModeLog}>Log</button>
+        <button className="Create-button" onClick={this.setModeObject}>ObjectWindow</button>
       </div>
       </>
     );
