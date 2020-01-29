@@ -118,9 +118,11 @@
   cursor: pointer;
 }
 
+/*
 button:hover {background-color: darkorange};
 button:active {
   background-color: darkorange;
   box-shadow: 0 5px #999;
   transform: translateY(4px);
 }
+*/
