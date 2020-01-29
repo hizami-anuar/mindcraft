@@ -28,10 +28,23 @@
   white-space: pre;
   height: auto;
   width: 100%;
-  
-  font-family: "Times New Roman', Times, serif;
 }
 
 #ObjectWindow-notesEditBar {
   visibility: hidden;
+}
+
+button {
+  background-color: #DCDCDC;
+  position: relative;
+  margin-left: 10px;
+  
+  border: 2px;
+  padding: 12px 25px;
+  border-radius: 2px;
+  
+  color: #000000;
+  font-size: 15px;
+  text-align: center;
+  cursor:pointer;
 }
