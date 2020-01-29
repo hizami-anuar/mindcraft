@@ -10,6 +10,7 @@ h2 {
   /* Make NavBar stay while scrolling */
   top: 20px;
   position: sticky;
+  z-index: 2;
 }
 
 /* Place Logo to the left */

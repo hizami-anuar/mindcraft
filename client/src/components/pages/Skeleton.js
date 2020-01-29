@@ -4,9 +4,9 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import "../../utilities.css";
 import "./Skeleton.css";
 
-import step1 from "./icons/stepaa.png";
-import step2 from "./icons/stepbb.png";
-import step3 from "./icons/stepcc.png";
+import step1 from "./icons/stepa.png";
+import step2 from "./icons/stepb.png";
+import step3 from "./icons/stepc.png";
 import step4 from "./icons/stepd.png";
 import step5 from "./icons/stepe.png";
 
@@ -153,6 +153,7 @@ class Skeleton extends Component {
           <div className='Skeleton-rotate'></div>
           <div className='Skeleton-chat'>
           <div className="Skeleton-chatbox Skeleton-sb1"><b>Topic: APUSH</b></div>
+          <div className="Skeleton-chatbox Skeleton-sb1"><b>Goal: Memorize sequence in chronological order</b></div>
           <div className="Skeleton-chatbox Skeleton-sb1"><b>Events</b>
             <li>1761 - Taxation w/o Representation</li>
             <li>1754 - French & Indian War </li>
