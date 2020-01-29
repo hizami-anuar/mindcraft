@@ -10,36 +10,48 @@ class About extends Component {
 render() {
     return (
     <>
-     <div class="row">
-  <div class="column">
-    <div class="card">
 
-      <div class="container">
-        <h2>Ian Lee</h2>
-        <p class="title">CEO &amp; Co-founder</p>
-        <p>First year student at MIT</p>
+    <div className='About-title'>Talk to Us</div>
+    
+ <div className="row">
+
+  <div className="column">
+    <div className="card">
+
+      <div className="container u-textCenter">
+        <h2 className='u-bold'>Ian Lee</h2>
+        <p><i>Co-founder, duh</i></p>
+        <p>Course 1, 6</p>
+        <p>ianl@mit.edu</p>
+        <p><button className="button">Own</button></p>
       </div>
     </div>
   </div>
 
-  <div class="column">
-    <div class="card">
+  <div className="column">
+    <div className="card">
 
-      <div class="container">
-        <h2>Hizami Anuar</h2>
-        <p class="title">Lead Engineer &amp; Co-founder</p>
-        <p>First year student at MIT</p>
+      <div className="container u-textCenter">
+      <h2 className='u-bold'>Hizami Anuar</h2>
+        <p><i>Lead Engineer, Co-founder</i></p>
+        <p>Course 18-C</p>
+        <p>hizami@mit.edu</p>
+        <p><button className="button">Your</button></p>
+
       </div>
     </div>
   </div>
 
-  <div class="column">
-    <div class="card">
+  <div className="column u-textCenter">
+    <div className="card">
 
-      <div class="container">
-        <h2>Umang Bansal</h2>
-        <p class="title">Unpaid Intern &amp; Co-founder</p>
-        <p>First year student at MIT</p>
+      <div className="container">
+      <h2 className='u-bold'>Umang Bansal</h2>
+        <p><i>Unpaid Intern, Co-founder</i></p>
+        <p>Course 6, 15</p>
+        <p>umang@mit.edu</p>
+        <p><button className="button">Memory</button></p>
+
       </div>
     </div>
   </div>
