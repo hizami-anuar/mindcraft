@@ -33,6 +33,22 @@ class App extends Component {
         // they are registed in the database, and currently logged in.
         this.setState({ userId: user._id });
       }
+
+      const cursor = document.querySelector('.cursor');
+
+      document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', e => {
+            cursor.setAttribute("style", "top: "+(e.pageY)+"px; left: "+(e.pageX-5)+"px;")
+        })
+
+      document.addEventListener('click', () => {
+        cursor.classList.add("expand");
+
+        setTimeout(() => {
+            cursor.classList.remove("expand");
+        }, 500)
+    })
     });
 
     interact('.draggable')
@@ -104,6 +120,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <div className='cursor'></div>
         <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}

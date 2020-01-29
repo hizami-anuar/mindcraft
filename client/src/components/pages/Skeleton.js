@@ -4,9 +4,9 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import "../../utilities.css";
 import "./Skeleton.css";
 
-import step1 from "./icons/stepaa.png";
-import step2 from "./icons/stepbb.png";
-import step3 from "./icons/stepcc.png";
+import step1 from "./icons/stepa.png";
+import step2 from "./icons/stepb.png";
+import step3 from "./icons/stepc.png";
 import step4 from "./icons/stepd.png";
 import step5 from "./icons/stepe.png";
 
@@ -153,12 +153,13 @@ class Skeleton extends Component {
           <div className='Skeleton-rotate'></div>
           <div className='Skeleton-chat'>
           <div className="Skeleton-chatbox Skeleton-sb1"><b>Topic: APUSH</b></div>
+          <div className="Skeleton-chatbox Skeleton-sb1"><b>Goal: Memorize sequence in chronological order</b></div>
           <div className="Skeleton-chatbox Skeleton-sb1"><b>Events</b>
-            <li>1761 - Taxation w/o Representation</li>
-            <li>1754 - French & Indian War </li>
-            <li>1763 - Proclamation of 1763 </li>
-            <li>1765 - Stamp Act </li>
-            <li>1773 - The Boston Tea Party </li>
+            <li>1761 - Taxation w/o Representation</li> <br></br>
+            <li>1754 - French & Indian War </li> <br></br>
+            <li>1763 - Proclamation of 1763 </li> <br></br>
+            <li>1765 - Stamp Act </li> <br></br>
+            <li>1773 - The Boston Tea Party </li> <br></br>
           </div>
           <div className="Skeleton-chatbox Skeleton-sb1"><img src={pink}/></div>
           <div className="Skeleton-chatbox Skeleton-sb1">Topic: APUSH</div>

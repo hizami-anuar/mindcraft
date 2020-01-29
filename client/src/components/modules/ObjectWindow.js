@@ -60,7 +60,7 @@ class ObjectWindow extends Component {
           <div>
             <div>
               <div className="ObjectWindow-nameDisplay">{this.props.currentObject.name}</div>
-              <button onClick={this.enableNameEdit}>Edit Name</button>
+              <button className="ObjectWindow-editButton" onClick={this.enableNameEdit}>Edit Name</button>
           </div>
           </div>
         )}
@@ -73,7 +73,7 @@ class ObjectWindow extends Component {
         ) : (
           <div>
             <img className="ObjectWindow-imageDisplay" src={this.props.currentObject.image}/>
-            <button onClick={this.enableImageEdit}>Edit Image</button>
+            <button className="ObjectWindow-editButton" onClick={this.enableImageEdit}>Edit Image</button>
           </div>
         )}
 
@@ -85,11 +85,11 @@ class ObjectWindow extends Component {
         ) : (
           <div>
             <div className="ObjectWindow-notesDisplay">{this.props.currentObject.notes}</div>
-            <button onClick={this.enableNotesEdit}>Edit Notes</button>
+            <button className="ObjectWindow-editButton" onClick={this.enableNotesEdit}>Edit Notes</button>
           </div>
         )}
         
-        <button onClick={this.props.deleteObject}>Delete Object</button>
+        <button className="ObjectWindow-deleteButton" onClick={this.props.deleteObject}>Delete Object</button>
       </div>
       ) : ( null )}
       </>
