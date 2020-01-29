@@ -96,7 +96,7 @@
   position: relative;
 }
 
-button {
+.Create-button {
   /* positioning of button */
   background-color: orange;
   position: relative;
