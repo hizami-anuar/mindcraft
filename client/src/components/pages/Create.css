@@ -64,6 +64,12 @@
   /* size of number node */
   height: 50px;
   width: 50px;
+
+  touch-action: none;
+  position: absolute;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
 }
 
 .draggableImage {
@@ -76,6 +82,12 @@
 
   height: 50px;
   width: 50px;
+
+  touch-action: none;
+  position: absolute;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
 }
 
 #drag-1, #drag-2 {
@@ -93,6 +105,7 @@
 }
 
 #items {
+  width: 150px;
   position: relative;
 }
 

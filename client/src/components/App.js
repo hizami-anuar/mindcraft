@@ -4,8 +4,7 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
 import Build from "./pages/Build.js";
-import Create from "./pages/Create.js";
-import Share from "./pages/Share.js";
+import Explore from "./pages/Explore.js";
 import interact from "interactjs";
 
 import "../utilities.css";
@@ -34,6 +33,8 @@ class App extends Component {
         this.setState({ userId: user._id });
       }
     });
+
+    window.dragMoveListener = this.dragMoveListener;
 
     interact('.draggable')
       .draggable({
@@ -99,8 +100,6 @@ class App extends Component {
     post("/api/logout");
   };
 
-  
-
   render() {
     return (
       <>
@@ -121,7 +120,7 @@ class App extends Component {
             userId={this.state.userId}
             dragMoveListener={this.dragMoveListener}
           />
-          <Share
+          <Explore
             path="/share"
             userId={this.state.userId}
           />
