@@ -54,6 +54,7 @@
   cursor: pointer;
   
   display: flex;
+  flex: end;
 }
 
 .ObjectWindow-deleteButton{
