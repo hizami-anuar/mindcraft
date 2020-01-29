@@ -24,6 +24,7 @@ class Create extends Component {
       currentObject: undefined,
       mode: 'number',
       logMode: 'log',
+      editable: true,
     };
 
     this.keyCounter = 0;
@@ -230,6 +231,7 @@ class Create extends Component {
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
             deleteObject={() => this.deleteObject(item.key)}
             setCurrentObject={() => this.setCurrentObject(item.key)}
+            editable = {this.state.editable}
           />
         ))}
       </div>
@@ -242,6 +244,7 @@ class Create extends Component {
           <SortableComponent
           objects = {this.state.room.objects}
           reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
+          editable = {this.state.editable}
           />
           </div>
         ) : (
@@ -250,6 +253,7 @@ class Create extends Component {
               currentObject = {this.state.currentObject}
               deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
               editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
+              editable = {this.state.editable}
             />
           ) : ( <div>No object selected.</div> )
         )}
@@ -268,6 +272,8 @@ class Create extends Component {
         <button className="Create-button" onClick={this.setModeNumber}>Number mode</button>
         <button className="Create-button" onClick={this.setModeLog}>Log</button>
         <button className="Create-button" onClick={this.setModeObject}>ObjectWindow</button>
+        <button className="Create-button" onClick={() => this.setState({editable: true})}>On</button>
+        <button className="Create-button" onClick={() => this.setState({editable: false})}>Off</button>
       </div>
       </>
     );
