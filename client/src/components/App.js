@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
+
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
 import Build from "./pages/Build.js";
 import Explore from "./pages/Explore.js";
-import interact from "interactjs";
+import About from "./pages/About.js";
 
+import interact from "interactjs";
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
@@ -122,6 +124,10 @@ class App extends Component {
           />
           <Explore
             path="/share"
+            userId={this.state.userId}
+          />
+          <About
+            path="/about"
             userId={this.state.userId}
           />
           <NotFound default />
