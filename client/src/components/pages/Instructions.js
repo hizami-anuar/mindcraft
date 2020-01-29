@@ -1,6 +1,6 @@
 import "./Instructions.css";
 
-class Instructions{
+class Instructions extends Component{
 
   constructor(props){
     super(props);
