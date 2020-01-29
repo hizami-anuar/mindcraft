@@ -36,7 +36,7 @@ class SortableComponent extends Component {
         ) : (
           <ul id='items'>
           {this.props.objects.map((value, index) => (
-            <li><img src={value.image} className='SortableComponent-listItem' /></li>
+            <li key={`sortableItem-${value.key}`} className='SortableComponent-listItem'><ListItem index={index+1} image={value.image} name={value.name}/></li>
           ))}
           </ul>
         )}
