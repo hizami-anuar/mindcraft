@@ -32,7 +32,7 @@ class NavBar extends Component {
           </Link>
 
           {/* Explore link */}
-          <Link to="/construction" className="NavBar-link">
+          <Link to="/share" className="NavBar-link">
             <h2>Explore</h2>
           </Link>
 

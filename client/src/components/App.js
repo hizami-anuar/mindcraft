@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
 import Build from "./pages/Build.js";
 import Create from "./pages/Create.js";
+import Share from "./pages/Share.js";
 import interact from "interactjs";
 
 import "../utilities.css";
@@ -49,7 +50,39 @@ class App extends Component {
         }, 500)
     })
     });
-  }
+
+    interact('.draggable')
+      .draggable({
+        inertia: false,
+        // keep the element within the area of its parent
+        restrict: {
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        // enable autoScroll
+        autoScroll: true,
+  
+        onstart: function (event) {
+          //console.log('onstart');
+        },
+        // call this function on every dragmove event
+        onmove: window.dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+          //console.log('onend');
+          let rect = event.target.getBoundingClientRect();
+          let parent = document.getElementById("canvas");
+          let rect0 = parent.getBoundingClientRect();
+          let x = rect.left, y=rect.top;
+          let x0 = rect0.left, y0=rect0.top;
+          let dx = x-x0, dy=y-y0;
+          console.log(event.target.id);
+        }
+      });
+    };
+
+    
 
   dragMoveListener (event) {
     // console.log('dragMoveListener');
@@ -105,8 +138,9 @@ class App extends Component {
             userId={this.state.userId}
             dragMoveListener={this.dragMoveListener}
           />
-          <Construction
-            path="/construction"
+          <Share
+            path="/share"
+            userId={this.state.userId}
           />
           <NotFound default />
         </Router>
