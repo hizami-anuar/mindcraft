@@ -226,9 +226,9 @@ class Create extends Component {
               value={this.state.inputText}
               onChange={this.handleInputChange}
             />
+
             <button className="Create-button" onClick={this.createObject}>Upload Image URL</button>
             <button className="Create-button" onClick={this.save}>Save Layout</button>
-            <button className="Create-button" onClick={this.load}>Load Layout</button>
             <button className="Create-button" onClick={this.setModeImage}>Image</button>
             <button className="Create-button" onClick={this.setModeNumber}>Number</button>
             <button className="Create-button" onClick={() => this.setState({editable: true})}>On</button>

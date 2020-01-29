@@ -11,7 +11,7 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 75%;
+  width: 74.75%;
   position: absolute;
 }
 
@@ -31,7 +31,7 @@
 /* place side bar to track items placed here */ 
 .Create-logContainer {
   display: inline-block;
-  width: 25%;
+  width: 24.75%;
   top: 0px;
   bottom: 0;
   right: 0;
@@ -86,8 +86,7 @@
 
 .Create-logBarText {
   position: relative;
-  margin-left: 0px;
-  width: auto;
+  margin-left: 50px;
   display: inline;
 }
 
