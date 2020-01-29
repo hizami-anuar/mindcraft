@@ -4,6 +4,8 @@ import Create from './Create.js'
 import BackgroundSelect from '../modules/BackgroundSelect.js'
 import HouseMap from '../modules/HouseMap.js'
 
+import './Build.css'
+
 class Build extends Component {
   constructor(props){
     super(props);
@@ -53,7 +55,7 @@ class Build extends Component {
   render() {
     return(
       <>
-        <div>
+        <div className='Build-container'>
         {
         this.state.panel === 'create' ? (
         <Create
@@ -84,10 +86,11 @@ class Build extends Component {
 
         (<div>Error</div>)
         }
-        <button onClick={() => this.setPanel('create')}>Create</button>
-        <button onClick={() => this.setPanel('backgroundselect')}>BackgroundSelect</button>
-        <button onClick={() => this.setPanel('housemap')}>HouseMap</button>
-        <button onClick={() => this.setPanel('error')}>Error</button>
+        <button className='Build-button' onClick={() => this.setPanel('housemap')}>HouseMap</button>
+        <button className='Build-button' onClick={() => this.setPanel('backgroundselect')}>BackgroundSelect</button>
+        <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
+
+        <button className='Build-button' onClick={() => this.setPanel('error')}>Error</button>
         </div>
       </>
     )
