@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Create from './Create.js'
 import BackgroundSelect from '../modules/BackgroundSelect.js'
 import HouseMap from '../modules/HouseMap.js'
+import Instructions from './Instructions.js'
 
 import { redirectTo } from "@reach/router";
 import { get } from "../../utilities";
@@ -136,6 +137,12 @@ class Build extends Component {
           setCurrentRoom = {(index) => this.setCurrentRoom(index)}
         />
         ) :
+        
+        this.state.panel === 'instructions' ?
+        (
+        <Instructions
+        />
+        ) :
 
         (<div>Error</div>)
         }
@@ -144,6 +151,7 @@ class Build extends Component {
         <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
 
         <button className='Build-button' onClick={this.loadHouse}>Load</button>
+        <button className='Build-button' onClick={() => this.setPanel('instructions')}>Instructions</button>
         </div>
       </>
     )
