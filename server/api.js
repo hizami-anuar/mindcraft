@@ -23,6 +23,7 @@ const socket = require("./server-socket");
 
 const Num = require("./models/num");
 const Room = require("./models/room");
+const House = require("./models/house");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -47,6 +48,12 @@ router.post("/initsocket", (req, res) => {
 
 router.get("/room", (req, res) => {
   Room.find({creator_id: req.user.googleid}).then((data) => {
+    res.send(data);
+  });
+});
+
+router.get("/house", (req, res) => {
+  House.find({creator_id: req.user.googleid}).then((data) => {
     res.send(data);
   });
 });
@@ -77,6 +84,16 @@ router.post("/room", (req, res) => {
   });
 
   newRoom.save().then((room) => res.send(room));
+});
+
+router.post("/house", (req, res) => {
+  const newHouse= new House({
+    name: req.body.name,
+    house: req.body.house,
+    creator_id: req.user.googleid,
+  });
+
+  newHouse.save().then((house) => res.send(house));
 });
 
 // anything else falls to this "not found" case

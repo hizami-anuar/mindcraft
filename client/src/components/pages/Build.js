@@ -4,6 +4,10 @@ import Create from './Create.js'
 import BackgroundSelect from '../modules/BackgroundSelect.js'
 import HouseMap from '../modules/HouseMap.js'
 
+import { redirectTo } from "@reach/router";
+import { get } from "../../utilities";
+import { post } from "../../utilities";
+
 import './Build.css'
 
 class Build extends Component {
@@ -18,9 +22,45 @@ class Build extends Component {
         objects: [],
       },
       background: '',
-      panel: 'create',
+      keyCounter: 0,
+      panel: 'housemap',
     }
   }
+
+  saveHouse = () => {
+    const body = {
+      name: "name",
+      house: this.state.house,
+      // objects: this.state.room.objects,
+      keyCounter: this.state.keyCounter,
+      // url: "https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1498042211.jpg",
+    }
+    post("/api/house", body).then((res) => {
+      console.log("Save successful!");
+    });
+  };
+
+  loadHouse = () => {
+    this.setState({
+      house: [],
+    });
+    console.log(this.props.userId);
+    if(this.props.userId != undefined) {
+      get("/api/house", {creator_id: this.props.userId}).then((data) => {
+        //console.log("DATA");
+        let loadedData = data.slice(-1)[0];
+        let loadedHouse = loadedData.house;
+        if (loadedHouse != undefined) {
+          this.setState({house: loadedHouse});
+        };
+        let keyCounter = loadedData.keyCounter;
+        if (keyCounter != undefined) {
+          this.setState({keyCounter: keyCounter});
+        }
+      });
+    };
+  }
+
 
   setPanel = (type) => {
     this.setState({panel: type});
@@ -52,17 +92,28 @@ class Build extends Component {
     this.setState({house: newHouse});
   }
 
+  updateKeyCounter = (value) => {
+    this.setState({keyCounter: value});
+  }
+
   render() {
     return(
       <>
         <div className='Build-container'>
         {
+        this.props.userId === undefined ? (
+          <div>Please log in.</div>
+        ) :
+
         this.state.panel === 'create' ? (
         <Create
           userId={this.props.userId}
           room={this.state.currentRoom}
           dragMoveListener={this.props.dragMoveListener}
           editRoom={(room) => this.editRoom(room)}
+          saveHouse={this.saveHouse}
+          keyCounter={this.state.keyCounter}
+          updateKeyCounter={(value) => this.updateKeyCounter(value)}
         />
         ) : 
         
@@ -91,6 +142,8 @@ class Build extends Component {
         <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
 
         <button className='Build-button' onClick={() => this.setPanel('error')}>Error</button>
+
+        <button className='Build-button' onClick={this.loadHouse}>Load</button>
         </div>
       </>
     )

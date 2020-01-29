@@ -83,7 +83,7 @@ class Create extends Component {
       object['x'] = dx-1;
       object['y'] = dy-1;
     }
-    this.saveRoom();
+    this.props.saveHouse();
     }
   }
 
@@ -132,14 +132,14 @@ class Create extends Component {
     const inputText = this.state.inputText;
     const object = { 
       image: inputText, 
-      key: this.keyCounter, 
+      key: this.props.keyCounter, 
       name: "Edit this name",
       notes: "Edit these notes", 
       x: 200, 
       y: 200}
     const newObjects = objects.concat([object]);
     room.objects = newObjects;
-    this.keyCounter++;
+    this.props.updateKeyCounter(this.props.keyCounter+1);
 
     this.setState({
       room: room,
@@ -165,6 +165,12 @@ class Create extends Component {
     console.log(this.state.currentObject);
   }
 
+  editObjects = (objects) => {
+    let room = this.state.room;
+    room.objects = objects;
+    this.setState({ room: room });
+  }
+
   editObjectValue = (key, property, value) => {
     const index = this.findKey(key);
     const object = this.state.room.objects[index];
@@ -172,13 +178,11 @@ class Create extends Component {
     if (property === "name") { newObjects[index].name = value; }
     if (property === "image") { newObjects[index].image = value; }
     if (property === "notes") { newObjects[index].notes = value; }
-    this.setState({ objects: newObjects });
+    this.editObjects(newObjects);
   }
 
   reorderObjects = (oldIndex, newIndex) => {
-    this.setState({
-      objects: arrayMove(this.state.room.objects, oldIndex, newIndex),
-    });
+    this.editObjects(arrayMove(this.state.room.objects, oldIndex, newIndex));
     console.log(this.state.room.objects);
   }
 
@@ -220,7 +224,7 @@ class Create extends Component {
             index = {index}
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
-            imageURL = {item.image}
+            image = {item.image}
             mode = {this.state.mode}
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
