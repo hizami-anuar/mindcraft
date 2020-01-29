@@ -34,7 +34,7 @@ class SortableComponent extends Component {
         {this.props.editable ? (
           <SortableList items={this.props.objects} onSortEnd={this.onSortEnd} />
         ) : (
-          <ul id='items'>
+          <ul id='items' className='SortableComponent-list'>
           {this.props.objects.map((value, index) => (
             <li key={`sortableItem-${value.key}`} className='SortableComponent-listItem'><ListItem index={index+1} image={value.image} name={value.name}/></li>
           ))}

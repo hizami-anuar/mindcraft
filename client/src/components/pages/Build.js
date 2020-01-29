@@ -24,7 +24,7 @@ class Build extends Component {
       },
       background: '',
       keyCounter: 0,
-      panel: 'housemap',
+      panel: 'instructions',
     }
   }
 
@@ -106,7 +106,7 @@ class Build extends Component {
         <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
 
         <button className='Build-button' onClick={this.loadHouse}>Load</button>
-        <button className='Build-button' onClick={this.setPanel('instructions'}>Instructions</button>
+        <button className='Build-button' onClick={() => this.setPanel('instructions')}>Instructions</button>
         {
         this.props.userId === undefined ? (
           <div>Please log in.</div>
