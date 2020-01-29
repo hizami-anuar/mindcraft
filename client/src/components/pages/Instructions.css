@@ -30,6 +30,15 @@ h1 {
   white-space: pre-wrap;
 }
 
+.Instructions-loadRoom {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+  
+  white-space: pre-wrap;
+}
+
 .Instructions-addObjects {
   position: relative;
   margin-left: 10px;
