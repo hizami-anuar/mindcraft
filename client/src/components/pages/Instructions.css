@@ -6,26 +6,34 @@
   position: relative;
 }
 
+h1 {
+  position: relative;
+}
+
 .Instructions-addRoom {
   position: relative;
   margin-left: 10px;
   margin-top: 20px;
+  width = 100%;
 }
 
 .Instructions-changeBackground {
   position: relative;
   margin-left: 10px;
   margin-top: 20px;
+  width = 100%;
 }
 
 .Instructions-addObjects {
   position: relative;
   margin-left: 10px;
   margin-top: 20px;
+  width = 100%;
 }
 
 .Instructions-editObjects {
   position: relative;
   margin-left: 10px;
   margin-top: 20px;
+  width = 100%;
 }
