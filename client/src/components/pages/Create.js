@@ -18,11 +18,7 @@ class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      room: {
-        title: '',
-        background: this.props.background,
-        objects: [],
-      },
+      room: this.props.room,
       // objects: [],
       inputText: "",
       currentObject: undefined,
