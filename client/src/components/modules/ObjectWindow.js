@@ -50,7 +50,11 @@ class ObjectWindow extends Component {
       <>
       {this.props.currentObject ? (
       <div className="ObjectWindow-container">
-        
+       
+        <button className="ObjectWindow-deleteButton" onClick={this.props.deleteObject}>Delete Object</button>
+      
+        <h1>Object Info</h1>
+      
         {this.state.nameEdit ? (
           <div>
             <textarea id="ObjectWindow-nameInput" defaultValue={this.props.currentObject.name}/>
@@ -88,8 +92,6 @@ class ObjectWindow extends Component {
             <button className="ObjectWindow-editButton" onClick={this.enableNotesEdit}>Edit Notes</button>
           </div>
         )}
-        
-        <button className="ObjectWindow-deleteButton" onClick={this.props.deleteObject}>Delete Object</button>
       </div>
       ) : ( null )}
       </>
