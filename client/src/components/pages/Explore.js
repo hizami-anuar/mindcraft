@@ -4,14 +4,14 @@ import Create from './Create.js'
 import BackgroundSelect from '../modules/BackgroundSelect.js'
 import HouseMap from '../modules/HouseMap.js'
 
+import "../../utilities.css";
+import "./Create.css";
 import { redirectTo } from "@reach/router";
 import { get } from "../../utilities";
 import { post } from "../../utilities";
 
-import './Build.css'
-
-class Build extends Component {
-  constructor(props){
+class Explore extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       house: [],
@@ -23,20 +23,18 @@ class Build extends Component {
       },
       background: '',
       keyCounter: 0,
-      panel: 'housemap',
-    }
+      panel: 'view',
+    };
   }
 
-  saveHouse = () => {
-    const body = {
-      name: "name",
-      house: this.state.house,
-      // objects: this.state.room.objects,
-      keyCounter: this.state.keyCounter,
-      // url: "https://image.shutterstock.com/image-photo/red-apple-isolated-on-white-260nw-1498042211.jpg",
-    }
-    post("/api/house", body).then((res) => {
-      console.log("Save successful!");
+  componentDidMount(){
+
+  }
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    this.setState({
+      inputText: value
     });
   };
 
@@ -60,7 +58,34 @@ class Build extends Component {
       });
     };
   }
+                                                            
+  loadUserContent = () => {
+    console.log("loading");
+    if (this.props.userId != undefined) {
+      console.log('loading more');
+      get("/api/room", {creator_id: this.props.userId}).then((data) => {
+        let loadedData = [];
+        if (data.length >= 3){
+          loadedData = data.slice(-3);
+        } else {
+          loadedData = data;
+        };
+        let listData = [];
+        for (let i = 0; i < loadedData.length; i++){
+          if (loadedData[i].numbers != undefined){
+            listData.push(loadedData[i].numbers);
+          };
+          this.setState({
+            listObjects: listData
+          });
+        };
+      });
+    };
+  }
 
+  debug = () => {
+    this.setState({objects: this.state.listObjects[0]});
+  }
 
   setPanel = (type) => {
     this.setState({panel: type});
@@ -97,15 +122,11 @@ class Build extends Component {
   }
 
   render() {
-    return(
+    return (
       <>
-        <div className='Build-container'>
-        {
-        this.props.userId === undefined ? (
-          <div>Please log in.</div>
-        ) :
+        <div className='Explore-container'>
 
-        this.state.panel === 'create' ? (
+        {this.state.panel === 'view' ? (
         <Create
           userId={this.props.userId}
           room={this.state.currentRoom}
@@ -114,17 +135,9 @@ class Build extends Component {
           saveHouse={this.saveHouse}
           keyCounter={this.state.keyCounter}
           updateKeyCounter={(value) => this.updateKeyCounter(value)}
-          editable={true}
+          editable={false}
         />
         ) : 
-        
-        this.state.panel === 'backgroundselect' ?
-        (
-        <BackgroundSelect
-          setBackground = {(background) => this.setBackground(background)}
-          background = {this.state.background}
-        />
-        ) :
 
         this.state.panel === 'housemap' ?
         (
@@ -140,14 +153,13 @@ class Build extends Component {
         (<div>Error</div>)
         }
         <button className='Build-button' onClick={() => this.setPanel('housemap')}>HouseMap</button>
-        <button className='Build-button' onClick={() => this.setPanel('backgroundselect')}>BackgroundSelect</button>
-        <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
+        <button className='Build-button' onClick={() => this.setPanel('view')}>View</button>
 
         <button className='Build-button' onClick={this.loadHouse}>Load</button>
         </div>
       </>
-    )
+    );
   }
 }
 
-export default Build;
+export default Explore;

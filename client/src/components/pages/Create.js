@@ -24,6 +24,7 @@ class Create extends Component {
       currentObject: undefined,
       mode: 'number',
       logMode: 'log',
+      editable: true,
     };
 
     this.keyCounter = 0;
@@ -83,7 +84,7 @@ class Create extends Component {
       object['x'] = dx-1;
       object['y'] = dy-1;
     }
-    this.saveRoom();
+    this.props.saveHouse();
     }
   }
 
@@ -132,14 +133,14 @@ class Create extends Component {
     const inputText = this.state.inputText;
     const object = { 
       image: inputText, 
-      key: this.keyCounter, 
+      key: this.props.keyCounter, 
       name: "Edit this name",
       notes: "Edit these notes", 
       x: 200, 
       y: 200}
     const newObjects = objects.concat([object]);
     room.objects = newObjects;
-    this.keyCounter++;
+    this.props.updateKeyCounter(this.props.keyCounter+1);
 
     this.setState({
       room: room,
@@ -165,6 +166,12 @@ class Create extends Component {
     console.log(this.state.currentObject);
   }
 
+  editObjects = (objects) => {
+    let room = this.state.room;
+    room.objects = objects;
+    this.setState({ room: room });
+  }
+
   editObjectValue = (key, property, value) => {
     const index = this.findKey(key);
     const object = this.state.room.objects[index];
@@ -172,13 +179,11 @@ class Create extends Component {
     if (property === "name") { newObjects[index].name = value; }
     if (property === "image") { newObjects[index].image = value; }
     if (property === "notes") { newObjects[index].notes = value; }
-    this.setState({ objects: newObjects });
+    this.editObjects(newObjects);
   }
 
   reorderObjects = (oldIndex, newIndex) => {
-    this.setState({
-      objects: arrayMove(this.state.room.objects, oldIndex, newIndex),
-    });
+    this.editObjects(arrayMove(this.state.room.objects, oldIndex, newIndex));
     console.log(this.state.room.objects);
   }
 
@@ -220,12 +225,13 @@ class Create extends Component {
             index = {index}
             key = {`image-${item.key}`}
             objectId = {`num-${item.key}`}
-            imageURL = {item.image}
+            image = {item.image}
             mode = {this.state.mode}
             x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
             y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
             deleteObject={() => this.deleteObject(item.key)}
             setCurrentObject={() => this.setCurrentObject(item.key)}
+            editable = {this.state.editable}
           />
         ))}
       </div>
@@ -238,6 +244,7 @@ class Create extends Component {
           <SortableComponent
           objects = {this.state.room.objects}
           reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
+          editable = {this.state.editable}
           />
           </div>
         ) : (
@@ -246,6 +253,7 @@ class Create extends Component {
               currentObject = {this.state.currentObject}
               deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
               editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
+              editable = {this.state.editable}
             />
           ) : ( <div>No object selected.</div> )
         )}
@@ -264,6 +272,8 @@ class Create extends Component {
         <button className="Create-button" onClick={this.setModeNumber}>Number mode</button>
         <button className="Create-button" onClick={this.setModeLog}>Log</button>
         <button className="Create-button" onClick={this.setModeObject}>ObjectWindow</button>
+        <button className="Create-button" onClick={() => this.setState({editable: true})}>On</button>
+        <button className="Create-button" onClick={() => this.setState({editable: false})}>Off</button>
       </div>
       </>
     );

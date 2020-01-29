@@ -29,16 +29,17 @@ class BackgroundSelect extends Component {
       <>
         <div className="BackgroundSelect-container">
         Select a background.
-          <button onClick={() => this.setType('bathroom')}>Bathroom</button>
-          <button onClick={() => this.setType('bedroom')}>Bedroom</button>
-          <button onClick={() => this.setType('kitchen')}>Kitchen</button>
-          <button onClick={() => this.setType('livingroom')}>Living Room</button>
-          <button onClick={() => this.setType('office')}>Office</button>
+          <button className='BackgroundSelect-button' onClick={() => this.setType('bathroom')}>Bathroom</button>
+          <button className='BackgroundSelect-button' onClick={() => this.setType('bedroom')}>Bedroom</button>
+          <button className='BackgroundSelect-button' onClick={() => this.setType('kitchen')}>Kitchen</button>
+          <button className='BackgroundSelect-button' onClick={() => this.setType('livingroom')}>Living Room</button>
+          <button className='BackgroundSelect-button' onClick={() => this.setType('office')}>Office</button>
           <div className="BackgroundSelect-gallery">
           {[...Array(this.state.roomDict[this.state.roomType]).keys()].map((value, index) => (
               <BackgroundItem
               key = {`backgroundImage-${index}`}  
               image = {'./backgrounds/' + this.state.roomType + '/' + index.toString() + '.jpg'}
+              background = {this.props.background}
               setBackground = {(background) => this.props.setBackground(background)}
               />
             ))}
