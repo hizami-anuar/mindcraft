@@ -63,3 +63,9 @@
   text-align: center;
   cursor: pointer;
 }
+
+h1{
+  font-size: 40px;
+  position: absolute;
+  top: 10px;
+}
