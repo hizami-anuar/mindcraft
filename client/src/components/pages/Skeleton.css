@@ -2,7 +2,6 @@ body {
   /* Set default background color: Comfort White */
   background-color: #fcf9f4;
   overflow-x:hidden;
-  cursor: url(./icons/cursor.png);
 }
 
 img {
@@ -98,7 +97,7 @@ img {
     width: 25%;
     position: relative;
   }
-  
+
   .Skeleton-text-block {
     letter-spacing: .05em;
     position: absolute;
