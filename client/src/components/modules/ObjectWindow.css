@@ -42,7 +42,7 @@
 .ObjectWindow-editButton {
   background-color: #DCDCDC;
   position: relative;
-  text-align: right;
+  right: 10px;
   
   border-with: 2px;
   padding: 7px 10px;
@@ -52,9 +52,6 @@
   font-size: 10px;
   text-align: center;
   cursor: pointer;
-  
-  display: flex;
-  flex: end;
 }
 
 .ObjectWindow-deleteButton{
