@@ -284,6 +284,29 @@ class Create extends Component {
           </div>
         </div>
       </div>
+
+      <div className="Create-instructions">
+        <h1>Instructions</h1>
+        <h2>To add a room to your house:</h2>
+        <ol>
+          <li>Click on house map</li>
+          <li>Choose "Add new room"</li>
+          <li>Click on the new room added</li>
+          <li>Click on Background Select</li>
+          <li>Select the type of room you want to create (Bedroom, Kitchen, Office, etc.)</li>
+          <li>Select an option from the default backgrounds for your room</li>
+          <li>Click on "Create"</li>
+        </ol>
+        <h2>To change the background of an existing room:</h2>
+        <ol>
+          <li>Click on house map</li>
+          <li>Choose the room whose background you want to change</li>
+          <li>Click on Background Select</li>
+          <li>Select the type of room you want to create (Bedroom, Kitchen, Office, etc.)</li>
+          <li>Select an option from the default backgrounds for your room</li>
+          <li>Click on "Create"</li>
+        </ol>
+      </div>
       </>
     );
   }
