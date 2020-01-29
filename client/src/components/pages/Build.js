@@ -12,12 +12,8 @@ class Build extends Component {
     }
   }
 
-  setPanelCreate = () => {
-    this.setState({panel: 'create'});
-  }
-
-  setPanelBackgroundSelect = () => {
-    this.setState({panel: 'backgroundselect'});
+  setPanel = (type) => {
+    this.setState({panel: type});
   }
 
   setBackground = (background) => {
@@ -35,14 +31,18 @@ class Build extends Component {
           background = {this.state.background}
           dragMoveListener={this.props.dragMoveListener}
         />
-        ) : (
+        ) : 
+        this.state.panel === 'backgroundselect' ?
+        (
         <BackgroundSelect
           setBackground = {(background) => this.setBackground(background)}
         />
-        )
+        ) :
+        (<div>Error</div>)
         }
-        <button onClick={this.setPanelCreate}>Create</button>
-        <button onClick={this.setPanelBackgroundSelect}>BackgroundSelect</button>
+        <button onClick={() => this.setPanel('create')}>Create</button>
+        <button onClick={() => this.setPanel('backgroundselect')}>BackgroundSelect</button>
+        <button onClick={() => this.setPanel('error')}>Error</button>
         </div>
       </>
     )

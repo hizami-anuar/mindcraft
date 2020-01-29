@@ -23,7 +23,7 @@ class Create extends Component {
         background: this.props.background,
         objects: [],
       },
-      objects: [],
+      // objects: [],
       inputText: "",
       currentObject: undefined,
       mode: 'number',
