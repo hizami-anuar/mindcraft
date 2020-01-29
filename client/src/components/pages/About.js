@@ -32,7 +32,7 @@ render() {
       <div className="container u-textCenter">
       <h2 className='u-bold'>Hizami Anuar</h2>
         <p><i>Lead Engineer, Co-founder</i></p>
-        <p>Course 18-C</p>
+        <p>Course 6, 18</p>
         <p>hizami@mit.edu</p>
         <p><button className="button">Your</button></p>
       </div>
