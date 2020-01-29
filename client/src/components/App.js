@@ -34,7 +34,39 @@ class App extends Component {
         this.setState({ userId: user._id });
       }
     });
-  }
+
+    interact('.draggable')
+      .draggable({
+        inertia: false,
+        // keep the element within the area of its parent
+        restrict: {
+          restriction: "parent",
+          endOnly: true,
+          elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+        },
+        // enable autoScroll
+        autoScroll: true,
+  
+        onstart: function (event) {
+          //console.log('onstart');
+        },
+        // call this function on every dragmove event
+        onmove: window.dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+          //console.log('onend');
+          let rect = event.target.getBoundingClientRect();
+          let parent = document.getElementById("canvas");
+          let rect0 = parent.getBoundingClientRect();
+          let x = rect.left, y=rect.top;
+          let x0 = rect0.left, y0=rect0.top;
+          let dx = x-x0, dy=y-y0;
+          console.log(event.target.id);
+        }
+      });
+    };
+
+    
 
   dragMoveListener (event) {
     // console.log('dragMoveListener');

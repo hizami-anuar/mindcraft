@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 
 const RoomSchema = new mongoose.Schema({
     name: String, 
+    room: Array,
     numbers: Array,
     background: String,
     creator_id: String,
