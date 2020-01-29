@@ -15,11 +15,9 @@ render() {
     <div class="card">
 
       <div class="container">
-        <h2>Jane Doe</h2>
-        <p class="title">CEO &amp; Founder</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+        <h2>Ian Lee</h2>
+        <p class="title">CEO &amp; Co-founder</p>
+        <p>First year student at MIT</p>
       </div>
     </div>
   </div>
@@ -28,11 +26,9 @@ render() {
     <div class="card">
 
       <div class="container">
-        <h2>Mike Ross</h2>
-        <p class="title">Art Director</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+        <h2>Hizami Anuar</h2>
+        <p class="title">Lead Engineer &amp; Co-founder</p>
+        <p>First year student at MIT</p>
       </div>
     </div>
   </div>
@@ -41,11 +37,9 @@ render() {
     <div class="card">
 
       <div class="container">
-        <h2>John Doe</h2>
-        <p class="title">Designer</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+        <h2>Umang Bansal</h2>
+        <p class="title">Unpaid Intern &amp; Co-founder</p>
+        <p>First year student at MIT</p>
       </div>
     </div>
   </div>
