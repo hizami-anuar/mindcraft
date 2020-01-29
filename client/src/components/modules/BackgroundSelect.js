@@ -39,6 +39,7 @@ class BackgroundSelect extends Component {
               <BackgroundItem
               key = {`backgroundImage-${index}`}  
               image = {'./backgrounds/' + this.state.roomType + '/' + index.toString() + '.jpg'}
+              background = {this.props.background}
               setBackground = {(background) => this.props.setBackground(background)}
               />
             ))}
