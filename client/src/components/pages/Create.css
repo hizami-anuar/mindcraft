@@ -7,12 +7,20 @@
   position: relative;
 }
 
+.Create-canvasContainer {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 74.75%;
+  position: absolute;
+}
+
 .Create-canvas {
   /* background: url(../../../dist/default_backgrounds/kitchen4.png) no-repeat; */
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: inline-block;
-  width: 75%;
+  width: 100%;
   top: 50px;
   bottom: 0;
   left: 0;
@@ -21,9 +29,19 @@
 }
 
 /* place side bar to track items placed here */ 
+.Create-logContainer {
+  display: inline-block;
+  width: 24.75%;
+  top: 0px;
+  bottom: 0;
+  right: 0;
+  border: 1px solid red;
+  position: absolute;
+}
+
 .Create-log {
   display: inline-block;
-  width: 25%;
+  width: 100%;
   top: 50px;
   bottom: 0;
   right: 0;
@@ -34,13 +52,64 @@
 }
 
 .Create-logHeader {
-  height: 20px;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+
+  position: absolute;
 }
 
-.uploadBar {
+.Create-logBody {
+  display: inline-block;
+  width: 100%;
+  height: 90%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+
+  position: absolute;
+}
+
+.Create-canvasBar {
   position: absolute;
   top: 0px;
   left: 50px;
+}
+
+.Create-logBar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+}
+
+.Create-logBarText {
+  position: relative;
+  margin-left: 50px;
+  display: inline;
+}
+
+.Create-logButton {
+  /* positioning of button */
+  background-color: orange;
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  /* shape of button */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px #999;
+
+  /*  text inside button */
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .resize-drag, .draggable {
@@ -102,11 +171,6 @@
   user-select: none;
   -webkit-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
-}
-
-#items {
-  width: 150px;
-  position: relative;
 }
 
 .Create-button {

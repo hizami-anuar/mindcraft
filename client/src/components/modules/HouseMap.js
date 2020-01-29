@@ -6,12 +6,8 @@ class HouseMap extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentRoom: [],
-    }
-  }
 
-  setCurrentRoom = (index) => {
-    this.setState({currentRoom: this.props.house[index]});
+    }
   }
 
   createRoom = () => {
@@ -28,15 +24,23 @@ class HouseMap extends Component {
   render() {
     return(
       <>
-        {this.props.house.map((value, index) => 
-          <RoomItem 
-            key = {`room-${index}`}
-            room = {value}
-            setCurrentRoom = {() => this.props.setCurrentRoom(index)}
-          />
-        )}
-        <button>{this.props.currentRoom.title}</button>
-        <button onClick={this.createRoom}>Add New Room</button>
+        <div className='HouseMap-container'>
+          <div className='HouseMap-toolBar'>
+            <button className='Build-button' onClick={this.createRoom}>Add New Room</button>
+          </div>
+          <div className='HouseMap-body'>
+            {this.props.house.map((value, index) => 
+              <RoomItem 
+                key = {`room-${index}`}
+                room = {value}
+                index = {index}
+                setCurrentRoom = {() => this.props.setCurrentRoom(index)}
+                currentRoom = {this.props.currentRoom}
+                currentRoomIndex = {this.props.currentRoomIndex}
+              />
+            )}
+          </div>
+        </div>
       </>
     );
   }

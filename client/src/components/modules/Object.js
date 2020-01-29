@@ -28,7 +28,7 @@ class Object extends Component {
           style={{left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
           onClick={this.props.setCurrentObject}
         >
-          {this.props.index}
+          {this.props.index+1}
         </div>
         ) : (
         <img

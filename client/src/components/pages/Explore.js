@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Create from './Create.js'
 import BackgroundSelect from '../modules/BackgroundSelect.js'
 import HouseMap from '../modules/HouseMap.js'
+import Gallery from '../modules/Gallery.js'
 
 import "../../utilities.css";
 import "./Create.css";
@@ -14,6 +15,7 @@ class Explore extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      houseList: [],
       house: [],
       currentRoomIndex: 0,
       currentRoom: {
@@ -23,7 +25,7 @@ class Explore extends Component {
       },
       background: '',
       keyCounter: 0,
-      panel: 'view',
+      panel: 'gallery',
     };
   }
 
@@ -61,26 +63,25 @@ class Explore extends Component {
                                                             
   loadUserContent = () => {
     console.log("loading");
-    if (this.props.userId != undefined) {
       console.log('loading more');
-      get("/api/room", {creator_id: this.props.userId}).then((data) => {
+      get("/api/allHouses", {creator_id: this.props.userId}).then((data) => {
         let loadedData = [];
-        if (data.length >= 3){
-          loadedData = data.slice(-3);
-        } else {
-          loadedData = data;
-        };
+        //if (data.length >= 3){
+          loadedData = data.slice(-6);
+        //} else {
+        //  loadedData = data.slice(-1);
+        //};
         let listData = [];
         for (let i = 0; i < loadedData.length; i++){
-          if (loadedData[i].numbers != undefined){
-            listData.push(loadedData[i].numbers);
+          if (loadedData[i].house != undefined){
+            listData.push(loadedData[i].house);
           };
           this.setState({
-            listObjects: listData
+            houseList: listData
           });
+          console.log(this.state.houseList);
         };
       });
-    };
   }
 
   debug = () => {
@@ -125,8 +126,16 @@ class Explore extends Component {
     return (
       <>
         <div className='Explore-container'>
-
-        {this.state.panel === 'view' ? (
+        {this.state.panel === 'gallery' ? (
+        <Gallery
+          houseList = {this.state.houseList}
+          house = {this.state.house}
+          setHouse = {(house) => this.setHouse(house)}
+          loadGallery = {this.loadUserContent}
+        />
+          ):
+        
+        this.state.panel === 'view' ? (
         <Create
           userId={this.props.userId}
           room={this.state.currentRoom}
@@ -152,10 +161,9 @@ class Explore extends Component {
 
         (<div>Error</div>)
         }
-        <button className='Build-button' onClick={() => this.setPanel('housemap')}>HouseMap</button>
+        <button className='Build-button' onClick={() => this.setPanel('gallery')}>Gallery</button>
+        <button className='Build-button' onClick={() => this.setPanel('housemap')}>House Map</button>
         <button className='Build-button' onClick={() => this.setPanel('view')}>View</button>
-
-        <button className='Build-button' onClick={this.loadHouse}>Load</button>
         </div>
       </>
     );

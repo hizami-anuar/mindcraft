@@ -1,6 +1,6 @@
-.RoomItem-holder {
-  height: 300px;
-  width: 300px;
+.HouseItem-holder {
+  height: 200px;
+  width: 200px;
   margin: 10px;
 
   position: relative;
@@ -9,9 +9,9 @@
   border: 1px solid red;
 }
 
-.RoomItem-selectedHolder {
-  height: 300px;
-  width: 300px;
+.HouseItem-selectedHolder {
+  height: 200px;
+  width: 200px;
   margin: 10px;
 
   position: relative;
@@ -20,7 +20,8 @@
   border: 5px solid red;
 }
 
-.RoomItem-image {
+
+.HouseItem-image {
   margin: 1%;
 
   height: 98%;

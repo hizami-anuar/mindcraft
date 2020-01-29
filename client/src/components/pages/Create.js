@@ -24,7 +24,7 @@ class Create extends Component {
       currentObject: undefined,
       mode: 'number',
       logMode: 'log',
-      editable: true,
+      editable: this.props.editable,
     };
 
     this.keyCounter = 0;
@@ -219,61 +219,74 @@ class Create extends Component {
     return (
       <>
       <div className="Create-container">
-      <div id="canvas" className="Create-canvas">
-        {this.state.room.objects.map((item, index) => (
-          <Object 
-            index = {index}
-            key = {`image-${item.key}`}
-            objectId = {`num-${item.key}`}
-            image = {item.image}
-            mode = {this.state.mode}
-            x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
-            y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
-            deleteObject={() => this.deleteObject(item.key)}
-            setCurrentObject={() => this.setCurrentObject(item.key)}
-            editable = {this.state.editable}
-          />
-        ))}
-      </div>
-      <div className='Create-log'>
-        {this.state.logMode === 'log' ? (
-          <div>
-          <div className='Create-logHeader'>
-            Log
+        <div className="Create-canvasContainer">
+          <div className="Create-canvasBar">
+            
+            {this.state.editable ? (
+              <>
+                <input
+                  type="text"
+                  value={this.state.inputText}
+                  onChange={this.handleInputChange}
+                />
+                <button className="Create-button" onClick={this.createObject}>Upload Image URL</button>
+                <button className="Create-button" onClick={this.save}>Save Layout</button>
+              </>
+            ) : ( null )}
+              <>
+                <button className="Create-button" onClick={this.setModeImage}>Image</button>
+                <button className="Create-button" onClick={this.setModeNumber}>Number</button>
+              </>
           </div>
-          <SortableComponent
-          objects = {this.state.room.objects}
-          reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
-          editable = {this.state.editable}
-          />
+          <div id="canvas" className="Create-canvas">
+            {this.state.room.objects.map((item, index) => (
+              <Object 
+                index = {index}
+                key = {`image-${item.key}`}
+                objectId = {`num-${item.key}`}
+                image = {item.image}
+                mode = {this.state.mode}
+                x = {item.x} // + document.getElementById("canvas").getBoundingClientRect().left}
+                y = {item.y} // + document.getElementById("canvas").getBoundingClientRect().top}
+                deleteObject={() => this.deleteObject(item.key)}
+                setCurrentObject={() => this.setCurrentObject(item.key)}
+                editable = {this.state.editable}
+              />
+            ))}
           </div>
-        ) : (
-          this.state.currentObject ? (
-            <ObjectWindow
-              currentObject = {this.state.currentObject}
-              deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
-              editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
-              editable = {this.state.editable}
-            />
-          ) : ( <div>No object selected.</div> )
-        )}
-      </div>
-      </div>
-      <div className="uploadBar">
-        <input
-          type="text"
-          value={this.state.inputText}
-          onChange={this.handleInputChange}
-        />
-        <button className="Create-button" onClick={this.createObject}>Upload Image URL</button>
-        <button className="Create-button" onClick={this.save}>Save Layout</button>
-        <button className="Create-button" onClick={this.load}>Load Layout</button>
-        <button className="Create-button" onClick={this.setModeImage}>Image mode</button>
-        <button className="Create-button" onClick={this.setModeNumber}>Number mode</button>
-        <button className="Create-button" onClick={this.setModeLog}>Log</button>
-        <button className="Create-button" onClick={this.setModeObject}>ObjectWindow</button>
-        <button className="Create-button" onClick={() => this.setState({editable: true})}>On</button>
-        <button className="Create-button" onClick={() => this.setState({editable: false})}>Off</button>
+        </div>
+        <div className='Create-logContainer'>
+          <div className='Create-logBar'>
+            <h1 className='Create-logBarText'>View:</h1>
+            <button className="Create-logButton" onClick={this.setModeLog}>Log</button>
+            <button className="Create-logButton" onClick={this.setModeObject}>Object</button>
+          </div>
+          <div className='Create-log'>
+            {this.state.logMode === 'log' ? (
+              <div>
+                <h1 className='Create-logHeader'>
+                  Log
+                </h1>
+                <div className='Create-logBody'>
+                  <SortableComponent
+                    objects = {this.state.room.objects}
+                    reorderObjects = {(oldIndex, newIndex) => this.reorderObjects(oldIndex, newIndex)}
+                    editable = {this.state.editable}
+                  />
+                </div>
+              </div>
+            ) : (
+              this.state.currentObject ? (
+                <ObjectWindow
+                  currentObject = {this.state.currentObject}
+                  deleteObject = {() => this.deleteObject(this.state.currentObject.key)}
+                  editObjectValue = {(property, value) => this.editObjectValue(this.state.currentObject.key, property, value)}
+                  editable = {this.state.editable}
+                />
+              ) : ( <div>No object selected.</div> )
+            )}
+          </div>
+        </div>
       </div>
       </>
     );
