@@ -194,7 +194,7 @@ class Skeleton extends Component {
           </div>
           <div className='Skeleton-chatbox-right Skeleton-sb1 Skeleton-disappear'> <div className='u-bold'>Events:</div>
             <li>1761 - Taxation w/o Representation</li> 
-            <li>1754 - French & Indian War </li> 
+            <li>1763 - French & Indian War ends </li> 
             <li>1763 - Proclamation of 1763 </li>
             <li>1765 - Stamp Act </li> 
             <li>1773 - Boston Tea Party </li> 
