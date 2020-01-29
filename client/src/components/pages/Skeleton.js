@@ -14,6 +14,8 @@ import pink from "./icons/pink.png";
 import green from "./icons/green.png";
 import blue from "./icons/blue.png";
 
+import example from './icons/example.png'
+
 // Client ID
 const GOOGLE_CLIENT_ID = "739758725997-d8he26ce328pmd91fvg7f7cck6ernk72.apps.googleusercontent.com";
 
@@ -30,7 +32,6 @@ class Skeleton extends Component {
   componentDidMount() {
     // API calls 
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY);
       if (window.scrollY < 500) {
         this.setState({scrolled: true})
       }
@@ -71,7 +72,7 @@ class Skeleton extends Component {
         }
     }
 
-    /* cursor */
+    // Cursor effect
     const cursor = document.querySelector('.Skeleton-cursor');
 
       document.querySelector('.Skeleton-cursor');
@@ -156,33 +157,55 @@ class Skeleton extends Component {
             <div className="Skeleton-sticky">
             <div className="Skeleton-img"><img src={blue}/></div>
               <div className='Skeleton-text-block'>
-                <i>Discover public edifices @ Town Hall</i>
+                <i>Discover public mind edifices at Town Hall</i>
                 <img className='Skeleton-image-block' src='https://www.svgrepo.com/show/88690/building.svg'/>
               </div>
             </div>
 
         </section>
 
-        {/* Example section */}
+        {/* Example */}
         <section className='Skeleton-example'>
           <div className='Skeleton-example-title'>
             Try it.
           </div>
           <div className='Skeleton-rotate'></div>
           <div className='Skeleton-chatlog'>
-          <div className="Skeleton-chatbox Skeleton-sb1">
-            <div className='u-bold'>Topic: </div>
+          <div className="Skeleton-chatbox-right Skeleton-sb1">
+            <div className='u-bold'>Topic: <span className='u-normal u-left-space'>APUSH</span></div>
           </div>
-          <div className="Skeleton-chatbox Skeleton-sb1"><b>Goal: Memorize sequence in chronological order</b></div>
-          <div className="Skeleton-chatbox Skeleton-sb1"><b>Events</b>
+          <div className="Skeleton-chatbox-right Skeleton-sb1">
+            <div className='u-bold'>Goal: <span className='u-normal u-left-space'>Memorize historic events in chronological order</span></div>
+          </div>
+          <div className='Skeleton-chatbox-right Skeleton-sb1 Skeleton-disappear'> <div className='u-bold'>Events:</div>
             <li>1761 - Taxation w/o Representation</li> 
             <li>1754 - French & Indian War </li> 
             <li>1763 - Proclamation of 1763 </li>
             <li>1765 - Stamp Act </li> 
-            <li>1773 - The Boston Tea Party </li> 
+            <li>1773 - Boston Tea Party </li> 
           </div>
-          <div className="Skeleton-chatbox Skeleton-sb1"><img src={pink}/></div>
-          <div className="Skeleton-chatbox Skeleton-sb1">Topic: APUSH</div>
+          </div>
+        </section>
+
+        {/* Design */}
+        <section className='Skeleton-design'>
+          <div className='Skeleton-design-title'>
+            Design whatever.
+          </div>
+
+          <div className='Skeleton-chatbox-left Skeleton-sb2'>
+            <div className='u-bold'>Build</div>
+            <img className='Skeleton-icon' src={example}/>
+          </div>
+
+          <div className='Skeleton-chatbox-left Skeleton-sb2'>
+            <div className='u-bold'>Mega-plot</div>
+             <p>I went to my bedroom to pick up my <i>book</i> on symbolism & representation.</p>
+              <p>As I grabbed the papers, I knocked over my <i>mini-Eiffel Tower model</i>.</p>
+              <p>Then, I picked up the <i>red pen</i> I got from Appaclachians, which, ironically,
+              had a "Made in England" <i>stamp</i> on it.</p>
+              <p>Finally, before leaving, I laid out
+              the <i>dress</i> I would for the party tonight.</p>
           </div>
         </section>
 
@@ -191,7 +214,7 @@ class Skeleton extends Component {
           <div className='Skeleton-footer-title'>
             QUESTIONS?
           </div>
-          <div className='Skeleton-text'> ianl@mit.edu <sup> . </sup> hizami@mit.edu <sup> . </sup>  umangba@mit.edu </div>
+          <div className='Skeleton-text'> ianl@mit.edu <sup> . </sup> hizami@mit.edu <sup> . </sup>  umangb@mit.edu </div>
         </section>
 
       </>

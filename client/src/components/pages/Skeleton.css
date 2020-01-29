@@ -76,6 +76,13 @@ body {
     opacity: 0.9;
   }
 
+  /* Background-info: sizes */
+  img {
+    width: auto;
+    height: 300px;
+  }
+  
+
 /* 3 */
 .Skeleton-feature {
   /* position */
@@ -94,7 +101,7 @@ body {
   }
 
   .Skeleton-text-block {
-    letter-spacing: .05em;
+    letter-spacing: .05em;  
     position: absolute;
     bottom: 120px;
     left: 76px;
@@ -120,7 +127,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 30px;
-  height: 600px;
+  height: 720px;
   /* Color: light green - triad colors */
   color: #e99037;
   background-color: #e5fdf1;
@@ -137,8 +144,11 @@ body {
       justify-content: space-between;
     }
 
-    .Skeleton-chatbox {
-      margin-top: 10px;
+    /* right speech bubble */
+    .Skeleton-chatbox-right {
+      top: 20px;
+      /* spacing between boxes */
+      margin-top: 20px;
       margin-left: 400px;
       width: 300px;
       border-radius: 15px;
@@ -159,12 +169,8 @@ body {
       border-top: 15px solid #147efb;
       border-bottom: 15px solid transparent;
       right: -16px;
+      /* anchor the bubble triangular onto box */
       top: 0px;
-    }
-
-    img {
-      width: auto;
-      height: 300px;
     }
 
     li {
@@ -175,6 +181,61 @@ body {
     }
 
 /* 5 */
+.Skeleton-design {
+  /* position */
+  height: 500px;
+  /* Color: light green - triad colors */
+  padding-top: 100px;
+  padding-right: 5px;
+  color: #e99037;
+  background-color: lightgoldenrodyellow;
+}
+  .Skeleton-design-title { 
+    float: right;
+    font-size: 110px;
+    font-weight: bold;
+    padding-top: 200px;
+    padding-left: 50px;
+    letter-spacing: 1.5px; 
+  }
+
+  /* left speech bubble */
+  .Skeleton-chatbox-left {
+    /* spacing between boxes */
+    margin-top: 20px;
+    /* positioning */
+    top: 0px;
+    left: 65px;
+    width: 300px;
+    border-radius: 15px;
+    background: #147efb;
+    color: #fff;
+    padding: 7px;
+    text-align: center;
+    position: relative;
+  }
+
+  .Skeleton-sb2:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 15px solid transparent;
+    border-right: 15px solid #147efb;
+    border-top: 15px solid #147efb;
+    border-bottom: 15px solid transparent;
+    /* anchor the bubble triangular onto box */
+    left: -16px;
+    top: 0px;
+  }
+
+  .Skeleton-icon {
+    padding-top: 5px;
+    width: 95%;
+    height: 100px;
+  }
+
+/* 6 */
 .Skeleton-footer {
   /* position */
   display: flex; justify-content: center; text-align: center;
@@ -223,8 +284,9 @@ body {
 /* Fade in */
 .fade-in {
   animation: fadeIn ease 4s;
+}
 
-}@keyframes fadeIn {
+@keyframes fadeIn {
   0% {
     opacity:0.1;
   }
@@ -252,6 +314,50 @@ section .wave {
     background-position: 500px;
   }
 }
+
+/* Disappear */
+.disappear{
+  animation-name: disappear;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes disappear{
+  100%{
+    opacity: 1;
+    transform: rotateX(90deg);
+  }
+  50%{
+    opacity: 0.5;
+    transform: rotateX(0deg);
+  }
+  100%{
+    display: none;
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+}
+
+/* Appear  */
+.appear{
+  animation-name: appear;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear{
+  0%{
+    opacity: 0;
+    transform: rotateX(0deg);
+  }
+  100%{
+    opacity: 1;
+    transform: rotateX(90deg);
+  }
+}
+
+
+
 
 /* Fire */ 
 .flame-wrapper {
