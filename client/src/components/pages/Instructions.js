@@ -1,3 +1,5 @@
+import React, { Component } from "react";
+
 import "./Instructions.css";
 
 class Instructions extends Component{
