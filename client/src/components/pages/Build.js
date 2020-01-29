@@ -114,6 +114,7 @@ class Build extends Component {
           saveHouse={this.saveHouse}
           keyCounter={this.state.keyCounter}
           updateKeyCounter={(value) => this.updateKeyCounter(value)}
+          editable={true}
         />
         ) : 
         
@@ -141,8 +142,6 @@ class Build extends Component {
         <button className='Build-button' onClick={() => this.setPanel('housemap')}>HouseMap</button>
         <button className='Build-button' onClick={() => this.setPanel('backgroundselect')}>BackgroundSelect</button>
         <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
-
-        <button className='Build-button' onClick={() => this.setPanel('error')}>Error</button>
 
         <button className='Build-button' onClick={this.loadHouse}>Load</button>
         </div>
