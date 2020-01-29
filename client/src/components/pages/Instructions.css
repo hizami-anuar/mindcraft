@@ -1,0 +1,49 @@
+.Instructions-container {
+  height: 600px;
+  margin-top: 1%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  position: relative;
+  
+  white-space: pre-wrap;
+}
+
+h1 {
+  position: relative;
+}
+
+.Instructions-addRoom {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+  
+  white-space: pre-wrap;
+}
+
+.Instructions-changeBackground {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+    
+  white-space: pre-wrap;
+}
+
+.Instructions-addObjects {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+    
+  white-space: pre-wrap;
+}
+
+.Instructions-editObjects {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+    
+  white-space: pre-wrap;
+}

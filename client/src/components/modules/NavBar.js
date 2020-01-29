@@ -37,7 +37,7 @@ class NavBar extends Component {
           </Link>
 
           {/* About link */}
-          <Link to="/construction" className="NavBar-link">
+          <Link to="/about" className="NavBar-link">
             <h2>About</h2>
           </Link>
           
