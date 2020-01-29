@@ -34,7 +34,7 @@
   visibility: hidden;
 }
 .ObjectWindow-editButton {
-  background-color: #F5F5F5;
+  background-color: #DCDCDC;
   position: relative;
   margin-left: 10px;
   
@@ -49,9 +49,10 @@
 }
 
 .ObjectWindow-deleteButton{
-  background-color: #F5F5F5;
-  margin-right: 10px;
-  margin-top: 10px;
+  background-color: #DCDCDC;
+  position: absolute;
+  right: 10px;
+  top: 10px;
   
   border-width: 3px;
   padding: 10px 20px;
