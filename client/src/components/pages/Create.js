@@ -24,7 +24,7 @@ class Create extends Component {
       currentObject: undefined,
       mode: 'number',
       logMode: 'log',
-      editable: true,
+      editable: this.props.editable,
     };
 
     this.keyCounter = 0;
@@ -221,18 +221,22 @@ class Create extends Component {
       <div className="Create-container">
         <div className="Create-canvasContainer">
           <div className="Create-canvasBar">
-            <input
-              type="text"
-              value={this.state.inputText}
-              onChange={this.handleInputChange}
-            />
-
-            <button className="Create-button" onClick={this.createObject}>Upload Image URL</button>
-            <button className="Create-button" onClick={this.save}>Save Layout</button>
-            <button className="Create-button" onClick={this.setModeImage}>Image</button>
-            <button className="Create-button" onClick={this.setModeNumber}>Number</button>
-            <button className="Create-button" onClick={() => this.setState({editable: true})}>On</button>
-            <button className="Create-button" onClick={() => this.setState({editable: false})}>Off</button>
+            
+            {this.state.editable ? (
+              <>
+                <input
+                  type="text"
+                  value={this.state.inputText}
+                  onChange={this.handleInputChange}
+                />
+                <button className="Create-button" onClick={this.createObject}>Upload Image URL</button>
+                <button className="Create-button" onClick={this.save}>Save Layout</button>
+              </>
+            ) : ( null )}
+              <>
+                <button className="Create-button" onClick={this.setModeImage}>Image</button>
+                <button className="Create-button" onClick={this.setModeNumber}>Number</button>
+              </>
           </div>
           <div id="canvas" className="Create-canvas">
             {this.state.room.objects.map((item, index) => (

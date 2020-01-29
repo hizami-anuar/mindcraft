@@ -101,6 +101,11 @@ class Build extends Component {
     return(
       <>
         <div className='Build-container'>
+        <button className='Build-button' onClick={() => this.setPanel('housemap')}>House Map</button>
+        <button className='Build-button' onClick={() => this.setPanel('backgroundselect')}>Select Background</button>
+        <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
+
+        <button className='Build-button' onClick={this.loadHouse}>Load</button>
         {
         this.props.userId === undefined ? (
           <div>Please log in.</div>
@@ -146,12 +151,6 @@ class Build extends Component {
 
         (<div>Error</div>)
         }
-        <button className='Build-button' onClick={() => this.setPanel('housemap')}>HouseMap</button>
-        <button className='Build-button' onClick={() => this.setPanel('backgroundselect')}>BackgroundSelect</button>
-        <button className='Build-button' onClick={() => this.setPanel('create')}>Create</button>
-
-        <button className='Build-button' onClick={this.loadHouse}>Load</button>
-        <button className='Build-button' onClick={() => this.setPanel('instructions')}>Instructions</button>
         </div>
       </>
     )

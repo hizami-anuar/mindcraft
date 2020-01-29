@@ -52,6 +52,12 @@ router.get("/room", (req, res) => {
   });
 });
 
+router.get("/allHouses", (req, res) => {
+  House.find().then((data) => {
+    res.send(data);
+  });
+});
+
 router.get("/house", (req, res) => {
   House.find({creator_id: req.user.googleid}).then((data) => {
     res.send(data);

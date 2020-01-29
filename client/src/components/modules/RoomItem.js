@@ -11,9 +11,19 @@ class RoomItem extends Component {
   }
 
   render() {
+    console.log(this.props.index);
     return(
       <>
-        <img className='RoomItem-holder' src={this.props.room.background} onClick={this.props.setCurrentRoom}/>
+        {this.props.index == this.props.currentRoomIndex ? (
+          <div className='RoomItem-selectedHolder' onClick={() => this.props.setCurrentRoom(this.props.index)}>
+            <img className='RoomItem-image' src={this.props.room.background} />
+          </div>
+        ) : (
+          <div className='RoomItem-holder' onClick={() => this.props.setCurrentRoom(this.props.index)}>
+            <img className='RoomItem-image' src={this.props.room.background} />
+          </div>
+        )
+        }
       </>
     );
   }
