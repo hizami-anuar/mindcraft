@@ -4,11 +4,6 @@ body {
   overflow-x:hidden;
 }
 
-img {
-  width: auto;
-  height: 300px;
-}
-
 /* Define skeleton font style */ 
 .Skeleton-title { 
   font-size: 110px;
@@ -136,7 +131,7 @@ img {
     padding-left: 50px;
     letter-spacing: 1.5px; 
   }
-    .Skeleton-chat {
+    .Skeleton-chatlog {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -167,6 +162,18 @@ img {
       top: 0px;
     }
 
+    img {
+      width: auto;
+      height: 300px;
+    }
+
+    li {
+      float: left;
+      margin-left: 10px;
+      margin-top: 5px;
+      padding-left: 5px;
+    }
+
 /* 5 */
 .Skeleton-footer {
   /* position */
@@ -185,6 +192,33 @@ img {
   }
 
 /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */     /* ANIMATION */
+
+/* cursor */
+.Skeleton-cursor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.expand {
+  z-index: 2;
+  animation: flow-out .5s forwards;
+  border: 3px solid lightsalmon;
+}
+/* cursor animation */
+@keyframes flow-out {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(4);
+  }
+  100% {
+      transform: scale(1);
+      opacity: 0;
+  }
+}
 
 /* Fade in */
 .fade-in {
@@ -224,17 +258,20 @@ section .wave {
   position: relative;
   animation: flicker 4s ease-in infinite;
 }
+
 .wrapper {padding-left: 1050px;
   height: 80px;
   position: relative;
   display: block;
 }
+
 .red {
   width: 80px;
   height: 80px;
   background: orangered;
   box-shadow: 0px 0px 10px 5px orangered;
 }
+
 .orange {
   left:10px;
   width: 60px;
@@ -242,6 +279,7 @@ section .wave {
   background: orange;
   box-shadow: 0px 0px 12px 6px orange;
 }
+
 .gold {
   left:18px;
   width: 45px;
@@ -249,6 +287,7 @@ section .wave {
   background: gold;
   box-shadow: 0px 0px 9px 4px gold;
 }
+
 .white {
   left:22px;
   width: 35px;
@@ -256,6 +295,7 @@ section .wave {
   background: lightyellow;
   box-shadow: 0px 0px 9px 4px lightyellow;
 }
+
 .blue {
   left:37px;
   width: 5px;
@@ -265,16 +305,19 @@ section .wave {
   background: darkblue;
   box-shadow: 0px 0px 15px 15px darkblue;
 }
+
 .base {
   border-radius: 50%;
   position: absolute;
 }
+
 .flame {
   bottom: 0;
   position: absolute;
   border-radius: 50% 0% 50% 50%;
   transform: rotate(-45deg);
 }
+
 @keyframes flicker {
   0% {transform: rotate(-1deg);}
   20% {transform: rotate(2deg) scaleY(1);}
