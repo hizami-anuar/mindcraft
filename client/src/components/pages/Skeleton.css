@@ -178,7 +178,7 @@ body {
       /* anchor the bubble triangular onto box */
       top: 0px;
     }
-
+  
     li {
       float: left;
       margin-left: 10px;
@@ -186,6 +186,29 @@ body {
       padding-left: 5px;
     }
 
+    .Skeleton-iphone-d {
+      font-weight: bold;
+      color: grey;
+      margin-left: 650px;
+      margin-top: 28px;
+      margin-bottom: -20px;
+    }
+
+    .Skeleton-iphone-r {
+      font-weight: bold;
+      color: grey;
+      margin-left: 685px;
+      margin-top: 27px;
+      margin-bottom: -20px;
+    }
+
+    .Skeleton-iphone-s {
+      font-weight: bold;
+      color: grey;
+      margin-left: 690px;
+      margin-top: 27px;
+      margin-bottom: -20px;
+    }
 /* 5 */
 .Skeleton-design {
   /* position */
@@ -248,7 +271,7 @@ body {
   height: 100px;
   /* Color: light orange */
   color: #e99037;
-  background-color: #fdf7e5;
+  background: linear-gradient(0.25turn, #ace5ee, #ebf8e1, #fad6a5);
 }
   .Skeleton-footer-title {
     float: left;

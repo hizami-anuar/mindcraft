@@ -10,42 +10,45 @@ class About extends Component {
 render() {
     return (
     <>
-     <div class="row">
-  <div class="column">
-    <div class="card">
+    <div className='About-title'>Talk to Us</div>
+    
+ <div className="row">
 
-      <div class="container">
-        <h2>Jane Doe</h2>
-        <p class="title">CEO &amp; Founder</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+  <div className="column">
+    <div className="card">
+
+      <div className="container u-textCenter">
+        <h2 className='u-bold'>Ian</h2>
+        <p><i>Front-end</i></p>
+        <p>Course 1, 6</p>
+        <p>ianl@mit.edu</p>
+        <p><button className="button">Own</button></p>
       </div>
     </div>
   </div>
 
-  <div class="column">
-    <div class="card">
+  <div className="column">
+    <div className="card">
 
-      <div class="container">
-        <h2>Mike Ross</h2>
-        <p class="title">Art Director</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+      <div className="container u-textCenter">
+      <h2 className='u-bold'>Hizami</h2>
+        <p><i>Back-end</i></p>
+        <p>Course 18-C</p>
+        <p>hizami@mit.edu</p>
+        <p><button className="button">Your</button></p>
       </div>
     </div>
   </div>
 
-  <div class="column">
-    <div class="card">
+  <div className="column u-textCenter">
+    <div className="card">
 
-      <div class="container">
-        <h2>John Doe</h2>
-        <p class="title">Designer</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
+      <div className="container">
+      <h2 className='u-bold'>Umang</h2>
+        <p><i>Front-end, Back-end</i></p>
+        <p>Course 6, 15</p>
+        <p>umang@mit.edu</p>
+        <p><button className="button">Memory</button></p>
       </div>
     </div>
   </div>
