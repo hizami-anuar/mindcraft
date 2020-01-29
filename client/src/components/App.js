@@ -35,6 +35,8 @@ class App extends Component {
       }
     });
 
+    window.dragMoveListener = this.dragMoveListener;
+
     interact('.draggable')
       .draggable({
         inertia: false,
@@ -98,8 +100,6 @@ class App extends Component {
     this.setState({ userId: undefined });
     post("/api/logout");
   };
-
-  
 
   render() {
     return (

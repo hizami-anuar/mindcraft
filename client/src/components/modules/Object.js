@@ -15,17 +15,16 @@ class Object extends Component {
         <div
           id={this.props.objectId}
           className='draggable draggableNumber'
-          src={this.props.imageURL}
           style={{left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
           onClick={this.props.setCurrentObject}
         >
-          {this.props.index}
+          {this.props.index+1}
         </div>
         ) : (
         <img
           id={this.props.objectId}
           className='draggable draggableImage'
-          src={this.props.imageURL}
+          src={this.props.image}
           style={{left: this.props.x.toString()+'px', top: this.props.y.toString()+'px' }}
           onClick={this.props.setCurrentObject}
         />

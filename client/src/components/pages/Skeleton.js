@@ -30,7 +30,7 @@ class Skeleton extends Component {
   componentDidMount() {
     // API calls 
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
       if (window.scrollY < 500) {
         this.setState({scrolled: true})
       }
@@ -47,7 +47,7 @@ class Skeleton extends Component {
       if (count > 21) {typeWriter.stop();}
       if (pos < data[turn].length) {
         document.getElementById("str").innerHTML += data[turn].charAt(pos); // Show 
-        console.log(data[turn].charAt(pos));
+        // console.log(data[turn].charAt(pos));
         pos++;
         count++;
         setTimeout(typeWriter, speed); // Calls recurisively
