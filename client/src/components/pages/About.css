@@ -1,0 +1,64 @@
+.About-title {
+    margin-top: 150px;
+    margin-bottom: -200px;
+    text-align: center;
+    color: white;
+    font-size: 150px;
+    background: linear-gradient(to right, rgba(255,0,0,0),orangered);
+}
+
+.column {
+    float: left;
+    width: 25%;
+    margin-left: 80px;
+    margin-top: 350px;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    background-color: #fcd397;
+    border-radius: 15px;
+  }
+  
+  /* Display the columns below each other instead of side by side on small screens */
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+  
+  /* Add some shadows to create a card effect */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Some left and right padding inside the container */
+  .container {
+    padding: 0 16px;
+    padding-top: 10px;
+  }
+  
+  /* Clear floats */
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .button {
+    border: none;
+    border-radius: 15px;
+    outline: 0;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    font-size: 18px;
+    padding: 8px;
+    color: white;
+    background-color: #ee853f;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }

@@ -1,0 +1,79 @@
+.ObjectWindow-container {
+  background-color: #FFEFD5;
+  min-height: 100%;
+  width: 100%;
+
+  /* overflow-y: auto; **/
+  position: relative;
+}
+
+.ObjectWindow-imageDisplay {
+  height: 100px;
+  width: 100px;
+}
+
+.ObjectWindow-notesInput {
+  width: 100%;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  resize: none;
+
+  height: 100px;
+  width: 100%;
+}
+
+.ObjectWindow-notesDisplay {
+  word-wrap: break-word;
+
+  white-space: pre;
+  height: auto;
+  width: 100%;
+}
+
+#ObjectWindow-notesEditBar {
+  visibility: hidden;
+}
+
+.ObjectWindow-objectInfo {
+  position: absolute;
+  top: 50px;
+}
+
+.ObjectWindow-editButton {
+  background-color: #DCDCDC;
+  position: relative;
+  text-align: right;
+  
+  border-width: 2px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  
+  color: #000000;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ObjectWindow-deleteButton{
+  background-color: #DCDCDC;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  
+  border-width: 3px;
+  padding: 7px 10px;
+  border-radius: 2px;
+  
+  color: #000000;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+h1{
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  text-align: center;
+  width: 100%;
+}

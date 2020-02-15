@@ -1,0 +1,41 @@
+.BackgroundSelect-container {
+  height: 500px;
+  margin-top: 2.5%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  position: relative;
+  border: 1px solid black;
+}
+
+.BackgroundSelect-gallery {
+  width: 100%;
+  height: 90%;
+  bottom: 0;
+  border: 1px solid green;
+
+  overflow-y: auto;
+
+  position: absolute;
+}
+
+.BackgroundSelect-button {
+  /* positioning of button */
+  background-color: orange;
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  /* shape of button */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px #999;
+
+  /*  text inside button */
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}

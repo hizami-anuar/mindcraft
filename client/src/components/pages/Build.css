@@ -1,0 +1,48 @@
+.Build-container {
+  margin-top: 1.5%;
+  height: auto;
+  width: auto;
+  border: 1px solid black;
+  position: relative;
+}
+
+.Build-button {
+  /* positioning of button */
+  background-color: orange;
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  /* shape of button */
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px #999;
+
+  /*  text inside button */
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.HouseMap-container {
+  height: 550px;
+  margin-top: 0%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  position: relative;
+}
+
+.HouseMap-body {
+  /* background: url(../../../dist/default_backgrounds/kitchen4.png) no-repeat; */
+  display: inline-block;
+  width: 100%;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  border: 1px solid blue;
+  position: absolute;
+}

@@ -33,8 +33,11 @@ const socket = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "mongodb+srv://MindCraft:1cuRPHmtCg3ZfsX6@mindcraft-y6b4z.mongodb.net/test?retryWrites=true&w=majority";
-// TODO change database name to the name you chose
+mongoConnectionURL = process.env.ATLAS_SRV;
+if (mongoConnectionURL === undefined) {
+  mongoConnectionURL = "mongodb+srv://MindCraft:1cuRPHmtCg3ZfsX6@mindcraft-y6b4z.mongodb.net/test?retryWrites=true&w=majority";
+}
+  // TODO change database name to the name you chose
 const databaseName = "MindCraft";
 
 // connect to mongodb
@@ -94,8 +97,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// hardcode port to 3000 for now
-const port = 3000;
+port = process.env.PORT || 3000;
 const server = http.Server(app);
 socket.init(server);
 

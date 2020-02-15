@@ -21,6 +21,10 @@ const router = express.Router();
 //initialize socket
 const socket = require("./server-socket");
 
+const Num = require("./models/num");
+const Room = require("./models/room");
+const House = require("./models/house");
+
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 router.get("/whoami", (req, res) => {
@@ -41,6 +45,62 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
+router.get("/room", (req, res) => {
+  Room.find({creator_id: req.user.googleid}).then((data) => {
+    res.send(data);
+  });
+});
+
+router.get("/allHouses", (req, res) => {
+  House.find().then((data) => {
+    res.send(data);
+  });
+});
+
+router.get("/house", (req, res) => {
+  House.find({creator_id: req.user.googleid}).then((data) => {
+    res.send(data);
+  });
+});
+
+router.get("/roomname", (req, res) => {
+  Room.find({name: req.body.content}).then((data) => {
+    res.send(data);
+  });
+});
+
+//I don't really understand how req.body.content works
+router.post("/room", (req, res) => {
+  /**
+  const newNum = new Num({
+    name: req.body.name,
+    locationX: req.body.x,
+    locationY: req.body.y,
+  });
+  */
+
+  const newRoom = new Room({
+    name: req.body.name,
+    room: req.body.room,
+    numbers: req.body.objects,
+    keyCounter: req.body.keyCounter,
+    background: req.body.url,
+    creator_id: req.user.googleid,
+  });
+
+  newRoom.save().then((room) => res.send(room));
+});
+
+router.post("/house", (req, res) => {
+  const newHouse= new House({
+    name: req.body.name,
+    house: req.body.house,
+    creator_id: req.user.googleid,
+  });
+
+  newHouse.save().then((house) => res.send(house));
+});
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
