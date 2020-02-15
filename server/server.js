@@ -17,6 +17,7 @@
 // this is a tool provided by staff, so you don't need to worry about it
 const validator = require("./validator");
 validator.checkSetup();
+require("dotenv").config();
 
 //import libraries needed for the webserver to work!
 const http = require("http");
@@ -98,9 +99,10 @@ app.use((err, req, res, next) => {
 });
 
 port = process.env.PORT || 3000;
+
 const server = http.Server(app);
 socket.init(server);
 
-server.listen(process.env.PORT || port, () => {
+server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
